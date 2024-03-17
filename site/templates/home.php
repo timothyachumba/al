@@ -6,7 +6,7 @@
     
   <div class="carousel">
     <?php foreach ($projects as $project): ?>
-      <div class="block <?php if($project->first()){echo 'is-inview';}?>" data-scroll data-scroll-repeat="true" data-scroll-offset="70%, 30%">
+      <a href="<?= $project->url() ?>" class="block <?php if($project->first()){echo 'is-inview';}?>" data-scroll data-scroll-repeat="true" data-scroll-offset="70%, 30%">
         
         <div class="project-card" style="background-color: <?= $project->backgroundcolor() ?>">
           <div class="project-card__image__container">
@@ -20,7 +20,7 @@
         </div>
 
 
-      </div>
+      </a>
     <?php endforeach ?>
       
   </div>
