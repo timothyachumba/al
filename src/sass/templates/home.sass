@@ -1,0 +1,176 @@
+@use "../libs/mixins"
+@use "../libs/type"
+@use "../snippets/global/navigation"
+
+$curve: 1s cubic-bezier(0.25,0.5,0.0,1)
+$startWidth: 40vh
+$endWidth: 70vh
+$projectCount: 5
+$projectWidth: $startWidth - calc(($endWidth - $startWidth) / ($projectCount - 1))
+$scaleFactor: calc($projectWidth / $endWidth)
+$descriptionWidth: 40vh
+
+body.home
+  background-color: var(--backgroundColor)
+  color: var(--textColor)
+
+  .carousel
+    @include mixins.sm
+      padding-left: mixins.rscale(64,80)
+
+    &.full-width
+      @include mixins.sm
+        &:hover
+          .block
+            min-width: 100vh
+        .block
+          min-width: 100vh
+          &:hover
+            min-width: 100vh
+
+    &:hover
+      .block
+        @include mixins.sm
+          width: $projectWidth
+
+    .block
+      width: 100vw
+
+      &.is-inview
+        @media (max-width: 919px)
+          .project-card
+            .project-card__image
+              transform: scale(1)
+
+            .project-details
+              .left
+                transform: translateY(0) !important
+                padding-right: 4vh
+
+                h2
+                  margin-bottom: 1vh
+
+                p
+                  opacity: 1
+
+      &:hover
+        @include mixins.sm
+          width: $endWidth
+
+          .project-details
+
+            .left
+              transform: translateY(0) scale(1 * (calc($scaleFactor/2) + 1)) !important
+
+              p
+                opacity: 1
+
+            .right
+              transform: translateX(0) scale(1)
+              opacity: 1
+
+      @include mixins.sm
+        transform: translate3d(0,0,0)
+        width: $startWidth
+        will-change: width
+        transition: width $curve
+
+      .project-card
+        position: relative
+        overflow: hidden
+        display: flex
+        align-items: center
+        flex-direction: column
+        justify-content: flex-end
+        height: 80vh
+        text-decoration: none
+        will-change: height
+        transition: height $curve
+        color: var(--backgroundColor)
+
+        @include mixins.sm
+          padding: 24px
+          height: 100vh
+          justify-content: flex-start
+
+        &:hover
+          @include mixins.sm
+            .project-card__image__container
+              transform: scale(1)
+
+          @include mixins.sm
+            .project-card__content
+              transform: translateY(0) scale(1)
+              opacity: 1
+
+        .project-card__image__container
+          position: absolute
+          width: 100%
+          height: 100%
+          overflow: hidden
+          flex-grow: 1
+
+          @include mixins.sm
+            position: relative
+            width: 100%
+            height: 100%
+            transform: scale(1.4)
+            transition: transform $curve
+
+          .project-card__image
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            object-fit: cover
+            will-change: transform
+            transition: transform $curve
+            flex-grow: 1
+
+      .project-card__content
+        display: flex
+        flex-direction: column
+        padding: mixins.rscale(16,24)
+        gap: mixins.rscale(16,24)
+        position: relative
+        width: 100%
+        color: var(--textColor)
+
+        @include mixins.sm
+          padding: mixins.rscale(16,24) 0 0 0
+          opacity: 0
+          flex-direction: row
+          width: calc($endWidth - 48px)
+          transform: translateY(200px) scale(0.6)
+          transition: transform $curve, opacity $curve
+          will-change: transform
+          color: var(--backgroundColor)
+
+        .project-card__overlay
+          position: absolute
+          top: -50%
+          left: 0
+          right: 0
+          bottom: 0
+          background-color: rgba(black,0.2)
+          backdrop-filter: blur(30px)
+          mask-image: linear-gradient(to bottom, transparent, black 50%, black)
+
+          @include mixins.sm
+            opacity: 0
+
+        .project-card__title
+          @include type.title
+          z-index: 2
+          @include mixins.sm
+            width: 30%
+
+        .project-card__description
+          @include type.caption
+          white-space: normal
+          text-align: justify
+          z-index: 2
+          @include mixins.sm
+            width: 70%
+            text-align: left

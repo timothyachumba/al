@@ -1,0 +1,20 @@
+@use "mixins"
+
+$base: 'PolySans',sans-serif
+$accent: 'PP Editorial New', sans-serif
+
+body
+  font-family: $base
+
+@mixin title
+  font-family: $accent
+  font-weight: 300
+  font-style: italic
+  font-size: 32px
+
+@mixin caption
+  font-family: $base
+  font-size: mixins.rscale(14,14)
+  line-height: 1.35
+  text-transform: uppercase
+  letter-spacing: 0.1em
