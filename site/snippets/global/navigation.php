@@ -35,10 +35,11 @@
       <li class="nav-project-drawer__item">
         <a href="<?= $project->url() ?>" target="_blank" rel="noopener noreferrer" aria-label="Learn more about <?= $project->title() ?>">
           <div class="nav-project-drawer__item__image" style="background-image:url('<?= $project->cover()->toFile()->thumb(['width' => 600, 'format' => 'webp', 'quality' => 96])->url() ?>')">
-            <div class="nav-project-drawer__item__title" style="background-color:<?= $project->backgroundcolor() ?>;color:<?= $project->textcolor() ?>">
+            
+          </div>
+          <div class="nav-project-drawer__item__title" style="background-color:<?= $project->backgroundcolor() ?>;color:<?= $project->textcolor() ?>">
               <?= $project->title() ?>
             </div> 
-          </div>
         </a>
       </li>
     <?php endforeach ?>
