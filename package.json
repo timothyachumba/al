@@ -24,6 +24,7 @@
     "build": "npm-run-all compile:sass prefix:css compress:css"
   },
   "dependencies": {
+    "dynamic-marquee": "^2.6.3",
     "locomotive-scroll": "^4.1.4"
   }
 }

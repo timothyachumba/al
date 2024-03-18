@@ -1,0 +1,91 @@
+@use "../libs/mixins"
+@use "../libs/type"
+@use "../libs/tokens"
+@use "../snippets/global/navigation"
+
+@keyframes name-slide
+  0%
+    transform: translateY(400px)
+    opacity: 0
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+body.project
+  background-color: var(--backgroundColor)
+  color: var(--textColor)
+
+  .project-hero
+    display: flex
+    flex-direction: column
+    width: 100vw
+    height: 100vh
+
+    @include mixins.sm
+      padding-left: mixins.rscale(64,80)
+
+    .project-hero__header
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding: mixins.rscale(16,32)
+      @include type.caption
+
+      .project-hero__header__tag
+        max-width: 480px
+        white-space: wrap
+
+      .project-hero__header__timing
+        padding: mixins.rscale(8,12) mixins.rscale(16,20)
+
+    .project-hero__image
+      position: relative
+      flex: 1
+      padding: 0 mixins.rscale(16,32) mixins.rscale(16,32) mixins.rscale(16,32)
+
+      .project-hero__image__fill
+        background-size: cover
+        position: relative
+        background-position: center center
+        height: 100%
+        width: 100%
+        z-index: 1000
+
+    .project-hero__title
+      height: 15.5vw
+
+      svg
+        path
+          animation: name-slide 1s tokens.$quart
+
+          $delay: 0
+          @for $i from 1 through 7
+            &:nth-child(#{$i})
+              animation-delay: $delay + 0.08s
+              $delay: $delay + 0.08s
+
+  .ticker-wrapper
+    z-index: 100
+    width: 100%
+    overflow: hidden
+    background: #000
+    color: var(--textColor)
+    height: 100vh
+    font-family: type.$base
+
+    @include mixins.sm
+      width: 8vh
+
+    .ticker
+      display: flex
+      white-space: nowrap
+      font-size: 6vw
+      padding: 3vw 0
+
+      @include mixins.sm
+        width: 8vh
+        transform: rotate(90deg)
+        transform-origin: bottom left
+        font-size: 3.5vh
+        margin-left: 2.3vh
+        padding: 0
