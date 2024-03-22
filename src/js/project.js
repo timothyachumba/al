@@ -114,6 +114,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 0)
   }
 
+  const vendorList = document.getElementById('vendor-list');
+  
+  let vendorListProgress = 0
+
+  scroll.on('scroll', (args) => {
+    if (typeof args.currentElements.vendorList === 'object') {
+      vendorListProgress = args.currentElements.vendorList.progress
+    }
+    vendorList.style.transform = `translateY(${500 - (vendorListProgress * 500)}px)`
+  })
+
 
   Marquee('#marquee', 0.5)
 
@@ -122,6 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
   updateScrollDirection()
   checkContentSize()
   scroll.init()
+
+  
   
 
 
