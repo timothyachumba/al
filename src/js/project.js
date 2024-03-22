@@ -1,4 +1,5 @@
 import LocomotiveScroll from 'locomotive-scroll'
+import fitty from 'fitty'
 
 document.addEventListener('DOMContentLoaded', function() {
   // Add loaded class to body
@@ -11,6 +12,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const textColor = body?.dataset.textcolor || '#000000'; // Default black
   root.style.setProperty('--backgroundColor', backgroundColor);
   root.style.setProperty('--textColor', textColor);
+
+  const hexToP3 = (string) => {
+    const aRgbHex = string.replace("#", "").match(/.{1,2}/g);
+    const aRgb = [
+        (parseInt(aRgbHex[0], 16) / 255).toFixed(2),
+        (parseInt(aRgbHex[1], 16) / 255).toFixed(2),
+        (parseInt(aRgbHex[2], 16) / 255).toFixed(2),
+    ];
+    return `color(display-p3 ${aRgb.join(" ")})`;
+  }
+
+  root.style.setProperty('--backgroundColorP3', hexToP3(backgroundColor));
+  root.style.setProperty('--textColorP3', hexToP3(textColor));
+
 
   // Navigation toggle functionality
   var triggerDiv = document.getElementsByClassName('nav-button')[0];
@@ -44,6 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
       direction: 'vertical'
     }
   })
+  
+  
 
 
   function updateScrollDirection () {
@@ -97,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 0)
   }
 
+
   Marquee('#marquee', 0.5)
 
   window.addEventListener('resize', debounce(handleResize))
@@ -104,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
   updateScrollDirection()
   checkContentSize()
   scroll.init()
+  
 
 
 });

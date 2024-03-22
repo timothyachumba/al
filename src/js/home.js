@@ -12,6 +12,19 @@ document.addEventListener('DOMContentLoaded', function() {
   root.style.setProperty('--backgroundColor', backgroundColor);
   root.style.setProperty('--textColor', textColor);
 
+  const hexToP3 = (string) => {
+    const aRgbHex = string.replace("#", "").match(/.{1,2}/g);
+    const aRgb = [
+        (parseInt(aRgbHex[0], 16) / 255).toFixed(2),
+        (parseInt(aRgbHex[1], 16) / 255).toFixed(2),
+        (parseInt(aRgbHex[2], 16) / 255).toFixed(2),
+    ];
+    return `color(display-p3 ${aRgb.join(" ")})`;
+  }
+
+  root.style.setProperty('--backgroundColorP3', hexToP3(backgroundColor));
+  root.style.setProperty('--textColorP3', hexToP3(textColor));
+
   // Navigation toggle functionality
   var triggerDiv = document.getElementsByClassName('nav-button')[0];
   var targetDiv = document.getElementsByClassName('nav-project-drawer')[0];

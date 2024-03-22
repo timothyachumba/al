@@ -23,7 +23,8 @@ nav
     height: 1px
     width: 100vh
     background-color: var(--textColor)
-    opacity: 0.1
+    background-color: var(--textColorP3)
+    opacity: 0.2
 
   @include mixins.sm
     flex-direction: column
@@ -33,6 +34,7 @@ nav
     width: mixins.rscale(64,80)
     padding: mixins.rscale(16,32) 0
     background-color: var(--backgroundColor)
+    background-color: var(--backgroundColorP3)
 
     &::before
       top: 0
@@ -61,6 +63,7 @@ nav
 
         path
           fill: var(--textColor) !important // override the fill color of the svg
+          fill: var(--textColorP3) !important // override the fill color of the svg
 
     .subscribe-button
       writing-mode: vertical-rl
@@ -101,6 +104,7 @@ nav
 
       path
         fill: var(--textColor) !important // override the fill color of the svg
+        fill: var(--textColorP3) !important // override the fill color of the svg
 
   .social
     display: none
@@ -113,6 +117,7 @@ nav
     width: mixins.rscale(34,40)
     height: mixins.rscale(34,40)
     background-color: var(--textColor)
+    background-color: var(--textColorP3)
     border-radius: 50%
     cursor: pointer
     will-change: transform
@@ -132,6 +137,7 @@ nav
       span.nav-button__line
         display: block
         background-color: var(--backgroundColor)
+        background-color: var(--backgroundColorP3)
         width: mixins.rscale(16,20)
         height: 1px
         margin-bottom: mixins.rscale(5,6)
@@ -158,6 +164,7 @@ nav
   padding-top: mixins.rscale(64,80)
   top: 0
   background-color: var(--backgroundColor)
+  background-color: var(--backgroundColorP3)
   z-index: 9
   will-change: transform
   transform: translateY(-1000px)
@@ -202,6 +209,7 @@ nav
     width: 100vw
     height: 1px
     background-color: var(--textColor)
+    background-color: var(--textColorP3)
     opacity: 0.1
 
   ul

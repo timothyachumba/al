@@ -10,9 +10,26 @@ tabs:
         width: 2/3
         sections:
         fields:
-          content:
-            label: Content
+          layout:
             type: layout
+            layouts:
+              - "1/1"
+              - "1/2, 1/2"
+              - "1/4, 1/4, 1/4, 1/4"
+              - "1/1, 1/3, 2/3"
+              - "1/1, 2/3, 1/3"
+              - "1/2, 1/2, 1/3, 1/3, 1/3"
+            fieldsets:
+              - heading
+              - text
+              - image
+              - gestalt-hero
+              - ticker
+              - vendor-list
+            settings:
+              fields:
+                class:
+                  type: text
           
       right:
         width: 1/3
