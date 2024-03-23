@@ -125,6 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
     vendorList.style.transform = `translateY(${500 - (vendorListProgress * 500)}px)`
   })
 
+  let artisanProgress = 0
+
+  scroll.on('scroll', (args) => {
+    if (typeof args.currentElements.artisan === 'object') {
+      artisanProgress = args.currentElements.artisan.progress
+    }
+    document.getElementById('artisan').style.transform = `scale(${1 + (artisanProgress / 2)})`
+  })
+
 
   Marquee('#marquee', 0.5)
 

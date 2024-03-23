@@ -38,4 +38,7 @@ body
         width: auto
 
         &.fill
-          width: 100vw
+          width: calc(100vw - mixins.rscale(64,80))
+
+        &.square
+          width: 100vh

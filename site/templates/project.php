@@ -5,7 +5,7 @@
   <div class="carousel">
     
     <?php foreach ($page->layout()->toLayouts() as $layout): ?>
-      <div class="block layout <?= $layout->attrs()->class() ?>" id="<?= $layout->id() ?>">
+      <div class="block layout <?= $layout->attrs()->class() ?> <?= $layout->attrs()->backgroundcolor() ?> <?= $layout->attrs()->textcolor() ?>" id="<?= $layout->id() ?>">
         <?php foreach ($layout->columns() as $column): ?>
         <div class="column" style="--span:<?= $column->span() ?>">
           <?php foreach ($column->blocks() as $block): ?>
@@ -18,7 +18,6 @@
       </div>
     <?php endforeach ?>
 
-    <div class="block fill"></div>
           
   </div>
 

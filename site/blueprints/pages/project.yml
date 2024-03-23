@@ -14,6 +14,7 @@ tabs:
             type: layout
             layouts:
               - "1/1"
+              - "1/1, 1/1"
               - "1/2, 1/2"
               - "1/4, 1/4, 1/4, 1/4"
               - "1/1, 1/3, 2/3"
@@ -26,11 +27,27 @@ tabs:
               - gestalt-hero
               - ticker
               - vendor-list
+              - main-layout
             settings:
               fields:
                 class:
                   type: text
-          
+                backgroundcolor:
+                  type: select
+                  options:
+                    "bg-background": Background
+                    "bg-foreground": Foreground
+                    "bg-neutral": Neutral
+                  default: bg-background
+                  width: 1/2
+                textcolor:
+                  type: select
+                  options:
+                    "t-background": Background
+                    "t-foreground": Foreground
+                    "t-neutral": Neutral
+                  default: t-foreground
+                  width: 1/2
       right:
         width: 1/3
         sections:

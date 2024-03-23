@@ -1,0 +1,52 @@
+@use "../../libs/mixins"
+@use "../../libs/tokens"
+@use "../../libs/type"
+
+.project-hero
+  display: flex
+  flex-direction: column
+  width: 100vw
+  height: 100vh
+
+  @include mixins.sm
+    padding-left: mixins.rscale(64,80)
+
+  .project-hero__header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: mixins.rscale(16,32)
+    @include type.caption
+
+    .project-hero__header__tag
+      max-width: 480px
+      white-space: wrap
+
+    .project-hero__header__timing
+      padding: mixins.rscale(8,12) mixins.rscale(16,20)
+
+  .project-hero__image
+    position: relative
+    flex: 1
+    padding: 0 mixins.rscale(16,32) mixins.rscale(16,32) mixins.rscale(16,32)
+
+    .project-hero__image__fill
+      background-size: cover
+      position: relative
+      background-position: center center
+      height: 100%
+      width: 100%
+      z-index: 1000
+
+  .project-hero__title
+    height: 15.5vw
+
+    svg
+      path
+        animation: name-slide 1s tokens.$quart
+
+        $delay: 0
+        @for $i from 1 through 7
+          &:nth-child(#{$i})
+            animation-delay: $delay + 0.08s
+            $delay: $delay + 0.08s

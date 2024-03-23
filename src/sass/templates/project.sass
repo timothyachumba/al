@@ -2,6 +2,11 @@
 @use "../libs/type"
 @use "../libs/tokens"
 @use "../snippets/global/navigation"
+@use "../snippets/global/subscribe"
+@use "../snippets/blocks/project-hero"
+@use "../snippets/blocks/ticker"
+@use "../snippets/blocks/vendor-list"
+@use "../snippets/blocks/main-layout"
 
 @mixin responsive-font-size($base-size, $vw-weight: 1vw, $vh-weight: 1vh)
   font-size: calc(#{$base-size} + #{$vw-weight} + #{$vh-weight})
@@ -20,142 +25,35 @@ body.project
   color: var(--textColor)
   color: var(--textColorP3)
 
-  .project-hero
-    display: flex
-    flex-direction: column
-    width: 100vw
-    height: 100vh
-
-    @include mixins.sm
-      padding-left: mixins.rscale(64,80)
-
-    .project-hero__header
-      display: flex
-      align-items: center
-      justify-content: space-between
-      padding: mixins.rscale(16,32)
-      @include type.caption
-
-      .project-hero__header__tag
-        max-width: 480px
-        white-space: wrap
-
-      .project-hero__header__timing
-        padding: mixins.rscale(8,12) mixins.rscale(16,20)
-
-    .project-hero__image
-      position: relative
-      flex: 1
-      padding: 0 mixins.rscale(16,32) mixins.rscale(16,32) mixins.rscale(16,32)
-
-      .project-hero__image__fill
-        background-size: cover
-        position: relative
-        background-position: center center
-        height: 100%
-        width: 100%
-        z-index: 1000
-
-    .project-hero__title
-      height: 15.5vw
-
-      svg
-        path
-          animation: name-slide 1s tokens.$quart
-
-          $delay: 0
-          @for $i from 1 through 7
-            &:nth-child(#{$i})
-              animation-delay: $delay + 0.08s
-              $delay: $delay + 0.08s
-
-  .ticker-wrapper
-    z-index: 100
-    width: 100%
-    overflow: hidden
-    background: #000
-    color: var(--textColor)
-    height: 100vh
-    font-family: type.$base
-
-    @include mixins.sm
-      width: 8vh
-
-    .ticker
-      display: flex
-      white-space: nowrap
-      font-size: 6vw
-      padding: 3vw 0
-
-      @include mixins.sm
-        width: 8vh
-        transform: rotate(90deg)
-        transform-origin: bottom left
-        font-size: 3.5vh
-        margin-left: 2.3vh
-        padding: 0
-
   .layout
     display: flex
 
-    &.fill
+    &.bg-background
+      background-color: var(--backgroundColor)
+      background-color: var(--backgroundColorP3)
 
-      .column
-        flex-direction: column
-        width: calc(100vw / (12/var(--span)))
+    &.bg-foreground
+      background-color: var(--textColor)
+      background-color: var(--textColorP3)
 
-        img
-          width: 100%
-          height: 100vh
-          object-fit: cover
+    &.bg-neutral
+      background-color: tokens.$black
 
-  .vendor-list
-    display: flex
-    flex-direction: row
-    align-items: center
-    justify-content: space-between
-    padding: mixins.rscale(16,32)
-    text-align: center
-    position: relative
+    &.t-background
+      color: var(--backgroundColor)
+      color: var(--backgroundColorP3)
 
-    @include mixins.sm
-      height: 100vh
-
-    #vendor-list
-      white-space: nowrap
-      padding: mixins.rscale(16,32)
-      will-change: transform
-
-    span
-      display: block
-      @include type.caption
-      text-orientation: mixed
-      writing-mode: vertical-rl
-
-    a
+    &.t-foreground
       color: var(--textColor)
       color: var(--textColorP3)
-      text-decoration: none
-      font-family: type.$base
 
-      h3
-        position: relative
-        font-size: max(3vw, min(5vw, 7vh))
+    &.t-neutral
+      color: tokens.$black
 
-        &:hover
-          color: transparent
-
-          &::after
-            content: attr(data-hover-text)
-            color: var(--textColor)
-            color: var(--textColorP3) // Use the secondary color for the pseudo-element text
-            font-family: type.$accent // Assuming $accent is your accent font
-            font-weight: 100
-            font-style: italic
-            text-align: center
-            position: absolute
-            top: 7%
-            left: 0
-            width: 100%
-            height: 100%
-            opacity: 1
+    .column
+      flex-direction: column
+      width: 100%
+      img
+        width: 100%
+        height: 100vh
+        object-fit: cover

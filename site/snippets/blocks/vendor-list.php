@@ -1,5 +1,5 @@
   <div class="vendor-list">
-    <span class="section-title">Vendor List</span>
+    <span class="section-title">Where to Buy</span>
     <div class="vendor-list__container" id="vendor-list" data-scroll data-scroll-id="vendorList">
       <?php foreach ($block->vendorlist()->toStructure() as $vendor): ?>
         <a href="<?= $vendor->url() ?>" class="vendor-list__container__item__link">

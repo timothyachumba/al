@@ -1,0 +1,61 @@
+@use "../../libs/mixins"
+@use "../../libs/tokens"
+@use "../../libs/type"
+
+.main-layout
+  padding: mixins.rscale(16,32)
+  display: flex
+  flex-direction: column
+  height: 100vh
+  gap: mixins.rscale(16,32)
+  position: relative
+
+  &.background-image
+    padding: 0
+
+    .image
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      z-index: 0
+
+    .content
+      position: relative
+      z-index: 1
+      padding: mixins.rscale(16,32)
+
+  &.title-last
+    .content
+      .text
+        order: 1
+
+      .title
+        order: 2
+
+  .image
+    position: relative
+    overflow: hidden
+    flex: 1
+
+    img
+      position: absolute
+      height: 100%
+      left: 0
+      top: 0
+      width: 100%
+
+  .content
+    display: flex
+    justify-content: space-between
+    gap: mixins.rscale(16,32)
+
+    .title
+      @include type.title
+
+    .text
+      max-width: 400px
+      white-space: normal
+      text-align: justify
+      @include type.caption

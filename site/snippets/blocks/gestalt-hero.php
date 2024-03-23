@@ -10,7 +10,7 @@
     <p class="project-hero__header__tag">
       <?= $tagline ?>
     </p>
-    <div class="button project-hero__header__timing"><?= $timing ?></div>
+    <?php snippet('global/subscribe') ?>
   </div>
   <div class="project-hero__image">
     <div class="project-hero__image__fill" style="background-image: url('<?= $image->url() ?>')"></div>
