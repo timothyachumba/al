@@ -57,3 +57,63 @@ body.project
         width: 100%
         height: 100vh
         object-fit: cover
+
+    &.the-designer
+      padding: mixins.rscale(16,32)
+      width: 500px
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      gap: mixins.rscale(16,32)
+      left: -500px
+      position relative
+      top: 0
+
+      h2
+        @include type.title
+        white-space: normal
+
+      p, a
+        @include type.caption
+        white-space: normal
+        text-align: justify
+
+      .divider
+        width: 100%
+        height: 1px
+        background: tokens.$black
+
+      .portrait
+        img
+          max-width: 50%
+
+      form
+        border: 1px solid tokens.$black
+
+        input
+          color: tokens.$black
+
+          &::placeholder
+            color: tokens.$black
+
+        .button.small
+          background: tokens.$black
+          color: var(--textColor)
+
+      .bio
+        display: flex
+        flex-direction: column
+        gap: mixins.rscale(16,24)
+
+      .links
+        display: flex
+        gap: mixins.rscale(16,24)
+        justify-content: space-between
+        list-style-type: none
+
+        a
+          text-decoration: none
+          color: tokens.$black
+
+          &:hover
+            text-decoration: underline
