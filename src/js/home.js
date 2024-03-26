@@ -103,11 +103,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  window.addEventListener('resize', debounce(handleResize))
+function adjustImagesScaleToFitParent() {
+    const images = document.querySelectorAll('.project-card__image'); // Select all scalable images
+    
+    images.forEach((image) => {
+        const parentContainer = image.parentElement; // Get the image's parent container
+        
+        // Scale the parent container instead of the image
+        scaleParentContainer(parentContainer);
+    });
+
+    function scaleParentContainer(parent) {
+        const parentHeight = parent.offsetHeight; // Get current height of the parent
+        
+        // Define the start and end points for the interpolation
+        const startScale = 2.5; // Scale factor at 500px
+        const endScale = 1.4; // Scale factor at 1050px
+        const startHeight = 500;
+        const endHeight = 800;
+        
+        // Calculate scale factor based on the parent's height
+        const scaleFactor = startScale + (endScale - startScale) * (parentHeight - startHeight) / (endHeight - startHeight);
+        
+        // Clamp the scale factor to the min and max values to prevent scaling beyond the intended range
+        const clampedScaleFactor = Math.max(Math.min(scaleFactor, startScale), endScale);
+        
+        // Apply the scale to the parent container
+        parent.style.transform = `scale(${clampedScaleFactor})`;
+    }
+}
+
+  // Initial adjustment for all images
+  adjustImagesScaleToFitParent();
+
+  window.addEventListener('resize', adjustImagesScaleToFitParent)
+  window.addEventListener('resize', debounce(handleResize), adjustImagesScaleToFitParent)
 
   updateProjectDescriptionDivs()
   updateScrollDirection()
   checkContentSize()
   scroll.init()
+
+  
+
+  
 
 });
