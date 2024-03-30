@@ -41,7 +41,7 @@ body.home
         @media (max-width: 919px)
           .project-card
             .project-card__image
-              transform: scale(1)
+              transform: scale(1.1)
 
             .project-details
               .left
@@ -61,7 +61,10 @@ body.home
           .project-details
 
             .left
-              transform: translateY(0) scale(1 * (calc($scaleFactor/2) + 1)) !important
+              transform: translateY(0) scale(1.2) !important
+
+              @include mixins.sm
+                transform: translateY(0) scale(1 * (calc($scaleFactor/2) + 1)) !important
 
               p
                 opacity: 1
@@ -83,7 +86,7 @@ body.home
         align-items: center
         flex-direction: column
         justify-content: flex-end
-        height: 80vh
+        height: 150vw
         text-decoration: none
         will-change: height
         transition: height $curve

@@ -50,11 +50,13 @@ document.addEventListener('DOMContentLoaded', function() {
     touchMultiplier: 3,
     tablet: {
       smooth: true,
-      direction: 'horizontal'
+      direction: 'horizontal',
+      breakpoint: 768
     },
     smartphone: {
       smooth: true,
-      direction: 'vertical'
+      direction: 'vertical',
+      breakpoint: 480
     }
   })
 
@@ -80,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (shouldChangeToHorizontal || shouldChangeToVertical) {
       scroll.destroy()
       scroll.init()
-      console.log(`make ${shouldChangeToHorizontal ? 'horizontal' : 'vertical'}`)
     }
     scroll.update()
   }
@@ -134,9 +135,7 @@ function adjustImagesScaleToFitParent() {
 }
 
   // Initial adjustment for all images
-  adjustImagesScaleToFitParent();
-
-  window.addEventListener('resize', adjustImagesScaleToFitParent)
+  // qaàqjustImagesScaleToFitParent();    q11q111tggttg66
   window.addEventListener('resize', debounce(handleResize), adjustImagesScaleToFitParent)
 
   updateProjectDescriptionDivs()
