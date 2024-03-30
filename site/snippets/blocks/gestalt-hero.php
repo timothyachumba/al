@@ -5,7 +5,7 @@
   $timing = $block->timing()->value();
 ?>
 
-<div class="project-hero">
+<div class="project-hero gestalt-hero">
   <div class="project-hero__header">
     <p class="project-hero__header__tag">
       <?= $tagline ?>

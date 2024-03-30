@@ -7,16 +7,25 @@
   flex-direction: column
   width: 100vw
   height: 100vh
+  padding-top: calc(64px + mixins.rscale(16,32))
 
   @include mixins.sm
+    padding-top: 0
     padding-left: mixins.rscale(64,80)
 
   .project-hero__header
     display: flex
+    flex-direction: column
     align-items: center
-    justify-content: space-between
     padding: mixins.rscale(16,32)
+    gap: mixins.rscale(16,32)
     @include type.caption
+    order: 3
+
+    @include mixins.sm
+      flex-direction: row
+      justify-content: space-between
+      order: 0
 
     .project-hero__header__tag
       max-width: 480px
@@ -27,8 +36,10 @@
 
   .project-hero__image
     position: relative
-    flex: 1
     padding: 0 mixins.rscale(16,32) mixins.rscale(16,32) mixins.rscale(16,32)
+
+    @include mixins.sm
+      flex: 1
 
     .project-hero__image__fill
       background-size: cover
@@ -38,15 +49,29 @@
       width: 100%
       z-index: 1000
 
-  .project-hero__title
-    height: 15.5vw
+  &.gestalt-hero
+    height: auto
 
-    svg
-      path
-        animation: name-slide 1s tokens.$quart
+    @include mixins.sm
+      height: 100vh
 
-        $delay: 0
-        @for $i from 1 through 7
-          &:nth-child(#{$i})
-            animation-delay: $delay + 0.08s
-            $delay: $delay + 0.08s
+    .project-hero__title
+      height: auto
+      svg
+        path
+          animation: name-slide 1s tokens.$quart
+
+          $delay: 0
+          @for $i from 1 through 7
+            &:nth-child(#{$i})
+              animation-delay: $delay + 0.08s
+              $delay: $delay + 0.08s
+
+      @include mixins.sm
+        height: 15.5vw
+
+    .project-hero__image
+      height: 100vw
+
+      @include mixins.sm
+        height: auto

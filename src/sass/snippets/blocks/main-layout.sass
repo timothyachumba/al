@@ -6,9 +6,13 @@
   padding: mixins.rscale(16,32)
   display: flex
   flex-direction: column
-  height: 100vh
+  min-height: 150vw
   gap: mixins.rscale(16,32)
   position: relative
+
+  @include mixins.sm
+    height: 100vh
+    min-height: auto
 
   &.background-image
     padding: 0
@@ -29,10 +33,12 @@
   &.title-last
     .content
       .text
-        order: 1
+        @include mixins.sm
+          order: 1
 
       .title
-        order: 2
+        @include mixins.sm
+          order: 2
 
   .image
     position: relative
@@ -48,14 +54,21 @@
 
   .content
     display: flex
-    justify-content: space-between
-    gap: mixins.rscale(16,32)
+    flex-direction: column
+    gap: mixins.rscale(8,16)
+
+    @include mixins.sm
+      flex-direction: row
+      justify-content: space-between
+      gap: mixins.rscale(16,32)
 
     .title
       @include type.title
+      order: 1
 
     .text
       max-width: 400px
       white-space: normal
       text-align: justify
       @include type.caption
+      order: 2

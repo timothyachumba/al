@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof args.currentElements.vendorList === 'object') {
       vendorListProgress = args.currentElements.vendorList.progress
     }
-    vendorList.style.transform = `translateY(${500 - (vendorListProgress * 500)}px)`
+    vendorList.style.transform = `translateY(${250 - (vendorListProgress * 500)}px)`
   })
 
   let artisanProgress = 0

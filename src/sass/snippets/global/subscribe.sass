@@ -7,9 +7,13 @@ form
   border: 1px solid var(--textColor)
   border-color: var(--textColor)
   border-color: var(--textColorP3)
-  padding: 0 0 0 mixins.rscale(8,20)
+  padding: 0 0 0 mixins.rscale(16,20)
   border-radius: 100px
   gap: mixins.rscale(16,24)
+  width: 100%
+
+  @include mixins.sm
+    width: auto
 
   input
     border: none
@@ -26,5 +30,5 @@ form
       color: var(--textColorP3)
 
   .button.small
-    padding: mixins.rscale(8,12) mixins.rscale(12,20)
+    padding: mixins.rscale(12,12) mixins.rscale(12,20)
     height: auto

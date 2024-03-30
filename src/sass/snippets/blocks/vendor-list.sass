@@ -10,6 +10,8 @@
   padding: mixins.rscale(16,32)
   text-align: center
   position: relative
+  height: 140vw
+  overflow: hidden
 
   @include mixins.sm
     height: 100vh
@@ -33,7 +35,10 @@
 
     h3
       position: relative
-      font-size: max(3vw, min(5vw, 7vh))
+      font-size: max(7vw, min(9vw, 11vh))
+
+      @include mixins.sm
+        font-size: max(3vw, min(5vw, 7vh))
 
       &:hover
         color: transparent

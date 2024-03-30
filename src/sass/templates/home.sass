@@ -41,7 +41,10 @@ body.home
         @media (max-width: 919px)
           .project-card
             .project-card__image
-              transform: scale(1.1)
+              transform: scale(1.2)
+
+            .project-card__content
+              transform: translateY(0) scale(1.0)
 
             .project-details
               .left
@@ -86,7 +89,7 @@ body.home
         align-items: center
         flex-direction: column
         justify-content: flex-end
-        height: 150vw
+        height: 170vw
         text-decoration: none
         will-change: height
         transition: height $curve
@@ -137,6 +140,8 @@ body.home
         flex-direction: column
         padding: mixins.rscale(16,24)
         gap: mixins.rscale(16,24)
+        transform: translateY(300px) scale(1)
+        transition: transform $curve, opacity $curve
         position: relative
         width: 100%
         color: var(--textColor)
@@ -147,7 +152,6 @@ body.home
           flex-direction: row
           width: calc($endWidth - 48px)
           transform: translateY(200px) scale(0.6)
-          transition: transform $curve, opacity $curve
           will-change: transform
           color: var(--backgroundColor)
 
