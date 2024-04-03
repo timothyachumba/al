@@ -25,6 +25,7 @@ tabs:
               - text
               - image
               - gestalt-hero
+              - balance-hero
               - ticker
               - vendor-list
               - main-layout

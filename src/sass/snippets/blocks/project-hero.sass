@@ -59,7 +59,8 @@
       height: auto
       svg
         path
-          animation: name-slide 1s tokens.$quart
+          opacity: 0
+          animation: name-slide 1s tokens.$quart forwards
 
           $delay: 0
           @for $i from 1 through 7
@@ -75,3 +76,33 @@
 
       @include mixins.sm
         height: auto
+
+  &.balance-hero
+    height: 90vh
+
+    @include mixins.sm
+      padding-bottom: mixins.rscale(32,54)
+
+    .project-hero__image
+      display: flex
+      align-items: center
+      justify-content: center
+      flex: 1
+    .project-hero__image__container
+      position: relative
+      flex: 1
+
+      svg
+        position: relative
+        z-index: 1
+        transition: transform 0.02s tokens.$quart
+
+      img
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        height: auto !important
+        filter: drop-shadow(-60px 60px 50px rgba(0,0,0,0.3))
+        transition: transform 0.02s tokens.$quart
