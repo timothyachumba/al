@@ -154,8 +154,10 @@ body.project
         background: tokens.$black
 
       .portrait
-        img
-          max-width: 50%
+        width: 50%
+        aspect-ratio: 3/4
+        background-color: tokens.$black
+        
 
       form
         border: 1px solid tokens.$black
@@ -187,3 +189,30 @@ body.project
 
           &:hover
             text-decoration: underline
+
+    &.aperture-priority
+      color: var(--backgroundColor)
+
+      .portrait
+        background-color: var(--backgroundColor)
+
+      .divider
+        background: var(--backgroundColor)
+
+      form
+        border: 1px solid var(--backgroundColor)
+
+        input
+          color: var(--backgroundColor)
+
+          &::placeholder
+            color: var(--backgroundColor)
+
+        .button.small
+          background: var(--backgroundColor)
+          color: var(--textColor)
+
+
+      .links
+        a
+          color: var(--backgroundColor)
