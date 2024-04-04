@@ -35,3 +35,10 @@ body
 
       @include mixins.sm
         height: 100vh
+        width: auto
+
+        &.fill
+          width: calc(100vw - mixins.rscale(64,80))
+
+        &.square
+          width: 100vh

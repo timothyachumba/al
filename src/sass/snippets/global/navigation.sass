@@ -14,6 +14,7 @@ nav
   z-index: 10
   background-color: transparent
   backdrop-filter: blur(30px)
+  -webkit-backdrop-filter: blur(30px)
 
   &::before
     content: ''
@@ -23,7 +24,8 @@ nav
     height: 1px
     width: 100vh
     background-color: var(--textColor)
-    opacity: 0.1
+    background-color: var(--textColorP3)
+    opacity: 0.2
 
   @include mixins.sm
     flex-direction: column
@@ -33,6 +35,7 @@ nav
     width: mixins.rscale(64,80)
     padding: mixins.rscale(16,32) 0
     background-color: var(--backgroundColor)
+    background-color: var(--backgroundColorP3)
 
     &::before
       top: 0
@@ -60,7 +63,8 @@ nav
         height: auto // reset the size of the svg
 
         path
-          fill: var(--textColor) !important // override the fill color of the svg
+          fill: var(--textColor) !important
+          fill: var(--textColorP3)  !important
 
     .subscribe-button
       writing-mode: vertical-rl
@@ -101,6 +105,7 @@ nav
 
       path
         fill: var(--textColor) !important // override the fill color of the svg
+        fill: var(--textColorP3) !important // override the fill color of the svg
 
   .social
     display: none
@@ -113,6 +118,7 @@ nav
     width: mixins.rscale(34,40)
     height: mixins.rscale(34,40)
     background-color: var(--textColor)
+    background-color: var(--textColorP3)
     border-radius: 50%
     cursor: pointer
     will-change: transform
@@ -132,6 +138,7 @@ nav
       span.nav-button__line
         display: block
         background-color: var(--backgroundColor)
+        background-color: var(--backgroundColorP3)
         width: mixins.rscale(16,20)
         height: 1px
         margin-bottom: mixins.rscale(5,6)
@@ -151,6 +158,12 @@ nav
           &:nth-child(3)
             transform: translateY(mixins.rscale(-7,-8)) rotate(-45deg)
 
+  &.slab65,
+  &.odd-shapes
+    background-color: transparent
+    backdrop-filter: blur(30px)
+    -webkit-backdrop-filter: blur(30px)
+
 .nav-project-drawer
   position: fixed
   height: 240px
@@ -158,6 +171,7 @@ nav
   padding-top: mixins.rscale(64,80)
   top: 0
   background-color: var(--backgroundColor)
+  background-color: var(--backgroundColorP3)
   z-index: 9
   will-change: transform
   transform: translateY(-1000px)
@@ -202,6 +216,7 @@ nav
     width: 100vw
     height: 1px
     background-color: var(--textColor)
+    background-color: var(--textColorP3)
     opacity: 0.1
 
   ul
@@ -220,8 +235,9 @@ nav
       overflow-x: hidden
 
     li
+      display: flex
       aspect-ratio: 9/6
-      border-radius: mixins.rscale(12,20)
+      border-radius: mixins.rscale(20,24)
       overflow: hidden
       flex-grow: 0
       flex-shrink: 0
@@ -230,6 +246,7 @@ nav
       opacity: 0
       transition: transform 1.2s tokens.$bouncy, opacity 1.2s tokens.$bouncy,
       $delay: 0
+
       @for $i from 1 through 10
         &:nth-child(#{$i})
           transition-delay: $delay + 0.08s
@@ -240,16 +257,30 @@ nav
 
       a
         text-decoration: none
+        display: flex
+        align-items: flex-end
+        padding: 8px
+        position: absolute
+        width: 100%
+        height: 100%
+
+        &:hover
+          .nav-project-drawer__item__image
+            transform: scale(1.2)
 
         .nav-project-drawer__item__image
-          display: flex
-          align-items: flex-end
+          position: absolute
+          top: 0
+          left: 0
+          bottom: 0
+          right: 0
           height: 100%
           background-size: cover
           background-position: center
-          padding: 8px
+          transition: transform 0.6s tokens.$quart
 
-          .nav-project-drawer__item__title
-            padding: 4px 8px
-            border-radius: 40px
-            @include type.caption
+        .nav-project-drawer__item__title
+          padding: 4px 8px
+          border-radius: 40px
+          z-index: 1
+          @include type.caption

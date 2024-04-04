@@ -1,4 +1,5 @@
 import LocomotiveScroll from 'locomotive-scroll'
+import fitty from 'fitty'
 
 document.addEventListener('DOMContentLoaded', function() {
   // Add loaded class to body
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
   root.style.setProperty('--backgroundColorP3', hexToP3(backgroundColor));
   root.style.setProperty('--textColorP3', hexToP3(textColor));
 
+
   // Navigation toggle functionality
   var triggerDiv = document.getElementsByClassName('nav-button')[0];
   var targetDiv = document.getElementsByClassName('nav-project-drawer')[0];
@@ -50,27 +52,16 @@ document.addEventListener('DOMContentLoaded', function() {
     touchMultiplier: 3,
     tablet: {
       smooth: true,
-      direction: 'horizontal',
-      breakpoint: 768
+      direction: 'horizontal'
     },
     smartphone: {
       smooth: true,
-      direction: 'vertical',
-      breakpoint: 480
+      direction: 'vertical'
     }
   })
+  
+  
 
-  function checkContentSize () {
-    const carouselWidth = carousel.offsetWidth
-    const aboutWidth = about.offsetWidth
-    const contentWidth = carouselWidth + aboutWidth
-
-    if (windowWidth > contentWidth && !carousel.classList.contains('full-width')) {
-      carousel.classList.add('full-width')
-    } else if (windowWidth <= contentWidth && carousel.classList.contains('full-width')) {
-      carousel.classList.remove('full-width')
-    }
-  }
 
   function updateScrollDirection () {
     const scrollDirection = html.getAttribute('data-scroll-direction')
@@ -82,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (shouldChangeToHorizontal || shouldChangeToVertical) {
       scroll.destroy()
       scroll.init()
+      console.log(`make ${shouldChangeToHorizontal ? 'horizontal' : 'vertical'}`)
     }
     scroll.update()
   }
@@ -104,47 +96,75 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-function adjustImagesScaleToFitParent() {
-    const images = document.querySelectorAll('.project-card__image'); // Select all scalable images
-    
-    images.forEach((image) => {
-        const parentContainer = image.parentElement; // Get the image's parent container
-        
-        // Scale the parent container instead of the image
-        scaleParentContainer(parentContainer);
-    });
+  function Marquee (selector, speed) {
+    const parentSelector = document.querySelector(selector)
+    const clone = parentSelector.innerHTML
+    const firstElement = parentSelector.children[0]
+    let i = 0
+    console.log(firstElement)
+    parentSelector.insertAdjacentHTML('beforeend', clone)
+    parentSelector.insertAdjacentHTML('beforeend', clone)
 
-    function scaleParentContainer(parent) {
-        const parentHeight = parent.offsetHeight; // Get current height of the parent
-        
-        // Define the start and end points for the interpolation
-        const startScale = 2.5; // Scale factor at 500px
-        const endScale = 1.4; // Scale factor at 1050px
-        const startHeight = 500;
-        const endHeight = 800;
-        
-        // Calculate scale factor based on the parent's height
-        const scaleFactor = startScale + (endScale - startScale) * (parentHeight - startHeight) / (endHeight - startHeight);
-        
-        // Clamp the scale factor to the min and max values to prevent scaling beyond the intended range
-        const clampedScaleFactor = Math.max(Math.min(scaleFactor, startScale), endScale);
-        
-        // Apply the scale to the parent container
-        parent.style.transform = `scale(${clampedScaleFactor})`;
+    setInterval(function () {
+      firstElement.style.marginLeft = `-${i}px`
+      if (i > firstElement.clientWidth) {
+        i = 0
+      }
+      i = i + speed
+    }, 0)
+  }
+
+  const vendorList = document.getElementById('vendor-list');
+  
+  let vendorListProgress = 0
+
+  scroll.on('scroll', (args) => {
+    if (typeof args.currentElements.vendorList === 'object') {
+      vendorListProgress = args.currentElements.vendorList.progress
     }
-}
+    vendorList.style.transform = `translateY(${250 - (vendorListProgress * 500)}px)`
+  })
 
-  // Initial adjustment for all images
-  // qaàqjustImagesScaleToFitParent();    q11q111tggttg66
-  window.addEventListener('resize', debounce(handleResize), adjustImagesScaleToFitParent)
+  let artisanProgress = 0
 
-  updateProjectDescriptionDivs()
+  scroll.on('scroll', (args) => {
+    if (typeof args.currentElements.artisan === 'object') {
+      artisanProgress = args.currentElements.artisan.progress
+    }
+    document.getElementById('artisan').style.transform = `scale(${1 + (artisanProgress / 2)})`
+  })
+  
+  const box = document.querySelector('.project-hero__image__container img');
+  const logo = document.querySelector('.project-hero__image__container svg');
+
+  document.addEventListener('mousemove', function(e) {
+    const mouseX = e.clientX; // Mouse X position
+    const mouseY = e.clientY; // Mouse Y position
+    const windowWidth = window.innerWidth / 2; // Half of window width
+    const windowHeight = window.innerHeight / 2; // Half of window height
+
+    // Calculate difference between mouse position and center of the screen
+    const diffX = (windowWidth - mouseX) / 40;
+    const diffY = (windowHeight - mouseY) / 40;
+
+    const diffX2 = (windowWidth - mouseX) / 80;
+    const diffY2 = (windowHeight - mouseY) / 80;
+
+    // Apply the transformation
+    box.style.transform = `translate(${diffX}px, ${diffY}px)`;
+    logo.style.transform = `translate(${diffX2}px, ${diffY2}px)`;
+  });
+
+  Marquee('#marquee', 0.5)
+
+  window.addEventListener('resize', debounce(handleResize))
+
   updateScrollDirection()
   checkContentSize()
   scroll.init()
 
   
-
   
+
 
 });

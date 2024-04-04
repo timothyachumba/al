@@ -35,12 +35,16 @@ body.home
 
     .block
       width: 100vw
+      text-decoration: none
 
       &.is-inview
         @media (max-width: 919px)
           .project-card
             .project-card__image
-              transform: scale(1)
+              transform: scale(1.2)
+
+            .project-card__content
+              transform: translateY(0) scale(1.0)
 
             .project-details
               .left
@@ -60,7 +64,10 @@ body.home
           .project-details
 
             .left
-              transform: translateY(0) scale(1 * (calc($scaleFactor/2) + 1)) !important
+              transform: translateY(0) scale(1.2) !important
+
+              @include mixins.sm
+                transform: translateY(0) scale(1 * (calc($scaleFactor/2) + 1)) !important
 
               p
                 opacity: 1
@@ -82,7 +89,7 @@ body.home
         align-items: center
         flex-direction: column
         justify-content: flex-end
-        height: 80vh
+        height: 170vw
         text-decoration: none
         will-change: height
         transition: height $curve
@@ -96,7 +103,7 @@ body.home
         &:hover
           @include mixins.sm
             .project-card__image__container
-              transform: scale(1)
+              transform: scale(1) !important
 
           @include mixins.sm
             .project-card__content
@@ -133,6 +140,8 @@ body.home
         flex-direction: column
         padding: mixins.rscale(16,24)
         gap: mixins.rscale(16,24)
+        transform: translateY(300px) scale(1)
+        transition: transform $curve, opacity $curve
         position: relative
         width: 100%
         color: var(--textColor)
@@ -143,7 +152,6 @@ body.home
           flex-direction: row
           width: calc($endWidth - 48px)
           transform: translateY(200px) scale(0.6)
-          transition: transform $curve, opacity $curve
           will-change: transform
           color: var(--backgroundColor)
 
@@ -155,6 +163,7 @@ body.home
           bottom: 0
           background-color: rgba(black,0.2)
           backdrop-filter: blur(30px)
+          -webkit-backdrop-filter: blur(30px)
           mask-image: linear-gradient(to bottom, transparent, black 50%, black)
 
           @include mixins.sm

@@ -1,0 +1,17 @@
+title: Vendor List
+wysiwyg: true
+preview: fields
+fields:
+  vendorlist:
+    label: Vendor List
+    type: structure
+    fields:
+      name:
+        type: text
+        label: Name
+      region:
+        type: text
+        label: Region
+      url:
+        type: url
+        label: Link
