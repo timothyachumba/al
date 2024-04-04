@@ -63,8 +63,8 @@ nav
         height: auto // reset the size of the svg
 
         path
-          fill: var(--textColor) !important // override the fill color of the svg
-          fill: var(--textColorP3) !important // override the fill color of the svg
+          fill: var(--textColor) !important
+          fill: var(--textColorP3)  !important
 
     .subscribe-button
       writing-mode: vertical-rl
@@ -157,6 +157,12 @@ nav
             transform: scale(0)
           &:nth-child(3)
             transform: translateY(mixins.rscale(-7,-8)) rotate(-45deg)
+
+  &.slab65,
+  &.odd-shapes
+    background-color: transparent
+    backdrop-filter: blur(30px)
+    -webkit-backdrop-filter: blur(30px)
 
 .nav-project-drawer
   position: fixed

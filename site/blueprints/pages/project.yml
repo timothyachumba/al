@@ -27,6 +27,8 @@ tabs:
               - gestalt-hero
               - balance-hero
               - aperture-hero
+              - slab-hero
+              - odd-hero
               - ticker
               - vendor-list
               - main-layout
