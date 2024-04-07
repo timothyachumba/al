@@ -40,6 +40,9 @@ tabs:
             options:
               "Light": "#ECE2CD"
               "Dark": "#181716"
+          subscribe:
+            label: Select your form
+            extends: dreamform/fields/form
           assets:
             label: Assets
             type: files

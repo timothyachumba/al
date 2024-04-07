@@ -10,7 +10,15 @@
     <p class="project-hero__header__tag">
       <?= $tagline ?>
     </p>
-    <?php snippet('global/subscribe') ?>
+    
+    <?php snippet('dreamform/form', [
+      'form' => $page->form()->toPage(),
+      'attr' => [
+        'row' => ['class' => 'row'],
+		    'column' => ['class' => 'column'],
+        'field' => ['class' => 'field'],
+      ]
+    ]); ?>
   </div>
   <div class="project-hero__image">
     <div class="project-hero__image__fill" style="background-image: url('<?= $image->url() ?>')"></div>

@@ -1,6 +1,8 @@
 @use "../libs/mixins"
 @use "../libs/type"
 @use "../snippets/global/navigation"
+@use "../snippets/global/subscribe"
+@use "../snippets/global/about"
 
 $curve: 1s cubic-bezier(0.25,0.5,0.0,1)
 $startWidth: 50vh
@@ -194,3 +196,30 @@ body.home
           @include mixins.sm
             width: 70%
             text-align: left
+
+  .the-designer
+    color: var(--textColor)
+
+    .portrait
+      background-color: var(--textColor)
+
+    .divider
+      background: var(--textColor)
+
+    form
+      border: 1px solid var(--textColor)
+
+      input
+        color: var(--textColor)
+
+        &::placeholder
+          color: var(--textColor)
+
+      .button.small
+        background: var(--textColor)
+        color: var(--backgroundColor)
+
+
+    .links
+      a
+        color: var(--textColor)

@@ -26,6 +26,7 @@
   "dependencies": {
     "dynamic-marquee": "^2.6.3",
     "fitty": "^2.4.2",
+    "htmx.org": "^1.9.11",
     "locomotive-scroll": "^4.1.4"
   }
 }

@@ -210,3 +210,4 @@ document.addEventListener('DOMContentLoaded', () => {
   manageLocomotiveScrollInit(); // Updated to use the new function
   handleResizeEvents();
 });
+

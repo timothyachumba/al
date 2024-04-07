@@ -30,9 +30,10 @@
 
       </a>
     <?php endforeach ?>
+    
       
   </div>
-
+  <?php snippet('global/about') ?>
 </section>
 
 <?php snippet('global/footer') ?>
