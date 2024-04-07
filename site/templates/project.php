@@ -19,7 +19,7 @@
     <?php endforeach ?>
 
     <div class="block layout the-designer bg-foreground t-neutral <?= $page->uri() ?>">
-      <div class="portrait" style="-webkit-mask-image: url('<?= $site->image('me.png')->url() ?>'); mask-image: url('<?= $site->image('me.png')->url() ?>'); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: cover; mask-size: cover;">
+      <div class="portrait" style="-webkit-mask-image: url('<?= $site->image('me.png')->thumb(['width' => 600, 'format' => 'webp', 'quality' => 96])->url() ?>'); mask-image: url('<?= $site->image('me.png')->thumb(['width' => 600, 'format' => 'webp', 'quality' => 96])->url() ?>'); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: cover; mask-size: cover;">
         </div>
       <div class="bio">
         <h2>The Designer</h2>

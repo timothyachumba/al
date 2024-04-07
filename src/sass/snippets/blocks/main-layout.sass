@@ -56,6 +56,7 @@
     display: flex
     flex-direction: column
     gap: mixins.rscale(8,16)
+    background-color: inherit
 
     @include mixins.sm
       flex-direction: row
@@ -67,8 +68,10 @@
       order: 1
 
     .text
-      max-width: 400px
       white-space: normal
       text-align: justify
       @include type.caption
       order: 2
+
+      @include mixins.sm
+        max-width: 400px

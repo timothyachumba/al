@@ -4,7 +4,8 @@
   <script nomodule src="https://polyfill.io/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous" async></script>
   
   <?php snippet('seo/schemas'); ?>
-  <?php echo js('../dist/assets/' . $template . '.js'); ?>
+  <?php echo js('../dist/assets/global.js'); ?>
+  <?php echo js('../dist/assets/' . $page->uri() . '.js'); ?>
 
   </body>
   </html>

@@ -1,9 +1,5 @@
 <?php snippet('global/header') ?>
-
-
-
 <section class="scroll-view">
-    
   <div class="carousel">
     <?php 
       function hexToP3($string) {
@@ -22,7 +18,7 @@
 
         <div class="project-card" style="background-color: <?= hexToP3($project->backgroundcolor()) ?>">
           <div class="project-card__image__container">
-            <img class="project-card__image" src="<?php echo $project->cover()->toFile()->url() ?>" alt="">
+            <img class="project-card__image" src="<?php echo $project->cover()->toFile()->thumb(['width' => 2000, 'format' => 'webp', 'quality' => 96])->url() ?>" alt="">
           </div>
           <div class="project-card__content">
             <div class="project-card__overlay"></div>

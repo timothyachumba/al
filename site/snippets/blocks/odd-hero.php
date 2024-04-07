@@ -1,7 +1,7 @@
 <?php
   // Access block fields using $block->fieldname()->value()
   $tagline = $block->tagline()->value();
-  $image = $block->image()->toFile();
+  $image = $block->image()->thumb(['width' => 2500, 'format' => 'webp', 'quality' => 96])->toFile();
   $timing = $block->timing()->value();
 ?>
 

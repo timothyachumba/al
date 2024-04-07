@@ -17,8 +17,15 @@
       </li>
     <?php endforeach ?>
   </ul>
+
+  <?php
+    $newsletterUrl = $site->newsletter();
+    if ($template === 'project') {
+      $newsletterUrl .= '?tag=' . $page->uri();
+    }
+  ?>
   <!-- Convert subscribe div to a button -->
-  <a class="subscribe-button button small" href="<?= $site->newsletter() ?>" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to get updates on releases" title="Subscribe to get updates on releases">Get Updates</a>
+  <a class="subscribe-button button small" href="<?= $newsletterUrl ?>" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to get updates on releases" title="Subscribe to get updates on releases">Get Updates</a>
   <!-- Convert nav-button div to a button -->
   <button class="nav-button">
     <div class="nav-button__lines">

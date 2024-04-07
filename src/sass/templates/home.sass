@@ -3,9 +3,9 @@
 @use "../snippets/global/navigation"
 
 $curve: 1s cubic-bezier(0.25,0.5,0.0,1)
-$startWidth: 40vh
+$startWidth: 50vh
 $endWidth: 70vh
-$projectCount: 5
+$projectCount: 4
 $projectWidth: $startWidth - calc(($endWidth - $startWidth) / ($projectCount - 1))
 $scaleFactor: calc($projectWidth / $endWidth)
 $descriptionWidth: 40vh
@@ -124,6 +124,12 @@ body.home
             transform: scale(1.4)
             transition: transform $curve
 
+          @media (max-height: 840px) and (min-width: 768px)
+            transform: scale(1.6)
+
+          @media (max-height: 700px) and (min-width: 768px)
+            transform: scale(2)
+
           .project-card__image
             position: absolute
             top: 0
@@ -165,13 +171,16 @@ body.home
           backdrop-filter: blur(30px)
           -webkit-backdrop-filter: blur(30px)
           mask-image: linear-gradient(to bottom, transparent, black 50%, black)
+          z-index: 0
 
           @include mixins.sm
             opacity: 0
 
         .project-card__title
           @include type.title
-          z-index: 2
+          position: relative
+          z-index: 10
+
           @include mixins.sm
             width: 30%
 
@@ -179,7 +188,9 @@ body.home
           @include type.caption
           white-space: normal
           text-align: justify
-          z-index: 2
+          position: relative
+          z-index: 10
+
           @include mixins.sm
             width: 70%
             text-align: left

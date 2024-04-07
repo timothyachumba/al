@@ -70,7 +70,7 @@
       white-space: wrap
 
       @include mixins.sm
-        max-width: 300px
+        max-width: 420px
 
     .project-hero__header__timing
       padding: mixins.rscale(8,12) mixins.rscale(16,20)
@@ -88,7 +88,6 @@
       background-position: center center
       height: 100%
       width: 100%
-      z-index: 1000
 
   &.gestalt-hero
     height: auto
@@ -153,23 +152,29 @@
       text-align: center
       @include type.caption
       margin-bottom: mixins.rscale(16,32)
+      color: var(--textColor)
+      text-decoration: none
 
       @include mixins.sm
         margin-bottom: 0
+
+        
 
       svg
         margin-top: mixins.rscale(8,16)
 
   &.aperture-hero
     padding-top: 64px
+    height: 90vh
 
     @include mixins.sm
       padding-top: 0
+      height: 100vh
 
     .project-hero__image
       position: relative
       padding: 0
-      height: 80vh
+      height: 100%
 
       .project-hero__image__fill
         z-index: 1
@@ -194,7 +199,7 @@
       flex-direction: column
       align-items: flex-end
       justify-content: space-between
-      height: 100vh
+      height: 100%
 
       .numbers
         max-width: 100px
