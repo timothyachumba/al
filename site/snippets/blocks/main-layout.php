@@ -33,7 +33,7 @@ $effectCode = str_replace('uniqueID', $block->effectid(), $string);
 <div class="<?= $classString ?>" id="">
   <?php if($image = $block->image()->toFile()): ?>
     <div class="image">
-      <img id="<?= $block->effectid() ?>" src="<?= $image->url() ?>" alt="" <?= $effectCode ?>>
+      <img id="<?= $block->effectid() ?>" src="<?= $image->thumb(['width' => 2400, 'format' => 'webp', 'quality' => 96])->url() ?>" alt="" <?= $effectCode ?>>
     </div>
   <?php endif ?>
   <?php if ($block->title()->isNotEmpty()): ?>

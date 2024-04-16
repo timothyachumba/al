@@ -17,8 +17,15 @@
       </li>
     <?php endforeach ?>
   </ul>
+
+  <?php
+    $newsletterUrl = $site->newsletter();
+    if ($template === 'project') {
+      $newsletterUrl .= '?tag=' . $page->uri();
+    }
+  ?>
   <!-- Convert subscribe div to a button -->
-  <a class="subscribe-button button small" href="<?= $site->newsletter() ?>" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to get updates on releases" title="Subscribe to get updates on releases">Get Updates</a>
+  <a class="subscribe-button button small" href="#" onclick="focusEmailInput(event);">Get Updates</a>
   <!-- Convert nav-button div to a button -->
   <button class="nav-button">
     <div class="nav-button__lines">
@@ -28,6 +35,17 @@
     </div>
   </button>
 </nav>
+<script>
+function focusEmailInput(event) {
+    event.preventDefault(); // Prevent the default anchor action
+
+    // Correctly select the input named 'email' within the '.global' form
+    var emailInput = document.querySelector(".global input[name='email']");
+    if (emailInput) {
+        emailInput.focus(); // Focus on the email input if it's found
+    }
+}
+</script>
 <div class="nav-project-drawer">
   <ul>
     <!-- Ensure project links are descriptive and accessible -->

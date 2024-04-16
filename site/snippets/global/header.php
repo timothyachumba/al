@@ -13,6 +13,11 @@ $backgroundColor = $page->backgroundcolor()->isNotEmpty() ? $page->backgroundcol
 $textColor = $page->textcolor()->isNotEmpty() ? $page->textcolor() : '#ffffff';
 ?>
 <body class="<?= $template ?>" data-bgcolor="<?= $backgroundColor ?>" data-textcolor="<?= $textColor ?>">
+<div id="customCursor">
+  <div id="cursor">
+    <div id="dataDisplay"></div> <!-- Additional div for displaying data -->
+  </div>
+</div>
 <?php snippet('global/navigation') ?>
 <div data-scroll-container>
   

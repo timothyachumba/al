@@ -12,8 +12,8 @@
   class="embeddable-buttondown-form"
 >
   <input type="email" name="email" placeholder="Email Address" id="bd-email" aria-required="true"/>
-  <?php if ($page->template() === 'project'): ?>
-    <input type="hidden" name="tag" value="<?= $slug ?>" />
+  <?php if ($template === 'project'): ?>
+    <input type="hidden" name="tag" value="<?= $page->uri() ?>" />
   <?php endif ?>
   <button class="button small" type="submit">Join Waitlist</button>
 </form>

@@ -12,3 +12,8 @@ fields:
     label: Image
     type: files
     max: 1
+  launched:
+    label: Launched
+    type: toggle
+    text: Launched
+    highlight: 1

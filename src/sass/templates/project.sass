@@ -95,9 +95,8 @@ body.project
 
       img
         position: relative
-        height: 170vw
+        height: 120vw
         width: auto
-        ob
 
         @include mixins.sm
           height: 100vh
@@ -157,6 +156,10 @@ body.project
         width: 50%
         aspect-ratio: 3/4
         background-color: tokens.$black
+        margin: 0 auto 
+
+        @include mixins.sm
+          margin: 0
         
 
       form
@@ -168,7 +171,7 @@ body.project
           &::placeholder
             color: tokens.$black
 
-        .button.small
+        button
           background: tokens.$black
           color: var(--textColor)
 
@@ -210,7 +213,7 @@ body.project
           &::placeholder
             color: var(--backgroundColor)
 
-        .button.small
+        button
           background: var(--backgroundColor)
           color: var(--textColor)
 

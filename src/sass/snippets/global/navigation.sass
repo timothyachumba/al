@@ -12,7 +12,8 @@ nav
   padding: 0 mixins.rscale(16,32)
   height: 64px
   z-index: 10
-  background-color: transparent
+  background-color: var(--backgroundColor)
+  background-color: var(--backgroundColorP3)
   backdrop-filter: blur(30px)
   -webkit-backdrop-filter: blur(30px)
 
@@ -254,6 +255,7 @@ nav
 
       @include mixins.sm
         transform: translateX(-40px) scale(0.8)
+        aspect-ratio: 1/1
 
       a
         text-decoration: none

@@ -103,6 +103,12 @@ tabs:
                 label: Fact
                 type: text
             help: Key details that will go in the marquee
+          form:
+            label: Select your form
+            extends: dreamform/fields/form
+          subscribe:
+            label: Select your form
+            extends: dreamform/fields/form
           assets:
             label: Assets
             type: files

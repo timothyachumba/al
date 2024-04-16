@@ -1,8 +1,8 @@
 <?php
-
+use tobimori\DreamForm\Support\Menu;
 return [
     'debug' => false,
-
+    'bnomei.dotenv.dir' => fn () => realpath(kirby()->roots()->base()),
     'tobimori.seo.lang' => 'en_GB',
     'tobimori.seo.canonicalBase' => 'https://akukolabs.com',
     'tobimori.seo.robots' => [
@@ -14,6 +14,24 @@ return [
             ]
         ]
     ],
+
+    // Custom menu to show forms in the panel sidebar
+    'panel.menu' => fn () => [
+        'site' => Menu::site(),
+        'forms' => Menu::forms(),
+        'users',
+        'system',
+        // [...]
+    ],
+
+    'tobimori.dreamform' => [
+        // encryption secret for htmx attributes
+        'secret' => fn () => env('DREAMFORM_SECRET')
+    ],
+    'tobimori.dreamform.actions.buttondown.apiKey' => 'f9af7813-e430-4da6-b85c-2bb3d160dabd',
+
+    'tobimori.dreamform.mode' => 'htmx',
+
 
     'cache' => [
         'pages' => [
