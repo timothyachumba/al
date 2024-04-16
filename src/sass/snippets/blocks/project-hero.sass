@@ -73,7 +73,19 @@
         max-width: 420px
 
     .project-hero__header__timing
-      padding: mixins.rscale(8,12) mixins.rscale(16,20)
+      background: var(--textColor)
+      color: var(--backgroundColor)
+      background: var(--textColorP3)
+      color: var(--backgroundColorP3)
+      border-radius: 100px
+      padding: mixins.rscale(16,24) mixins.rscale(20,32)
+      width: 100%
+      @include type.caption
+      display: block
+
+      @include mixins.sm
+        padding: mixins.rscale(8,12) mixins.rscale(16,20)
+        width: auto
 
   .project-hero__image
     position: relative

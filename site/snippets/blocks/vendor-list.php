@@ -1,4 +1,4 @@
-  <div class="vendor-list">
+  <div class="vendor-list" id="vendor-list-wrapper">
     <span class="section-title">Where to Buy</span>
     <div class="vendor-list__container" id="vendor-list" data-scroll data-scroll-id="vendorList">
       <?php foreach ($block->vendorlist()->toStructure() as $vendor): ?>

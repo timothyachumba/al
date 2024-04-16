@@ -13,6 +13,8 @@ document.querySelectorAll('.vendor-list__container__item__link').forEach(element
   });
 });
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
   // Ensure that the LocomotiveScroll instance is accessible globally
   if (typeof window.locomotiveScrollInstance !== 'undefined') {
@@ -51,7 +53,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize Marquee
     Marquee('#marquee', 0.5);
+
+    // Function to scroll to vendor section
+    function scrollToVendor() {
+        // Get the target element
+        const vendorSection = document.querySelector('#vendor-list-wrapper');
+
+        // Scroll to the vendor section
+        window.locomotiveScrollInstance.scrollTo(vendorSection);
+    }
+
+    // Add event listener to the button
+    const scrollButton = document.getElementById('scrollButton');
+    scrollButton.addEventListener('click', scrollToVendor);
+    
   } else {
-    console.error('LocomotiveScroll instance not found. Ensure it is initialized in global.js and is accessible globally.');
+    console.log('LocomotiveScroll instance not found. Ensure it is initialized in global.js and is accessible globally.');
+    function scrollToVendor() {
+        // Get the target element
+        const vendorSection = document.querySelector('#vendor-list-wrapper');
+
+        // Scroll to the vendor section
+      vendorSection.scrollIntoView({ behavior: 'smooth' });
+      console.log('hello');
+    }
+
+    const scrollButton = document.getElementById('scrollButton');
+    scrollButton.addEventListener('click', scrollToVendor);
+    
   }
+
+  
+
+
 });
