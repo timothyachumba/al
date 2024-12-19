@@ -7,6 +7,7 @@
       <?php endif ?>
     </a>
   </div>
+  <div class="bottom">
   <ul class="social">
     <!-- Include aria-labels for social media links -->
     <?php foreach ($site->socials()->toStructure() as $social): ?>
@@ -17,7 +18,7 @@
       </li>
     <?php endforeach ?>
   </ul>
-
+  
   <?php
     $newsletterUrl = $site->newsletter();
     if ($template === 'project') {
@@ -26,6 +27,7 @@
   ?>
   <!-- Convert subscribe div to a button -->
   <a class="subscribe-button button small" href="#" onclick="focusEmailInput(event);">Get Updates</a>
+  </div>
   <!-- Convert nav-button div to a button -->
   <button class="nav-button">
     <div class="nav-button__lines">

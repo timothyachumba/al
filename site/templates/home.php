@@ -18,6 +18,7 @@
 
         <div class="project-card" style="background-color: <?= hexToP3($project->backgroundcolor()) ?>">
           <div class="project-card__image__container">
+            <div class="project-card__image__status button small" style="background-color: <?= hexToP3($project->backgroundcolor()) ?>" ><?= $project->projectstatus() ?></div>
             <img class="project-card__image" src="<?php echo $project->cover()->toFile()->thumb(['width' => 2000, 'format' => 'webp', 'quality' => 96])->url() ?>" alt="">
           </div>
           <div class="project-card__content">

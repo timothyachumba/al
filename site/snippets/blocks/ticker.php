@@ -7,7 +7,7 @@
 ?>
 
 <div class="ticker-wrapper">
-  <div class="ticker" id="marquee">
+  <div class="ticker" id="marquee" >
     <div>
       <?php foreach ($block->details()->split() as $detail): ?>
         <span><?= formatText($detail) ?> •&nbsp;</span>

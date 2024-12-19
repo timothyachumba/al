@@ -15,7 +15,7 @@ if ($block->location() == 'web') {
     $src = $image->thumb([
       'format' => 'webp',
       'quality' => 94,
-      'width' => 1800
+      'width' => 2800
     ])->url();
 }
 

@@ -7,6 +7,7 @@
   <?php snippet('seo/head'); ?>
   <?php echo css('../dist/assets/styles.css') ?>
   <?php snippet('favicon') ?>
+  <meta name="p:domain_verify" content="641f43e6f4d7185dc36822cb6df2c17a"/>
 </head>
 <?php
 $backgroundColor = $page->backgroundcolor()->isNotEmpty() ? $page->backgroundcolor() : '#000000';

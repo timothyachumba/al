@@ -195,7 +195,8 @@ body.project
 
     &.aperture-priority,
     &.slab65,
-    &.odd-shapes
+    &.odd-shapes,
+    &.motif
       color: var(--backgroundColor)
 
       .portrait
@@ -221,3 +222,19 @@ body.project
       .links
         a
           color: var(--backgroundColor)
+
+    .motif-logo-container
+      display: flex
+      align-items: center
+      justify-content: center
+      background-color: #E4D7CB
+      background-color: color(display-p3 0.894118 0.843137 0.796078 / 1.000000)
+      height: 80vh
+      overflow: hidden
+
+      @include mixins.sm
+        height: 100vh
+
+      svg
+        overflow: visible
+        height: 90%
