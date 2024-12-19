@@ -2,14 +2,14 @@
 
 <section class="scroll-view">
     
-  <div class="carousel">
+  <div class="carousel" data-scroll>
     
     <?php foreach ($page->layout()->toLayouts() as $layout): ?>
-      <div class="block layout <?= $layout->attrs()->class() ?> <?= $layout->attrs()->backgroundcolor() ?> <?= $layout->attrs()->textcolor() ?>" id="<?= $layout->id() ?>">
+      <div class="block layout <?= $layout->attrs()->class() ?> <?= $layout->attrs()->backgroundcolor() ?> <?= $layout->attrs()->textcolor() ?>" id="<?= $layout->id() ?>" data-scroll>
         <?php foreach ($layout->columns() as $column): ?>
-        <div class="column" style="--span:<?= $column->span() ?>">
+        <div class="column" data-scroll style="--span:<?= $column->span() ?>">
           <?php foreach ($column->blocks() as $block): ?>
-            <div class="item">
+            <div class="item" data-scroll>
               <?= $block->toHtml() ?>
             </div>
           <?php endforeach ?>

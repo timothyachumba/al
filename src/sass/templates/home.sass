@@ -5,12 +5,12 @@
 @use "../snippets/global/about"
 
 $curve: 1s cubic-bezier(0.25,0.5,0.0,1)
-$startWidth: 50vh
+$startWidth: 60vh
 $endWidth: 70vh
 $projectCount: 4
 $projectWidth: $startWidth - calc(($endWidth - $startWidth) / ($projectCount - 1))
 $scaleFactor: calc($projectWidth / $endWidth)
-$descriptionWidth: 40vh
+$descriptionWidth: 50vh
 
 body.home
   background-color: var(--backgroundColor)
@@ -18,7 +18,7 @@ body.home
 
   .carousel
     @include mixins.sm
-      padding-left: mixins.rscale(64,80)
+      padding-left: mixins.rscale(64,72)
 
     &.full-width
       @include mixins.sm
@@ -107,6 +107,9 @@ body.home
             .project-card__image__container
               transform: scale(1) !important
 
+            .project-card__image__status
+              transform: translateY(0) !important
+
           @include mixins.sm
             .project-card__content
               transform: translateY(0) scale(1)
@@ -131,6 +134,15 @@ body.home
 
           @media (max-height: 700px) and (min-width: 768px)
             transform: scale(2)
+
+          .project-card__image__status
+            position: absolute
+            z-index: 1
+            right: mixins.rscale(16,24)
+            top: mixins.rscale(16,24)
+            will-change: transform
+            transition: transform $curve
+            transform: translateY(-100px)
 
           .project-card__image
             position: absolute

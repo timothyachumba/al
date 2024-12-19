@@ -29,9 +29,13 @@ tabs:
               - aperture-hero
               - slab-hero
               - odd-hero
+              - motif-hero
+              - motif-logo
               - ticker
               - vendor-list
               - main-layout
+              - video
+              - slideshow
             settings:
               fields:
                 class:

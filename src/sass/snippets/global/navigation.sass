@@ -7,6 +7,7 @@ nav
   display: flex
   flex-wrap: wrap
   align-items: center
+  justify-content: space-between
   gap: 16px
   width: 100%
   padding: 0 mixins.rscale(16,32)
@@ -31,10 +32,10 @@ nav
   @include mixins.sm
     flex-direction: column
     position: flex
-    justify-content: center
+    justify-content: space-between
     height: 100vh
-    width: mixins.rscale(64,80)
-    padding: mixins.rscale(16,32) 0
+    width: mixins.rscale(64,72)
+    padding: mixins.rscale(16,32) 0 mixins.rscale(16,24) 0
     background-color: var(--backgroundColor)
     background-color: var(--backgroundColorP3)
 
@@ -60,7 +61,7 @@ nav
           transform: scale(1.2)
 
       svg
-        width: mixins.rscale(20,28)// reset the size of the svg
+        width: mixins.rscale(16,24)// reset the size of the svg
         height: auto // reset the size of the svg
 
         path
@@ -79,23 +80,31 @@ nav
         padding: 16px 0
 
     .nav-button
-      order: 1
-
-    .logo
       order: 2
 
-      svg
-        @media (min-height: 760px)
-          margin-top: mixins.rscale(-20,-24)
-          position: absolute
-          top: 50%
-          margin-top: mixins.rscale(-18,-20)
+
+      // svg
+      //   @media (min-height: 760px)
+      //     margin-top: mixins.rscale(-20,-24)
+      //     position: absolute
+      //     top: 50%
+      //     margin-top: mixins.rscale(-18,-20)
 
   .logo
     width: mixins.rscale(36,40)
-    flex: 1 auto
+    height: mixins.rscale(36,40) 
     display: flex
     align-items: center
+    order: 2
+    position: absolute
+    left: 50%
+    margin-left: calc((mixins.rscale(36,40)/2) *-1)
+
+    @include mixins.sm
+      order: 1
+      left: 0
+      margin-left: 0
+      position: relative
 
     a
       font-size: 0 // fixes the weird height of the a tag
@@ -107,6 +116,13 @@ nav
       path
         fill: var(--textColor) !important // override the fill color of the svg
         fill: var(--textColorP3) !important // override the fill color of the svg
+
+  .bottom
+    display: flex
+    flex-direction: column
+    align-items: center
+    order: 3
+    gap: mixins.rscale(16,24)
 
   .social
     display: none
@@ -125,6 +141,12 @@ nav
     will-change: transform
     transition: transform 1.2s tokens.$bouncy
     -webkit-tap-highlight-color: transparent
+
+    @include mixins.sm
+      margin-top: mixins.rscale(-20,-24)
+      position: absolute
+      top: 50%
+      margin-top: mixins.rscale(-18,-20)
 
     &:hover
       transform: scale(1.1)

@@ -1,3 +1,24 @@
+// Function to update the width and height on window resize
+function updateParentDimensions() {
+  // Select the parent element
+  const parentDiv = document.querySelector('.image-wrapper');
+
+  // Get its dimensions
+  const parentWidth = parentDiv.offsetWidth;
+  const parentHeight = parentDiv.offsetHeight;
+
+  // Set these as CSS variables on the :root
+  document.documentElement.style.setProperty('--parent-width', `${parentWidth}px`);
+  document.documentElement.style.setProperty('--parent-height', `${parentHeight}px`);
+
+}
+
+// Call the function initially
+updateParentDimensions();
+
+// Add event listener to update dimensions on window resize
+window.addEventListener('resize', updateParentDimensions);
+
 document.querySelectorAll('.vendor-list__container__item__link').forEach(element => {
   element.addEventListener('mouseenter', function() {
     var dataValue = this.getAttribute('data-local');
