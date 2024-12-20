@@ -18,8 +18,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: 'akukolabs/'
           local-dir: './'
-          dry-run: true
           exclude: |
             - '.git*'
             - 'node_modules/**'
