@@ -46,7 +46,7 @@
   flex-direction: column
   width: 100vw
   height: 100vh
-  padding-top: calc(64px + mixins.rscale(16,32))
+  padding-top: 64px
 
   @include mixins.sm
     padding-top: 0
@@ -207,13 +207,42 @@
   &.slab-hero
     background-size: cover
     background-position: 20% center
+    overflow : hidden
+    position: relative
+
+    .project-hero__header
+      position: relative
+      z-index: 2
 
     .project-hero__image
       display: flex
       flex-direction: column
       align-items: flex-end
       justify-content: space-between
+      width: 100%
       height: 100%
+      padding: 0
+
+      @include mixins.sm
+        height: 100%
+        left: 0
+        top: 0
+        position: absolute
+
+      .project-hero__image__glass
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: rgba(0,0,0,0.5)
+        z-index: 1
+
+      img
+        max-width: 100%
+        width: 100%
+        height: auto
+        object-fit: cover
 
       .numbers
         max-width: 100px
