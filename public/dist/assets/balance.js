@@ -1,0 +1,2 @@
+(()=>{document.addEventListener("DOMContentLoaded",function(){let c=document.querySelector(".project-hero__image__container img"),s=document.querySelector(".project-hero__image__container svg");document.addEventListener("mousemove",function(n){let t=n.clientX,e=n.clientY,o=window.innerWidth/2,i=window.innerHeight/2,d=(o-t)/40,r=(i-e)/40,a=(o-t)/80,m=(i-e)/80;c.style.transform=`translate(${d}px, ${r}px)`,s.style.transform=`translate(${a}px, ${m}px)`})});})();
+//# sourceMappingURL=balance.js.map
