@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/js/project.js"],
+  "sourcesContent": ["document.querySelector('input[type=\"hidden\"][name=\"project\"]').setAttribute('value', window.location.pathname.split('/')[1])"],
+  "mappings": "MAAA,SAAS,cAAc,sCAAsC,EAAE,aAAa,QAAS,OAAO,SAAS,SAAS,MAAM,GAAG,EAAE,CAAC,CAAC",
+  "names": []
+}
