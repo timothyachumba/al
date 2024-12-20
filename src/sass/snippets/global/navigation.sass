@@ -2,7 +2,11 @@
 @use "../../libs/tokens"
 @use "../../libs/type"
 
+// =======================================
+// Main Navigation
+// =======================================
 nav
+  // Layout & Positioning
   position: fixed
   display: flex
   flex-wrap: wrap
@@ -10,24 +14,15 @@ nav
   justify-content: space-between
   gap: 16px
   width: 100%
-  padding: 0 mixins.rscale(16,32)
   height: 64px
+  padding: 0 mixins.rscale(16,32)
   z-index: 10
+
+  // Background & Visuals
   background-color: var(--backgroundColor)
   background-color: var(--backgroundColorP3)
   backdrop-filter: blur(30px)
   -webkit-backdrop-filter: blur(30px)
-
-  &::before
-    content: ''
-    position: absolute
-    bottom: 0
-    left: 0
-    height: 1px
-    width: 100vh
-    background-color: var(--textColor)
-    background-color: var(--textColorP3)
-    opacity: 0.2
 
   @include mixins.sm
     flex-direction: column
@@ -47,58 +42,36 @@ nav
       width: 1px
       height: 100vh
 
-    .social
-      display: flex !important
-      flex-direction: column
-      order: 3
-      gap: mixins.rscale(4,8)
-      list-style-type: none
+  &::before
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100vh
+    height: 1px
+    background-color: var(--textColor)
+    background-color: var(--textColorP3)
+    opacity: 0.2
 
-      li
-        transition: transform 0.6s tokens.$quart
+  &.slab65,
+  &.odd-shapes
+    background-color: transparent
+    backdrop-filter: blur(30px)
+    -webkit-backdrop-filter: blur(30px)
 
-        &:hover
-          transform: scale(1.2)
-
-      svg
-        width: mixins.rscale(16,24)// reset the size of the svg
-        height: auto // reset the size of the svg
-
-        path
-          fill: var(--textColor) !important
-          fill: var(--textColorP3)  !important
-
-    .subscribe-button
-      writing-mode: vertical-rl
-      transform: rotate(180deg)
-      text-orientation: mixed
-      order: 4
-
-      &.small
-        height: auto
-        width: 36px
-        padding: 16px 0
-
-    .nav-button
-      order: 2
-
-
-      // svg
-      //   @media (min-height: 760px)
-      //     margin-top: mixins.rscale(-20,-24)
-      //     position: absolute
-      //     top: 50%
-      //     margin-top: mixins.rscale(-18,-20)
-
+  // =======================================
+  // Logo
+  // =======================================
   .logo
-    width: mixins.rscale(36,40)
-    height: mixins.rscale(36,40) 
+    // Layout & Positioning
     display: flex
     align-items: center
     order: 2
+    width: mixins.rscale(36,40)
+    height: mixins.rscale(36,40)
     position: absolute
     left: 50%
-    margin-left: calc((mixins.rscale(36,40)/2) *-1)
+    margin-left: calc((mixins.rscale(36,40)/2)*-1)
 
     @include mixins.sm
       order: 1
@@ -107,16 +80,19 @@ nav
       position: relative
 
     a
-      font-size: 0 // fixes the weird height of the a tag
+      font-size: 0 // Ensures no extra height
 
     svg
-      width: mixins.rscale(36,40)// reset the size of the svg
-      height: auto // reset the size of the svg
+      width: mixins.rscale(36,40)
+      height: auto
 
       path
-        fill: var(--textColor) !important // override the fill color of the svg
-        fill: var(--textColorP3) !important // override the fill color of the svg
+        fill: var(--textColor) !important
+        fill: var(--textColorP3) !important
 
+  // =======================================
+  // Bottom Section
+  // =======================================
   .bottom
     display: flex
     flex-direction: column
@@ -124,16 +100,62 @@ nav
     order: 3
     gap: mixins.rscale(16,24)
 
+  // =======================================
+  // Social Links
+  // =======================================
   .social
     display: none
 
+    @include mixins.sm
+      display: flex !important
+      flex-direction: column
+      order: 3
+      list-style-type: none
+      gap: mixins.rscale(4,8)
+
+    li
+      transition: transform 0.6s tokens.$quart
+
+      &:hover
+        transform: scale(1.2)
+
+      svg
+        width: mixins.rscale(16,24)
+        height: auto
+
+        path
+          fill: var(--textColor) !important
+          fill: var(--textColorP3) !important
+
+  // =======================================
+  // Subscribe Button
+  // =======================================
+  .subscribe-button
+    @include mixins.sm
+      writing-mode: vertical-rl
+      transform: rotate(180deg)
+      text-orientation: mixed
+      order: 4
+
+      &.small
+        width: 36px
+        height: auto
+        padding: 16px 0
+
+  // =======================================
+  // Navigation Button
+  // =======================================
   .nav-button
+    // Layout & Positioning
     display: flex
     flex-direction: column
     align-items: center
     justify-content: center
     width: mixins.rscale(34,40)
     height: mixins.rscale(34,40)
+    order: 2
+
+    // Visuals
     background-color: var(--textColor)
     background-color: var(--textColorP3)
     border-radius: 50%
@@ -160,11 +182,11 @@ nav
 
       span.nav-button__line
         display: block
-        background-color: var(--backgroundColor)
-        background-color: var(--backgroundColorP3)
         width: mixins.rscale(16,20)
         height: 1px
         margin-bottom: mixins.rscale(5,6)
+        background-color: var(--backgroundColor)
+        background-color: var(--backgroundColorP3)
         will-change: transform
         transition: transform 1.2s tokens.$bouncy
 
@@ -181,32 +203,24 @@ nav
           &:nth-child(3)
             transform: translateY(mixins.rscale(-7,-8)) rotate(-45deg)
 
-  &.slab65,
-  &.odd-shapes
-    background-color: transparent
-    backdrop-filter: blur(30px)
-    -webkit-backdrop-filter: blur(30px)
-
+// =======================================
+// Project Drawer
+// =======================================
 .nav-project-drawer
+  // Layout & Positioning
   position: fixed
-  height: 240px
-  width: 100vw
-  padding-top: mixins.rscale(64,80)
   top: 0
+  width: 100vw
+  height: 240px
+  padding-top: mixins.rscale(64,80)
+  z-index: 9
+
+  // Visuals & Transitions
   background-color: var(--backgroundColor)
   background-color: var(--backgroundColorP3)
-  z-index: 9
   will-change: transform
   transform: translateY(-1000px)
   transition: transform 1.2s tokens.$bouncy
-
-  &.active
-    transform: translateY(0) scale(1)
-
-    ul
-      li
-        transform: translateY(0) scale(1)
-        opacity: 1
 
   @include mixins.sm
     height: 100vh
@@ -231,6 +245,14 @@ nav
       width: 1px !important
       height: 100vh !important
 
+  &.active
+    transform: translateY(0) scale(1)
+
+    ul
+      li
+        transform: translateY(0) scale(1)
+        opacity: 1
+
   &::after
     content: ''
     position: absolute
@@ -243,12 +265,12 @@ nav
     opacity: 0.1
 
   ul
-    padding: 16px
-    list-style-type: none
     display: flex
-    overflow-x: auto
+    list-style-type: none
     gap: 16px
     height: 100%
+    padding: 16px
+    overflow-x: auto
     opacity: 1
 
     @include mixins.sm
@@ -258,12 +280,15 @@ nav
       overflow-x: hidden
 
     li
+      // Layout & Positioning
       display: flex
       aspect-ratio: 9/6
-      border-radius: mixins.rscale(20,24)
-      overflow: hidden
       flex-grow: 0
       flex-shrink: 0
+      border-radius: mixins.rscale(20,24)
+      overflow: hidden
+
+      // Transitions & Transform
       transform: translateY(-40px) scale(0.8)
       will-change: transform, opacity
       opacity: 0
@@ -280,13 +305,13 @@ nav
         aspect-ratio: 1/1
 
       a
-        text-decoration: none
         display: flex
         align-items: flex-end
-        padding: 8px
         position: absolute
         width: 100%
         height: 100%
+        padding: 8px
+        text-decoration: none
 
         &:hover
           .nav-project-drawer__item__image
