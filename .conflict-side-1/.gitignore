@@ -1,0 +1,57 @@
+# System files
+# ------------
+Icon
+.DS_Store
+
+# Temporary files
+# ---------------
+/media/*
+!/media/.gitkeep
+
+# Lock files
+# ---------------
+.lock
+hot
+
+# Editors
+# ---------------
+*.sublime-project
+*.sublime-workspace
+/.idea
+/.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+
+# Vendor files
+# ---------------
+/vendor
+/kirby
+node_modules
+
+# Build assets
+# ---------------
+/public/media
+
+# Kirby
+# ---------------
+/storage/accounts/*
+!/storage/accounts/.gitkeep
+/storage/sessions/*
+!/storage/sessions/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
+/site/config/.license
+/storage/content/*
+!/storage/content/.gitkeep
+/storage/cache/*
+!/storage/cache/.gitkeep
+/site/plugins/*
+
+# k4 pr missing
+/storage/retour.json
+
+
+# Env
+# ---------------
+.env
+

@@ -1,0 +1,295 @@
+@use "../libs/mixins"
+@use "../libs/type"
+@use "../libs/tokens"
+@use "../snippets/global/navigation"
+@use "../snippets/global/subscribe"
+@use "../snippets/blocks/project-hero"
+@use "../snippets/blocks/ticker"
+@use "../snippets/blocks/vendor-list"
+@use "../snippets/blocks/main-layout"
+
+@mixin responsive-font-size($base-size, $vw-weight: 1vw, $vh-weight: 1vh)
+  font-size: calc(#{$base-size} + #{$vw-weight} + #{$vh-weight})
+
+@keyframes name-slide
+  0%
+    transform: translateY(400px)
+    opacity: 0
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+body.project
+  background-color: var(--backgroundColor)
+  background-color: var(--backgroundColorP3)
+  color: var(--textColor)
+  color: var(--textColorP3)
+
+  .layout
+    display: flex
+    flex-direction: column
+
+    @include mixins.sm
+      flex-direction: row
+
+    &.bg-background
+      background-color: var(--backgroundColor)
+      background-color: var(--backgroundColorP3)
+
+      .ticker-wrapper
+        background-color: var(--backgroundColor) !important
+        background-color: var(--backgroundColorP3) !important
+
+    &.bg-foreground
+      background-color: var(--textColor)
+      background-color: var(--textColorP3)
+
+      .ticker-wrapper
+        background-color: var(--textColor) !important
+        background-color: var(--textColorP3) !important
+
+    &.bg-neutral
+      background-color: tokens.$black
+
+    &.t-background
+      color: var(--backgroundColor)
+      color: var(--backgroundColorP3)
+
+      .ticker-wrapper
+        color: var(--backgroundColor) !important
+        color: var(--backgroundColorP3) !important
+
+    &.t-foreground
+      color: var(--textColor)
+      color: var(--textColorP3)
+
+      .ticker-wrapper
+        color: var(--textColor) !important
+        color: var(--textColorP3) !important
+
+    &.t-neutral
+      color: tokens.$black
+
+    .column
+      flex-direction: column
+      width: 100%
+
+      figure
+        font-size: 0
+
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+        @include mixins.sm
+          height: 100vh
+
+    &.kitting
+
+      .main-layout
+        min-height: auto
+        padding: 0
+
+        @include mixins.sm
+          padding: mixins.rscale(16,32)
+
+      &.fill
+        width: auto
+
+        @include mixins.sm
+          width: 100vw
+
+      .image
+        overflow-x: scroll
+        font-size: 0
+        padding: mixins.rscale(16,32)
+
+        @include mixins.sm
+          padding: 0
+          overflow-x: hidden
+
+      img
+        position: relative
+        height: 120vw
+        width: auto
+
+        @include mixins.sm
+          height: 100vh
+          width: 100%
+
+    &.m-border
+      .main-layout
+        gap: 0
+
+        .content
+          order: 1
+
+        .image
+          order: 2
+          margin: 0 mixins.rscale(16,32) mixins.rscale(16,32) mixins.rscale(16,32)
+
+          @include mixins.sm
+            margin: 0
+
+      .image
+        position: relative
+        padding: mixins.rscale(16,32)
+
+        @include mixins.sm
+          padding: 0
+          position: absolute
+
+    &.the-designer
+      padding: mixins.rscale(16,32)
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      gap: mixins.rscale(16,32)
+      left: -500px
+      top: 0
+      text-align: center
+
+      @include mixins.sm
+        width: 500px
+        text-align: left
+
+      h2
+        @include type.title
+        white-space: normal
+
+      p, a
+        @include type.caption
+        white-space: normal
+        text-align: justify
+
+      .divider
+        width: 100%
+        height: 1px
+        background: tokens.$black
+
+      .portrait
+        width: 50%
+        aspect-ratio: 3/4
+        background-color: tokens.$black
+        margin: 0 auto 
+
+        @include mixins.sm
+          margin: 0
+        
+
+      form
+        border: 1px solid tokens.$black
+
+        input
+          color: tokens.$black
+
+          &::placeholder
+            color: tokens.$black
+
+        button
+          background: tokens.$black
+          color: var(--textColor)
+
+      .bio
+        display: flex
+        flex-direction: column
+        gap: mixins.rscale(16,24)
+
+      .links
+        display: flex
+        gap: mixins.rscale(16,24)
+        justify-content: space-between
+        list-style-type: none
+
+        a
+          text-decoration: none
+          color: tokens.$black
+
+          &:hover
+            text-decoration: underline
+
+    &.aperture-priority,
+    &.gestalt,
+    &.balance,
+    &.slab65,
+    &.odd-shapes,
+    &.motif
+      color: var(--backgroundColor)
+      color: var(--backgroundColorP3)
+
+      .portrait
+        background-color: var(--backgroundColor)
+        background-color: var(--backgroundColorP3)
+
+      .divider
+        background: var(--backgroundColor)
+        background: var(--backgroundColorP3)
+
+      &.the-designer
+
+        form
+          border: 1px solid var(--backgroundColor) !important
+          border: 1px solid var(--backgroundColorP3) !important
+
+          input
+            color: var(--backgroundColor) !important
+            color: var(--backgroundColorP3) !important
+
+            &::placeholder
+              color: var(--backgroundColor) !important
+              color: var(--backgroundColorP3) !important
+
+          button
+            background: var(--backgroundColor) !important
+            background: var(--backgroundColorP3) !important
+            color: var(--textColor) !important
+            color: var(--textColorP3) !important
+
+
+      .links
+        a
+          color: var(--backgroundColor)
+          color: var(--backgroundColorP3)
+
+      .motif-logo-container
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: #E4D7CB
+        background-color: color(display-p3 0.894118 0.843137 0.796078 / 1.000000)
+        height: 80vh
+        overflow: hidden
+
+        @include mixins.sm
+          height: 100vh
+
+        svg
+          overflow: visible
+          height: 90%
+
+      .main-layout
+        min-height: 100vw
+
+        @include mixins.sm
+          min-height: auto
+
+    &.aperture-priority
+      color: var(--textColor)
+      color: var(--textColorP3)
+
+      &.the-artisan
+        color: white
+
+      &.the-designer
+        color: var(--backgroundColor) !important
+        color: var(--backgroundColorP3) !important
+
+      .main-layout
+        min-height:80vh
+
+        @include mixins.sm
+          min-height: auto
+
+      
+          

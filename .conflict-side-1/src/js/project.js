@@ -1,0 +1,1 @@
+document.querySelector('input[type="hidden"][name="project"]').setAttribute('value', window.location.pathname.split('/')[1])

@@ -1,0 +1,51 @@
+title: Main Layout
+wysiwyg: true
+preview: fields
+fields:
+  title:
+    label: Title
+    type: text
+    width: 1/2
+  text:
+    label: Text
+    type: textarea
+    width: 1/2
+  image:
+    label: Image
+    type: files
+    max: 1
+  line:
+    type: line
+  isImageBackground:
+    label: Background Image
+    type: toggle
+  contentPosition:
+    label: Content Position
+    type: select
+    options:
+      "content-top": Top
+      "content-bottom": Bottom
+    default: content-top
+  contentOrder:
+    label: Content Order
+    type: select
+    options:
+      "title-first": Title First
+      "title-last": Title Last
+    default: title-first
+  effect:
+    label: Effect
+    type: select
+    options:
+      "data-scroll": "no-effect"
+      "data-scroll data-scroll-speed='-1'": "Parallax"
+      "data-scroll data-scroll-id='uniqueID'": "Zoom"
+    default: effect-none
+    width: 1/2
+  effectid:
+    label: Effect ID
+    type: text
+    width: 1/2
+    when:
+      effect: "data-scroll data-scroll-id='uniqueID'"
+  

@@ -1,0 +1,40 @@
+@use "../../libs/mixins"
+@use "../../libs/tokens"
+@use "../../libs/type"
+
+.ticker-wrapper
+  z-index: 100
+  width: 100%
+  overflow: hidden
+  background: var(--backgroundColor)
+  background: var(--backgroundColorP3)
+  color: var(--textColor)
+  color: var(--textColorP3)
+  font-family: type.$base
+
+  @include mixins.sm
+    width: 8vh
+    height: 100vh
+
+  .ticker
+    display: flex
+    white-space: nowrap
+    font-size: 6vw
+    padding: 3vw 0
+
+    @include mixins.sm
+      width: 8vh
+      transform: rotate(90deg)
+      transform-origin: bottom left
+      font-size: 3.5vh
+      margin-left: 2.3vh
+      padding: 0
+
+.aperture-priority
+  .ticker-wrapper
+    @include type.ap-1
+    .ticker
+      @include mixins.sm
+        font-size: 4.5vh
+        margin-left: 1.7vh
+        

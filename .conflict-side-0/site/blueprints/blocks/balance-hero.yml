@@ -1,0 +1,14 @@
+title: Balance Hero
+wysiwyg: true
+preview: fields
+fields:
+  tagline:
+    label: Tagline
+    type: text
+  timing:
+    label: Timing
+    type: text
+  image:
+    label: Image
+    type: files
+    max: 1

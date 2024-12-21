@@ -1,0 +1,86 @@
+@use "../../libs/mixins"
+@use "../../libs/tokens"
+@use "../../libs/type"
+
+// =======================================
+// Form Container
+// =======================================
+form
+  // Layout & Box Model
+  display: flex
+  width: 100%
+  border: 1px solid var(--textColor) !important
+  border-color: var(--textColor) !important
+  border-color: var(--textColorP3) !important
+  border-radius: 100px
+
+  @include mixins.sm
+    width: auto
+
+  // =======================================
+  // Row & Column Structure
+  // =======================================
+  .row
+    display: block !important
+    width: 100%
+
+    .column
+      display: flex
+      flex-direction: row !important
+      width: 100%
+
+      .field
+        display: flex
+        justify-content: center
+
+        &:first-child
+          flex: 1
+
+        label
+          display: none
+
+  // =======================================
+  // Input Styles
+  // =======================================
+  input
+    // Reset & Layout
+    border: none
+    outline: none
+    appearance: none
+    background: transparent
+    width: 100%
+    flex: 1
+    padding: 0 mixins.rscale(12,24)
+
+    // Color & Typography
+    color: var(--textColor) !important
+    color: var(--textColorP3) !important
+    @include type.caption
+
+    &::placeholder
+      color: var(--textColor) !important
+      color: var(--textColorP3) !important
+
+  // =======================================
+  // Button Styles
+  // =======================================
+  button
+    // Layout & Box Model
+    display: flex
+    align-items: center
+    border-radius: 100px
+    width: auto
+    height: mixins.rscale(40,32)
+    
+    padding: 0 16px
+
+    // Color & Background
+    background: var(--textColor) !important
+    color: var(--backgroundColor) !important
+
+    // Interaction & Typography
+    cursor: pointer
+    text-decoration: none
+    -webkit-tap-highlight-color: transparent
+    @include type.caption
+    

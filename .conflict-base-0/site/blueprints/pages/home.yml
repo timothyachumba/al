@@ -1,0 +1,58 @@
+title: Home
+
+tabs:
+  main:
+    label: Home Content
+    icon: globe
+
+    columns:
+      left:
+        width: 2/3
+        sections:
+        fields:
+          content:
+            label: Content
+            type: layout
+          
+      right:
+        width: 1/3
+        sections:
+        fields:
+          cover:
+            label: Cover
+            type: files
+            layout: cards
+            cover: true
+            multiple: false
+            size: full
+            text: " "
+          backgroundColor:
+            label: Background Colour
+            type: color
+            width: 1/2
+            options:
+              "Light": "#ECE2CD"
+              "Dark": "#181716"
+          textColor:
+            label: Text Colour
+            type: color
+            width: 1/2
+            options:
+              "Light": "#ECE2CD"
+              "Dark": "#181716"
+          subscribe:
+            label: Select your form
+            extends: dreamform/fields/form
+          assets:
+            label: Assets
+            type: files
+            multiple: true
+            size: full
+            query: page.images
+            image:
+              cover: true
+          
+
+          
+          
+  seo: seo/site
