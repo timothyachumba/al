@@ -1,3 +1,0 @@
-ancestorEntries = ["public/dist/assets/styles.css", "src/sass/libs/type.sass"]
-ourEntries = ["public/dist/assets/styles.css", "src/sass/libs/type.sass"]
-theirEntries = ["public/dist/assets/styles.css", "src/sass/libs/type.sass"]
