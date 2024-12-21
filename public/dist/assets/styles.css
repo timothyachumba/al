@@ -2,14 +2,56 @@
   font-family: "PolySans";
   font-weight: 400;
   font-style: normal;
-  src: url("../assets/fonts/ps-regular.woff2") format("woff2"), url("../fonts/ps-regular.woff") format("woff");
+  src: url("../assets/fonts/ps-regular.woff2") format("woff2");
   font-display: fallback;
 }
 @font-face {
   font-family: "PP Editorial New";
   font-weight: 300;
   font-style: italic;
-  src: url("../assets/fonts/en-italic.woff2") format("woff2"), url("../fonts/en-italic.woff") format("woff");
+  src: url("../assets/fonts/en-italic.woff2") format("woff2");
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Aperture Priority";
+  font-weight: 300;
+  font-style: normal;
+  src: url("../assets/fonts/ap-300.woff2") format("woff2");
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Aperture Priority";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../assets/fonts/ap-400.woff2") format("woff2");
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Aperture Priority";
+  font-weight: 600;
+  font-style: normal;
+  src: url("../assets/fonts/ap-500.woff2") format("woff2");
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Aperture Priority";
+  font-weight: 300;
+  font-style: normal;
+  src: url("../assets/fonts/ap-300.woff2") format("woff2");
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Aperture Priority";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../assets/fonts/ap-400.woff2") format("woff2");
+  font-display: fallback;
+}
+@font-face {
+  font-family: "Aperture Priority";
+  font-weight: 600;
+  font-style: normal;
+  src: url("../assets/fonts/ap-500.woff2") format("woff2");
   font-display: fallback;
 }
 body {
@@ -1310,7 +1352,7 @@ body.home .the-designer .links a {
 .project-hero.aperture-hero {
   padding-top: 64px;
   height: 90vh;
-  font-family: "Aperture Priority";
+  font-family: "PP Editorial New", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--textColor);
@@ -1675,7 +1717,7 @@ body.home .the-designer .links a {
 }
 
 .aperture-priority .ticker-wrapper {
-  font-family: "Aperture Priority";
+  font-family: "PP Editorial New", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -1760,7 +1802,7 @@ body.home .the-designer .links a {
   background: var(--textColorP3);
 }
 .aperture-priority .vendor-list span {
-  font-family: "Aperture Priority";
+  font-family: "PP Editorial New", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem);
@@ -1768,7 +1810,7 @@ body.home .the-designer .links a {
   color: var(--backgroundColorP3);
 }
 .aperture-priority .vendor-list a {
-  font-family: "Aperture Priority";
+  font-family: "PP Editorial New", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--backgroundColor);
