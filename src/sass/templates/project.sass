@@ -36,9 +36,17 @@ body.project
       background-color: var(--backgroundColor)
       background-color: var(--backgroundColorP3)
 
+      .ticker-wrapper
+        background-color: var(--backgroundColor) !important
+        background-color: var(--backgroundColorP3) !important
+
     &.bg-foreground
       background-color: var(--textColor)
       background-color: var(--textColorP3)
+
+      .ticker-wrapper
+        background-color: var(--textColor) !important
+        background-color: var(--textColorP3) !important
 
     &.bg-neutral
       background-color: tokens.$black
@@ -47,9 +55,17 @@ body.project
       color: var(--backgroundColor)
       color: var(--backgroundColorP3)
 
+      .ticker-wrapper
+        color: var(--backgroundColor) !important
+        color: var(--backgroundColorP3) !important
+
     &.t-foreground
       color: var(--textColor)
       color: var(--textColorP3)
+
+      .ticker-wrapper
+        color: var(--textColor) !important
+        color: var(--textColorP3) !important
 
     &.t-neutral
       color: tokens.$black
@@ -194,36 +210,47 @@ body.project
             text-decoration: underline
 
     &.aperture-priority,
+    &.gestalt,
+    &.balance,
     &.slab65,
     &.odd-shapes,
     &.motif
       color: var(--backgroundColor)
+      color: var(--backgroundColorP3)
 
       .portrait
         background-color: var(--backgroundColor)
+        background-color: var(--backgroundColorP3)
 
       .divider
         background: var(--backgroundColor)
+        background: var(--backgroundColorP3)
 
       &.the-designer
 
         form
           border: 1px solid var(--backgroundColor) !important
+          border: 1px solid var(--backgroundColorP3) !important
 
           input
             color: var(--backgroundColor) !important
+            color: var(--backgroundColorP3) !important
 
             &::placeholder
               color: var(--backgroundColor) !important
+              color: var(--backgroundColorP3) !important
 
           button
             background: var(--backgroundColor) !important
+            background: var(--backgroundColorP3) !important
             color: var(--textColor) !important
+            color: var(--textColorP3) !important
 
 
       .links
         a
           color: var(--backgroundColor)
+          color: var(--backgroundColorP3)
 
       .motif-logo-container
         display: flex
@@ -243,3 +270,26 @@ body.project
 
       .main-layout
         min-height: 100vw
+
+        @include mixins.sm
+          min-height: auto
+
+    &.aperture-priority
+      color: var(--textColor)
+      color: var(--textColorP3)
+
+      &.the-artisan
+        color: white
+
+      &.the-designer
+        color: var(--backgroundColor) !important
+        color: var(--backgroundColorP3) !important
+
+      .main-layout
+        min-height:80vh
+
+        @include mixins.sm
+          min-height: auto
+
+      
+          

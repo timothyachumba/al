@@ -26,6 +26,8 @@
     @include type.caption
     text-orientation: mixed
     writing-mode: vertical-rl
+    color: var(--textColor)
+    color: var(--textColorP3)
 
   a
     color: var(--textColor)
@@ -57,3 +59,37 @@
           width: 100%
           height: 100%
           opacity: 1
+
+.aperture-priority
+  .vendor-list
+    color: var(--backgroundColor)
+    color: var(--backgroundColorP3)
+    background: var(--textColor)
+    background: var(--textColorP3)
+
+    span
+      @include type.ap-1
+      font-size: mixins.rscale(16,24)
+      color: var(--backgroundColor)
+      color: var(--backgroundColorP3)
+
+    a
+      @include type.ap-1
+      color: var(--backgroundColor)
+      color: var(--backgroundColorP3)
+      font-weight: 300
+      
+      h3
+        position: relative
+        font-size: max(9vw, min(12vw, 16vh))
+
+        @include mixins.sm
+          font-size: max(6vw, min(5vw, 20vh))
+
+        &:hover
+          color: var(--backgroundColor)
+          color: var(--backgroundColorP3)
+          font-weight: 500
+          &::after
+            display: none
+    

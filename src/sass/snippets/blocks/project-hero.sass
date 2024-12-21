@@ -39,8 +39,6 @@
     fill: var(--color-5)
     background-color: var(--color-5)
   
-  
-
 .project-hero
   display: flex
   flex-direction: column
@@ -180,6 +178,8 @@
   &.aperture-hero
     padding-top: 64px
     height: 90vh
+    @include type.ap-1
+    color: var(--textColor)
 
     @include mixins.sm
       padding-top: 0
@@ -187,22 +187,118 @@
 
     .project-hero__image
       position: relative
-      padding: 0
       height: 100%
+      display: flex
+      flex-direction: column
+      gap: mixins.rscale(16,32)
+      justify-content: flex-end
+      padding: mixins.rscale(16,32)
 
-      .project-hero__image__fill
-        z-index: 1
+      .top
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        gap: mixins.rscale(16,32)
 
-      svg
-        position: absolute
-        max-width: 250px
-        width: 20vw
-        z-index: 2
-        padding: mixins.rscale(16,32)
+        @include mixins.sm
+          flex-direction: row
+          align-items: flex-end
 
-        &.p
-          right: 0
-          bottom: 0
+        .switcher
+          display: flex
+          border: 1px solid var(--textColor)
+          border-radius: 100px
+          height: auto
+          position: relative
+          overflow: hidden
+          font-size: mixins.rscale(16,24)
+          order: 2
+
+          @include mixins.sm
+            order: 1
+
+          .options
+            display: flex
+            width: 100%
+            justify-content: space-between
+            position: relative
+            color: var(--textColor)
+
+            span
+              padding: mixins.rscale(16, 16) mixins.rscale(24, 24)
+              text-align: center
+              flex-grow: 1
+              z-index: 2
+
+          .slider
+            position: absolute
+            height: 100%
+            background-color: var(--textColor)
+            border-radius: 100px
+            top: 0
+            left: 0
+            z-index: 2
+            width: auto // Dynamic width based on selection
+            transform: translateX(0)
+            transition: transform 0.3s tokens.$quart, width 0.3s tokens.$quart
+            display: flex
+            align-items: center
+            justify-content: center
+            overflow: hidden
+
+            .active-options
+              display: flex
+              position: absolute
+              left: 0
+              width: 100%
+              justify-content: space-between
+              transform: translateX(0) // Opposite movement of slider
+              transition: transform 0.3s tokens.$quart
+              color: var(--backgroundColor)
+
+              span
+                padding: mixins.rscale(16, 16) mixins.rscale(24, 24)
+                text-align: center
+                flex-grow: 1
+
+        .project-hero__project-name
+          font-size: 57.95vw
+          white-space: nowrap
+          order: 1
+
+          @include mixins.sm
+            font-size: 30vw
+            order: 2
+
+          span
+            display: block
+            margin-top: -0.12em
+            margin-bottom: -0.13em
+            margin-left: -0.04em
+            margin-right: -0.04em
+
+      .outline-layouts
+        flex-grow: 1
+
+        .regular-layout,
+        .ortholinear-layout
+          height: 100%
+          text-align: right
+          position: relative
+
+          svg
+            height: 100%
+            position: absolute
+            right: 0
+
+            @include mixins.sm
+              min-height: 40vw
+
+        .ortholinear-layout
+          svg
+            @include mixins.sm
+               min-height: 32vw
+
 
   &.slab-hero
     background-size: cover

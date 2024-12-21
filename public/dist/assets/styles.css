@@ -136,7 +136,7 @@ button:active {
 }
 .button.small,
 button.small {
-  height: clamp(2.2222222222rem, 2.1428571429vw, 2rem);
+  height: clamp(2.2222222222rem, 1.9047619048vw, 1.7777777778rem);
   padding: 0 16px;
   font-family: "PolySans", sans-serif;
   font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
@@ -175,26 +175,6 @@ button.small {
   transform: scale(3.5);
   box-shadow: inset 0 0 0 0.5px;
   color: #000000;
-}
-#customCursor.light #cursor {
-  color: var(--textColor);
-  color: var(--textColorP3);
-}
-#customCursor.light #cursor #dataDisplay {
-  background-color: var(--textColor);
-  background-color: var(--textColorP3);
-  color: var(--backgroundColor);
-  color: var(--backgroundColorP3);
-}
-#customCursor.dark #cursor {
-  color: var(--backgroundColor);
-  color: var(--backgroundColorP3);
-}
-#customCursor.dark #cursor #dataDisplay {
-  background-color: var(--backgroundColor);
-  background-color: var(--backgroundColorP3);
-  color: var(--textColor);
-  color: var(--textColorP3);
 }
 #customCursor #dataDisplay {
   position: absolute;
@@ -375,7 +355,7 @@ nav {
 @media (min-width: 768px) {
   nav {
     flex-direction: column;
-    position: flex;
+    position: fixed;
     justify-content: space-between;
     height: 100vh;
     width: clamp(3.5555555556rem, 4.2857142857vw, 4rem);
@@ -407,6 +387,9 @@ nav.slab65, nav.odd-shapes {
   background-color: transparent;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
+}
+nav.aperture-priority {
+  border-right: 1px solid var(--textColor);
 }
 nav .logo {
   display: flex;
@@ -463,7 +446,7 @@ nav .social li:hover {
   transform: scale(1.2);
 }
 nav .social li svg {
-  width: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem);
+  width: clamp(1.3333333333rem, 1.4285714286vw, 1.3333333333rem);
   height: auto;
 }
 nav .social li svg path {
@@ -1327,6 +1310,10 @@ body.home .the-designer .links a {
 .project-hero.aperture-hero {
   padding-top: 64px;
   height: 90vh;
+  font-family: "Aperture Priority";
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--textColor);
 }
 @media (min-width: 768px) {
   .project-hero.aperture-hero {
@@ -1336,22 +1323,127 @@ body.home .the-designer .links a {
 }
 .project-hero.aperture-hero .project-hero__image {
   position: relative;
-  padding: 0;
   height: 100%;
-}
-.project-hero.aperture-hero .project-hero__image .project-hero__image__fill {
-  z-index: 1;
-}
-.project-hero.aperture-hero .project-hero__image svg {
-  position: absolute;
-  max-width: 250px;
-  width: 20vw;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem);
+  justify-content: flex-end;
   padding: clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem);
 }
-.project-hero.aperture-hero .project-hero__image svg.p {
+.project-hero.aperture-hero .project-hero__image .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem);
+}
+@media (min-width: 768px) {
+  .project-hero.aperture-hero .project-hero__image .top {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+.project-hero.aperture-hero .project-hero__image .top .switcher {
+  display: flex;
+  border: 1px solid var(--textColor);
+  border-radius: 100px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  font-size: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem);
+  order: 2;
+}
+@media (min-width: 768px) {
+  .project-hero.aperture-hero .project-hero__image .top .switcher {
+    order: 1;
+  }
+}
+.project-hero.aperture-hero .project-hero__image .top .switcher .options {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  color: var(--textColor);
+}
+.project-hero.aperture-hero .project-hero__image .top .switcher .options span {
+  padding: clamp(0.8888888889rem, 0.9523809524vw, 0.8888888889rem) clamp(1.3333333333rem, 1.4285714286vw, 1.3333333333rem);
+  text-align: center;
+  flex-grow: 1;
+  z-index: 2;
+}
+.project-hero.aperture-hero .project-hero__image .top .switcher .slider {
+  position: absolute;
+  height: 100%;
+  background-color: var(--textColor);
+  border-radius: 100px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: auto;
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1), width 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.project-hero.aperture-hero .project-hero__image .top .switcher .slider .active-options {
+  display: flex;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  color: var(--backgroundColor);
+}
+.project-hero.aperture-hero .project-hero__image .top .switcher .slider .active-options span {
+  padding: clamp(0.8888888889rem, 0.9523809524vw, 0.8888888889rem) clamp(1.3333333333rem, 1.4285714286vw, 1.3333333333rem);
+  text-align: center;
+  flex-grow: 1;
+}
+.project-hero.aperture-hero .project-hero__image .top .project-hero__project-name {
+  font-size: 57.95vw;
+  white-space: nowrap;
+  order: 1;
+}
+@media (min-width: 768px) {
+  .project-hero.aperture-hero .project-hero__image .top .project-hero__project-name {
+    font-size: 30vw;
+    order: 2;
+  }
+}
+.project-hero.aperture-hero .project-hero__image .top .project-hero__project-name span {
+  display: block;
+  margin-top: -0.12em;
+  margin-bottom: -0.13em;
+  margin-left: -0.04em;
+  margin-right: -0.04em;
+}
+.project-hero.aperture-hero .project-hero__image .outline-layouts {
+  flex-grow: 1;
+}
+.project-hero.aperture-hero .project-hero__image .outline-layouts .regular-layout,
+.project-hero.aperture-hero .project-hero__image .outline-layouts .ortholinear-layout {
+  height: 100%;
+  text-align: right;
+  position: relative;
+}
+.project-hero.aperture-hero .project-hero__image .outline-layouts .regular-layout svg,
+.project-hero.aperture-hero .project-hero__image .outline-layouts .ortholinear-layout svg {
+  height: 100%;
+  position: absolute;
   right: 0;
-  bottom: 0;
+}
+@media (min-width: 768px) {
+  .project-hero.aperture-hero .project-hero__image .outline-layouts .regular-layout svg,
+  .project-hero.aperture-hero .project-hero__image .outline-layouts .ortholinear-layout svg {
+    min-height: 40vw;
+  }
+}
+@media (min-width: 768px) {
+  .project-hero.aperture-hero .project-hero__image .outline-layouts .ortholinear-layout svg {
+    min-height: 32vw;
+  }
 }
 .project-hero.slab-hero {
   background-size: cover;
@@ -1582,6 +1674,18 @@ body.home .the-designer .links a {
   }
 }
 
+.aperture-priority .ticker-wrapper {
+  font-family: "Aperture Priority";
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+@media (min-width: 768px) {
+  .aperture-priority .ticker-wrapper .ticker {
+    font-size: 4.5vh;
+    margin-left: 1.7vh;
+  }
+}
+
 .vendor-list {
   display: flex;
   flex-direction: row;
@@ -1612,6 +1716,8 @@ body.home .the-designer .links a {
   letter-spacing: 0.1em;
   text-orientation: mixed;
   writing-mode: vertical-rl;
+  color: var(--textColor);
+  color: var(--textColorP3);
 }
 .vendor-list a {
   color: var(--textColor);
@@ -1645,6 +1751,46 @@ body.home .the-designer .links a {
   width: 100%;
   height: 100%;
   opacity: 1;
+}
+
+.aperture-priority .vendor-list {
+  color: var(--backgroundColor);
+  color: var(--backgroundColorP3);
+  background: var(--textColor);
+  background: var(--textColorP3);
+}
+.aperture-priority .vendor-list span {
+  font-family: "Aperture Priority";
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem);
+  color: var(--backgroundColor);
+  color: var(--backgroundColorP3);
+}
+.aperture-priority .vendor-list a {
+  font-family: "Aperture Priority";
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--backgroundColor);
+  color: var(--backgroundColorP3);
+  font-weight: 300;
+}
+.aperture-priority .vendor-list a h3 {
+  position: relative;
+  font-size: max(9vw, min(12vw, 16vh));
+}
+@media (min-width: 768px) {
+  .aperture-priority .vendor-list a h3 {
+    font-size: max(6vw, min(5vw, 20vh));
+  }
+}
+.aperture-priority .vendor-list a h3:hover {
+  color: var(--backgroundColor);
+  color: var(--backgroundColorP3);
+  font-weight: 500;
+}
+.aperture-priority .vendor-list a h3:hover::after {
+  display: none;
 }
 
 .main-layout {
@@ -1699,6 +1845,10 @@ body.home .the-designer .links a {
   top: 0;
   width: 100%;
 }
+.main-layout.content-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
 .main-layout .content {
   display: flex;
   flex-direction: column;
@@ -1731,7 +1881,7 @@ body.home .the-designer .links a {
 }
 @media (min-width: 768px) {
   .main-layout .content .text {
-    max-width: 400px;
+    max-width: 50%;
   }
 }
 
@@ -1764,9 +1914,17 @@ body.project .layout.bg-background {
   background-color: var(--backgroundColor);
   background-color: var(--backgroundColorP3);
 }
+body.project .layout.bg-background .ticker-wrapper {
+  background-color: var(--backgroundColor) !important;
+  background-color: var(--backgroundColorP3) !important;
+}
 body.project .layout.bg-foreground {
   background-color: var(--textColor);
   background-color: var(--textColorP3);
+}
+body.project .layout.bg-foreground .ticker-wrapper {
+  background-color: var(--textColor) !important;
+  background-color: var(--textColorP3) !important;
 }
 body.project .layout.bg-neutral {
   background-color: #000000;
@@ -1775,9 +1933,17 @@ body.project .layout.t-background {
   color: var(--backgroundColor);
   color: var(--backgroundColorP3);
 }
+body.project .layout.t-background .ticker-wrapper {
+  color: var(--backgroundColor) !important;
+  color: var(--backgroundColorP3) !important;
+}
 body.project .layout.t-foreground {
   color: var(--textColor);
   color: var(--textColorP3);
+}
+body.project .layout.t-foreground .ticker-wrapper {
+  color: var(--textColor) !important;
+  color: var(--textColorP3) !important;
 }
 body.project .layout.t-neutral {
   color: #000000;
@@ -1942,32 +2108,41 @@ body.project .layout.the-designer .links a {
 body.project .layout.the-designer .links a:hover {
   text-decoration: underline;
 }
-body.project .layout.aperture-priority, body.project .layout.slab65, body.project .layout.odd-shapes, body.project .layout.motif {
+body.project .layout.aperture-priority, body.project .layout.gestalt, body.project .layout.balance, body.project .layout.slab65, body.project .layout.odd-shapes, body.project .layout.motif {
   color: var(--backgroundColor);
+  color: var(--backgroundColorP3);
 }
-body.project .layout.aperture-priority .portrait, body.project .layout.slab65 .portrait, body.project .layout.odd-shapes .portrait, body.project .layout.motif .portrait {
+body.project .layout.aperture-priority .portrait, body.project .layout.gestalt .portrait, body.project .layout.balance .portrait, body.project .layout.slab65 .portrait, body.project .layout.odd-shapes .portrait, body.project .layout.motif .portrait {
   background-color: var(--backgroundColor);
+  background-color: var(--backgroundColorP3);
 }
-body.project .layout.aperture-priority .divider, body.project .layout.slab65 .divider, body.project .layout.odd-shapes .divider, body.project .layout.motif .divider {
+body.project .layout.aperture-priority .divider, body.project .layout.gestalt .divider, body.project .layout.balance .divider, body.project .layout.slab65 .divider, body.project .layout.odd-shapes .divider, body.project .layout.motif .divider {
   background: var(--backgroundColor);
+  background: var(--backgroundColorP3);
 }
-body.project .layout.aperture-priority.the-designer form, body.project .layout.slab65.the-designer form, body.project .layout.odd-shapes.the-designer form, body.project .layout.motif.the-designer form {
+body.project .layout.aperture-priority.the-designer form, body.project .layout.gestalt.the-designer form, body.project .layout.balance.the-designer form, body.project .layout.slab65.the-designer form, body.project .layout.odd-shapes.the-designer form, body.project .layout.motif.the-designer form {
   border: 1px solid var(--backgroundColor) !important;
+  border: 1px solid var(--backgroundColorP3) !important;
 }
-body.project .layout.aperture-priority.the-designer form input, body.project .layout.slab65.the-designer form input, body.project .layout.odd-shapes.the-designer form input, body.project .layout.motif.the-designer form input {
+body.project .layout.aperture-priority.the-designer form input, body.project .layout.gestalt.the-designer form input, body.project .layout.balance.the-designer form input, body.project .layout.slab65.the-designer form input, body.project .layout.odd-shapes.the-designer form input, body.project .layout.motif.the-designer form input {
   color: var(--backgroundColor) !important;
+  color: var(--backgroundColorP3) !important;
 }
-body.project .layout.aperture-priority.the-designer form input::placeholder, body.project .layout.slab65.the-designer form input::placeholder, body.project .layout.odd-shapes.the-designer form input::placeholder, body.project .layout.motif.the-designer form input::placeholder {
+body.project .layout.aperture-priority.the-designer form input::placeholder, body.project .layout.gestalt.the-designer form input::placeholder, body.project .layout.balance.the-designer form input::placeholder, body.project .layout.slab65.the-designer form input::placeholder, body.project .layout.odd-shapes.the-designer form input::placeholder, body.project .layout.motif.the-designer form input::placeholder {
   color: var(--backgroundColor) !important;
+  color: var(--backgroundColorP3) !important;
 }
-body.project .layout.aperture-priority.the-designer form button, body.project .layout.slab65.the-designer form button, body.project .layout.odd-shapes.the-designer form button, body.project .layout.motif.the-designer form button {
+body.project .layout.aperture-priority.the-designer form button, body.project .layout.gestalt.the-designer form button, body.project .layout.balance.the-designer form button, body.project .layout.slab65.the-designer form button, body.project .layout.odd-shapes.the-designer form button, body.project .layout.motif.the-designer form button {
   background: var(--backgroundColor) !important;
+  background: var(--backgroundColorP3) !important;
   color: var(--textColor) !important;
+  color: var(--textColorP3) !important;
 }
-body.project .layout.aperture-priority .links a, body.project .layout.slab65 .links a, body.project .layout.odd-shapes .links a, body.project .layout.motif .links a {
+body.project .layout.aperture-priority .links a, body.project .layout.gestalt .links a, body.project .layout.balance .links a, body.project .layout.slab65 .links a, body.project .layout.odd-shapes .links a, body.project .layout.motif .links a {
   color: var(--backgroundColor);
+  color: var(--backgroundColorP3);
 }
-body.project .layout.aperture-priority .motif-logo-container, body.project .layout.slab65 .motif-logo-container, body.project .layout.odd-shapes .motif-logo-container, body.project .layout.motif .motif-logo-container {
+body.project .layout.aperture-priority .motif-logo-container, body.project .layout.gestalt .motif-logo-container, body.project .layout.balance .motif-logo-container, body.project .layout.slab65 .motif-logo-container, body.project .layout.odd-shapes .motif-logo-container, body.project .layout.motif .motif-logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1977,16 +2152,40 @@ body.project .layout.aperture-priority .motif-logo-container, body.project .layo
   overflow: hidden;
 }
 @media (min-width: 768px) {
-  body.project .layout.aperture-priority .motif-logo-container, body.project .layout.slab65 .motif-logo-container, body.project .layout.odd-shapes .motif-logo-container, body.project .layout.motif .motif-logo-container {
+  body.project .layout.aperture-priority .motif-logo-container, body.project .layout.gestalt .motif-logo-container, body.project .layout.balance .motif-logo-container, body.project .layout.slab65 .motif-logo-container, body.project .layout.odd-shapes .motif-logo-container, body.project .layout.motif .motif-logo-container {
     height: 100vh;
   }
 }
-body.project .layout.aperture-priority .motif-logo-container svg, body.project .layout.slab65 .motif-logo-container svg, body.project .layout.odd-shapes .motif-logo-container svg, body.project .layout.motif .motif-logo-container svg {
+body.project .layout.aperture-priority .motif-logo-container svg, body.project .layout.gestalt .motif-logo-container svg, body.project .layout.balance .motif-logo-container svg, body.project .layout.slab65 .motif-logo-container svg, body.project .layout.odd-shapes .motif-logo-container svg, body.project .layout.motif .motif-logo-container svg {
   overflow: visible;
   height: 90%;
 }
-body.project .layout.aperture-priority .main-layout, body.project .layout.slab65 .main-layout, body.project .layout.odd-shapes .main-layout, body.project .layout.motif .main-layout {
+body.project .layout.aperture-priority .main-layout, body.project .layout.gestalt .main-layout, body.project .layout.balance .main-layout, body.project .layout.slab65 .main-layout, body.project .layout.odd-shapes .main-layout, body.project .layout.motif .main-layout {
   min-height: 100vw;
+}
+@media (min-width: 768px) {
+  body.project .layout.aperture-priority .main-layout, body.project .layout.gestalt .main-layout, body.project .layout.balance .main-layout, body.project .layout.slab65 .main-layout, body.project .layout.odd-shapes .main-layout, body.project .layout.motif .main-layout {
+    min-height: auto;
+  }
+}
+body.project .layout.aperture-priority {
+  color: var(--textColor);
+  color: var(--textColorP3);
+}
+body.project .layout.aperture-priority.the-artisan {
+  color: white;
+}
+body.project .layout.aperture-priority.the-designer {
+  color: var(--backgroundColor) !important;
+  color: var(--backgroundColorP3) !important;
+}
+body.project .layout.aperture-priority .main-layout {
+  min-height: 80vh;
+}
+@media (min-width: 768px) {
+  body.project .layout.aperture-priority .main-layout {
+    min-height: auto;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
