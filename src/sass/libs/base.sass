@@ -128,7 +128,7 @@ button
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.1)
 
   &.small
-    height: mixins.rscale(40,36)
+    height: mixins.rscale(40,32)
     padding: 0 16px
     @include type.caption
 
@@ -164,28 +164,6 @@ button
       transform: scale(3.5)
       box-shadow: inset 0 0 0 0.5px
       color: tokens.$black
-
-  &.light
-    #cursor
-      color: var(--textColor)
-      color: var(--textColorP3)
-
-      #dataDisplay
-        background-color: var(--textColor)
-        background-color: var(--textColorP3)
-        color: var(--backgroundColor)
-        color: var(--backgroundColorP3)
-
-  &.dark
-    #cursor
-      color: var(--backgroundColor)
-      color: var(--backgroundColorP3)
-
-      #dataDisplay
-        background-color: var(--backgroundColor)
-        background-color: var(--backgroundColorP3)
-        color: var(--textColor)
-        color: var(--textColorP3)
 
   #dataDisplay
     position: absolute
