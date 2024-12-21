@@ -46,11 +46,6 @@ return [
     'medienbaecker.autoresize.maxWidth' => 3840, // 4k
     'medienbaecker.autoresize.maxHeight' => 3840, // 4k square
 
-    'thumbs' => [
-        'driver' => 'im', // imagick is faster than GD and supports more image formats
-        'bin' => '/opt/homebrew/bin/convert',
-
-    ],
     'moritzebeling.kirby-favicon' => [
         'favicon' => [
             'png' => 'dist/assets/favicon/favicon.png', // required
