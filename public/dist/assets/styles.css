@@ -1332,7 +1332,7 @@ body.home .the-designer .links a {
 .project-hero.aperture-hero {
   padding-top: 64px;
   height: 90vh;
-  font-family: "PP Editorial New", sans-serif;
+  font-family: "Aperture Priority", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--textColor);
@@ -1697,7 +1697,7 @@ body.home .the-designer .links a {
 }
 
 .aperture-priority .ticker-wrapper {
-  font-family: "PP Editorial New", sans-serif;
+  font-family: "Aperture Priority", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -1782,7 +1782,7 @@ body.home .the-designer .links a {
   background: var(--textColorP3);
 }
 .aperture-priority .vendor-list span {
-  font-family: "PP Editorial New", sans-serif;
+  font-family: "Aperture Priority", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem);
@@ -1790,7 +1790,7 @@ body.home .the-designer .links a {
   color: var(--backgroundColorP3);
 }
 .aperture-priority .vendor-list a {
-  font-family: "PP Editorial New", sans-serif;
+  font-family: "Aperture Priority", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--backgroundColor);
