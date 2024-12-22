@@ -8,6 +8,15 @@
   <?php echo css('../dist/assets/styles.css') ?>
   <?php snippet('favicon') ?>
   <meta name="p:domain_verify" content="641f43e6f4d7185dc36822cb6df2c17a"/>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1YF7Q6FZDP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1YF7Q6FZDP');
+  </script>
 </head>
 <?php
 $backgroundColor = $page->backgroundcolor()->isNotEmpty() ? $page->backgroundcolor() : '#000000';
