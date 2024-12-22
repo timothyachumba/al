@@ -17,7 +17,10 @@ body.home
   color: var(--textColor)
 
   .carousel
+    margin-top: 64px
+
     @include mixins.sm
+      margin-top: 0
       padding-left: mixins.rscale(64,72)
 
     &.full-width
@@ -142,7 +145,10 @@ body.home
             top: mixins.rscale(16,24)
             will-change: transform
             transition: transform $curve
-            transform: translateY(-100px)
+            transform: translateY(0)
+
+            @include mixins.sm
+              transform: translateY(-100px)
 
           .project-card__image
             position: absolute

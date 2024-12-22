@@ -860,8 +860,12 @@ body.home {
   background-color: var(--backgroundColor);
   color: var(--textColor);
 }
+body.home .carousel {
+  margin-top: 64px;
+}
 @media (min-width: 768px) {
   body.home .carousel {
+    margin-top: 0;
     padding-left: clamp(3.5555555556rem, 4.2857142857vw, 4rem);
   }
 }
@@ -1000,7 +1004,12 @@ body.home .carousel .block .project-card .project-card__image__container .projec
   top: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem);
   will-change: transform;
   transition: transform 1s cubic-bezier(0.25, 0.5, 0, 1);
-  transform: translateY(-100px);
+  transform: translateY(0);
+}
+@media (min-width: 768px) {
+  body.home .carousel .block .project-card .project-card__image__container .project-card__image__status {
+    transform: translateY(-100px);
+  }
 }
 body.home .carousel .block .project-card .project-card__image__container .project-card__image {
   position: absolute;
