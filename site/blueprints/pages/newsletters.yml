@@ -1,0 +1,26 @@
+title: Newsletters
+
+options:
+  delete: false
+  duplicate: false
+  changeName: false
+  changeTitle: false
+  changeSlug: false
+  changeStatus: false
+  changeTemplate: false
+  sort: false
+
+tabs:
+  content:
+    icon: edit
+    columns:
+      left:
+        width: 2/3
+        sections:
+          newsletters:
+            type: pages
+            template: newsletter
+            sortBy: date desc
+
+  seo: seo/page
+

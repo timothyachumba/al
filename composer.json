@@ -24,6 +24,8 @@
   "require": {
     "php": ">=8.2.0",
     "bnomei/kirby3-dotenv": "^2.2",
+    "bnomei/kirby3-janitor": "^4.4",
+    "getkirby/cli": "^1.5",
     "getkirby/cms": "^4.0.0-beta.2",
     "moritzebeling/kirby-favicon": "^1.0",
     "tobimori/kirby-dreamform": "dev-develop",

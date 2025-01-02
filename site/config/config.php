@@ -2,7 +2,14 @@
 use tobimori\DreamForm\Support\Menu;
 return [
     'debug' => false,
+
+    'akukolabs.newsletter.sender' => [
+        'email' => 'info@akukolabs.com', // TODO: @timothy set email matching the one in Buttondown
+        'name' => 'Akuko Labs'
+    ],
+
     'bnomei.dotenv.dir' => fn () => realpath(kirby()->roots()->base()),
+
     'tobimori.seo.lang' => 'en_GB',
     'tobimori.seo.canonicalBase' => 'https://akukolabs.com',
     'tobimori.seo.robots' => [
@@ -59,10 +66,10 @@ return [
         ],
         'mask' => 'dist/assets/favicon/mask.svg', // fallback to favicon.svg
         'color' => false,
-        
+
         // for minimal html output
         'minimalist' => false,
-        
+
         // the following will ony be show when 'extended' is set to true
         'extended' => false,
 
