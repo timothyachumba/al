@@ -17,20 +17,25 @@ return [
             'longPrefix' => 'to',
             'description' => 'To E-mail address',
             'castTo' => 'string',
+            'required' => false,
         ],
     ] + Janitor::ARGS,
     'command' => static function (CLI $cli): void {
+        $page = page($cli->arg('page'));
         $to = $cli->arg('to');
+        if (empty($to)) {
+            $to = option('akukolabs.newsletter.magic-email-address');
+        }
         $success = false;
 
         // only send once per email/listid
-        $key = md5('newsletter-published-'.$to.'-'.page($cli->arg('page'))?->uuid()->id());
+        $key = md5('newsletter-published-'.$to.'-'.$page->uuid()->id());
         $hasBeenSent = kirby()->cache('akukolabs.newsletter')->get($key);
         if ($hasBeenSent) {
             $message = "$hasBeenSent <$to>";
         } else {
             // from, subject, body[text,html], transport
-            $emailData = page($cli->arg('page'))->toEmailData();
+            $emailData = $page->toEmailData();
 
             $cli->out('Publishing Newsletter to <'.$to.'> ...');
 

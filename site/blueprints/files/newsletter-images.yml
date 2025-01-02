@@ -1,0 +1,10 @@
+title: JPG, PNG or GIF Images only for Newsletter
+
+accept:
+  extension: jpg, png, gif
+  maxsize: 20000000 # 20 MB
+
+fields:
+  alt:
+    label: Alt Text
+    type: text

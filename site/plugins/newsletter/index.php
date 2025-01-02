@@ -9,6 +9,7 @@ Kirby::plugin('akukolabs/newsletter', [
             'email' => 'info@akukolabs.com',
             'name' => 'Akuko Labs',
         ],
+        'magic-email-address' => 'newsletters@mg.buttondown.email',
     ],
     'pageMethods' => [
         'toEmailData' => function() {
