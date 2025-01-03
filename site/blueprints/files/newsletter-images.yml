@@ -6,5 +6,8 @@ accept:
 
 fields:
   alt:
-    label: Alt Text
+    label: Alt Text (SEO)
+    type: text
+  caption:
+    label: Figure Caption
     type: text

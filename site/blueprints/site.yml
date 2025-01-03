@@ -7,53 +7,59 @@ tabs:
 
     columns:
       left:
-        width: 2/3
+        width: 1/2
         sections:
-          pages:
+          projects:
             label: Projects
             type: pages
             limit: 999
-            layout: cards
+            layout: cardlets
             image:
               cover: true
+              query: page.cover.toFile
+              color: white
             templates:
               - project
-              - home
-              query: "{{ page.cover.toFile }}"
-              color: white
             info: "{{ page.category }}"
       right:
-        width: 1/3
+        width: 1/2
         sections:
-        fields:
-          logo:
-            label: Logo
-            type: files
-            layout: cards
-            cover: true
-            multiple: false
-            size: small
-            text: " "
-          socials:
-            label: Social Links
-            type: structure
+          pages:
+            type: pages
+            templates:
+              - newsletters
+              - home
+              - error
+              - default
+          fields:
+            type: fields
             fields:
-              title:
-                label: Title
-                type: text
-              url:
-                label: URL
-                type: url
-              icon:
-                label: Icon
+              logo:
+                label: Logo
                 type: files
-                layout: cards
-                limit: 1
-          
-          newsletter:
-            label: Newsletter Link
-            type: url
-          
+                layout: list
+                cover: true
+                multiple: false
+                size: small
+                text: " "
+              newsletter:
+                label: Newsletter Link
+                type: url
+              socials:
+                label: Social Links
+                type: structure
+                fields:
+                  title:
+                    label: Title
+                    type: text
+                  url:
+                    label: URL
+                    type: url
+                  icon:
+                    label: Icon
+                    type: files
+                    layout: cards
+                    limit: 1
+
   seo: seo/site
 
-          

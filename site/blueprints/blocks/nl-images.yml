@@ -1,0 +1,13 @@
+name: Images
+icon: gallery
+wysiwyg: true
+preview: fields
+fields:
+  images:
+    type: files
+    uploads: pulse-newsletter-images
+    info: "{{ file.dimensions }}"
+  bgcolor:
+    type: color
+    default: '#fff'
+    width: 1/2

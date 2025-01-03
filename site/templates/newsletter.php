@@ -1,0 +1,1 @@
+<?= $page->toEmailData()['body']['html'];

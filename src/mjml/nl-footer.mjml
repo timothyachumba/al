@@ -1,0 +1,7 @@
+<mj-raw>
+    <!-- [nl-footer] -->
+</mj-raw>
+<mj-section><mj-column><mj-text>footer</mj-text></mj-column></mj-section>
+<mj-raw>
+    <!-- [/nl-footer] -->
+</mj-raw>

@@ -1,0 +1,103 @@
+<mjml>
+    <mj-head>
+        <mj-preview><?= $preview ?></mj-preview>
+        <mj-raw>
+            <!--[if !mso]><!-->
+            <style type="text/css">
+                @import url(https://akukolabs.com/dist/assets/newsletter.css);
+            </style>
+            <!--<![endif]-->
+        </mj-raw>
+        <mj-attributes>
+            <mj-section padding="16px"/>
+            <mj-text align="left" padding="0px" font-family="PolySans, Helvetica, Arial"/>
+            <mj-button align="left" font-family="PolySans, Helvetica, Arial"/>
+            <mj-image padding="0px" align="left"/>
+            <mj-class name="h1" font-family="PolySans, Helvetica, Arial" font-weight="600" font-size="24px"
+                      line-height="34px" padding-bottom="4px"/>
+            <mj-class name="h2" font-family="PolySans, Helvetica, Arial" font-weight="600" font-size="20px"
+                      line-height="28px"/>
+            <mj-class name="p" font-family="PolySans, Helvetica, Arial" font-weight="400" font-size="16px"
+                      line-height="21px"/>
+        </mj-attributes>
+        <mj-style>
+            table, table tr, table td {
+                border: 0 solid transparent;
+            }
+
+            .typography p {
+                margin: 0;
+                padding: 0;
+            }
+
+            .typography h1, .typography h2, .typography h3, .typography h4 {
+                font-weight: 600;
+            }
+
+            .typography h1 {
+                margin: 0;
+                padding: 1.5em 0 .5em;
+            }
+
+            .typography h3:not(:first-child) {
+                margin: 0;
+                padding: 3em 0 2em;
+            }
+
+            .typography h4:not(:first-child) {
+                margin: 0;
+                padding: 2em 0 1em;
+            }
+
+            .typography a, .typography a:hover, .typography a:active, .typography a:visited, .typography a:focus {
+                color: inherit;
+                text-decoration: underline;
+            }
+
+            ul, ol {
+                padding: 0 4ch;
+                margin: 0;
+            }
+
+            ul.flat {
+                padding: 0;
+                margin: 0;
+                list-style: none !important;
+            }
+
+            ol > li:not(:last-of-type) {
+                padding-bottom: 16px;
+            }
+
+            ul > li:not(:last-of-type) {
+                padding-bottom: 16px;
+            }
+        </mj-style>
+    </mj-head>
+    <mj-body background-color="red" width="640px">
+
+        <mj-raw><?php foreach($blocks as $block): ?></mj-raw>
+
+        <mj-raw><?php if($block->type() === 'nl-header'): ?></mj-raw>
+        <mj-include path="./nl-header.mjml"/>
+        <mj-raw><?php endif; ?></mj-raw>
+
+        <mj-raw><?php if($block->type() === 'nl-text'): ?></mj-raw>
+        <mj-include path="./nl-text.mjml"/>
+        <mj-raw><?php endif; ?></mj-raw>
+
+        <mj-raw><?php if($block->type() === 'nl-images'): ?></mj-raw>
+        <mj-include path="./nl-images.mjml" />
+        <mj-raw><?php endif; ?></mj-raw>
+
+        <mj-raw><?php if($block->type() === 'nl-line'): ?></mj-raw>
+        <mj-include path="./nl-line.mjml" />
+        <mj-raw><?php endif; ?></mj-raw>
+
+        <mj-raw><?php if($block->type() === 'nl-footer'): ?></mj-raw>
+        <mj-include path="./nl-footer.mjml"/>
+        <mj-raw><?php endif; ?></mj-raw>
+
+        <mj-raw><?php endforeach; ?></mj-raw>
+    </mj-body>
+</mjml>
