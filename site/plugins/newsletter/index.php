@@ -17,6 +17,17 @@ Kirby::plugin('akukolabs/newsletter', [
     ],
     'routes' => [
         [
+            'pattern' => 'newsletter/unsubscribe',
+            'method' => 'GET|POST',
+            'action' => function () {
+                return site()->visit(new \Kirby\Cms\Page([
+                    'template' => 'unsubscribe',
+                    'slug' => 'unsubscribe',
+                    'parent' => page('newsletter'),
+                ]));
+            }
+        ],
+        [
             'pattern' => 'newsletter/unsubscribe/(:any)',
             'method' => 'DELETE',
             'action' => function ($email) {
@@ -79,13 +90,7 @@ Kirby::plugin('akukolabs/newsletter', [
                         'title' => $this->title()->html()->value(),
                         'blocks' => $this->blocks()->toBlocks(),
                         'unsubscribeLink' => site()->unsubscribeLink(),
-                        'socials' => site()->socials()->toStructure()->toArray(function($item) {
-                            return [
-                                'name' => $item->title()->value(),
-                                'url' => url($item->url()->value()),
-                                'icon' => $item->icon()->toFile()?->url(),
-                            ];
-                        }),
+                        'socials' => site()->socials()->toStructure(),
                     ], true),
                 ],
                 // 'transport' => kirby()->system()->isLocal() ? null : postmark()->transport(),

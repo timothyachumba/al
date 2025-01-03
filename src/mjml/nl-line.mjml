@@ -1,7 +1,7 @@
 <mj-raw>
     <!-- [nl-line] -->
 </mj-raw>
-<mj-section background-color="<?= $block->bgcolor() ?>" padding="0 16px">
+<mj-section background-color="<?= $block->bgcolor() ?>" padding="16px 0">
     <mj-column><mj-divider border-width="1px" border-style="solid" border-color="<?= $block->bordercolor() ?>" padding="0"/></mj-column>
 </mj-section>
 <mj-raw>

@@ -1,7 +1,14 @@
 <mj-raw>
     <!-- [nl-header] -->
 </mj-raw>
-<mj-section><mj-column><mj-text>header</mj-text></mj-column></mj-section>
+<mj-hero mode="fluid-height"
+         background-width="640px"
+         background-height="640px"
+         background-url="<?= $block->bgimg()->toFile()?->thumb(['width' => 640*2, 'height' => 640*2, 'crop' => true, 'format' => 'jpeg'])->url() ?>"
+         background-color="<?= $block->bgcolor() ?>"
+         padding="100px 0px">
+
+</mj-hero>
 <mj-raw>
     <!-- [/nl-header] -->
 </mj-raw>

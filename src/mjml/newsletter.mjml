@@ -11,7 +11,8 @@
         <mj-attributes>
             <mj-section padding="16px"/>
             <mj-text align="left" padding="0px" font-family="PolySans, Helvetica, Arial"/>
-            <mj-button align="left" font-family="PolySans, Helvetica, Arial"/>
+            <mj-button font-family="PolySans, Helvetica, Arial"/>
+            <mj-class name="btn-plain" font-family="PolySans, Helvetica, Arial" background-color="transparent" inner-padding="0" padding="0"/>
             <mj-image padding="0px" align="left"/>
             <mj-class name="h1" font-family="PolySans, Helvetica, Arial" font-weight="600" font-size="24px"
                       line-height="34px" padding-bottom="4px"/>
@@ -23,6 +24,10 @@
         <mj-style>
             table, table tr, table td {
                 border: 0 solid transparent;
+            }
+
+            .uppercase, .uppercase * {
+                text-transform: uppercase!important;
             }
 
             .typography p {
