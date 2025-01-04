@@ -1,10 +1,10 @@
 <mj-raw>
     <!-- [nl-footer] -->
 </mj-raw>
-<mj-section background-color="<?= $block->bgcolor() ?>">
+<mj-section background-color="<?= $block->bgcolor() ?>" padding="1rem 2rem">
     <mj-group>
     <mj-raw><?php $s=0; foreach($socials as $social): ?></mj-raw>
-    <mj-column width="25%"><mj-button font-size="8px" align="<?php
+    <mj-column width="25%"><mj-button align="<?php
     switch($s) {
         case 0: echo 'left'; break;
         case 3: echo 'right'; break;
@@ -14,9 +14,10 @@
     <mj-raw><?php $s++; endforeach; ?></mj-raw>
     </mj-group>
 </mj-section>
-<mj-section background-color="<?= $block->bgcolor() ?>">
-    <mj-column css-class="typography">
-        <mj-text color="<?= $block->textcolor() ?>" align="center" font-size="7px">Don't want to receive these updates anymore? <a href="<?= $unsubscribeLink ?>">Unsubscribe</a></mj-text>
+<mj-section background-color="<?= $block->bgcolor() ?>" padding="1rem 2rem">
+    <mj-column>
+        <mj-text color="<?= $block->textcolor() ?>" font-size=".8rem" align="center" padding-bottom="1rem">Don't want to receive these updates anymore? <a href="<?= $unsubscribeLink ?>">Unsubscribe</a></mj-text>
+        <mj-text color="<?= $block->textcolor() ?>" font-size=".5rem" align="center" padding-bottom="1rem"><?= $contact ?></mj-text>
     </mj-column>
 </mj-section>
 <mj-raw>

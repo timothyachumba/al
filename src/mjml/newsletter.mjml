@@ -1,6 +1,7 @@
 <mjml>
     <mj-head>
         <mj-preview><?= $preview ?></mj-preview>
+        <mj-font name="PolySans" href="https://akukolabs.com/dist/assets/newsletter.css"></mj-font>
         <mj-raw>
             <!--[if !mso]><!-->
             <style type="text/css">
@@ -9,52 +10,60 @@
             <!--<![endif]-->
         </mj-raw>
         <mj-attributes>
-            <mj-section padding="16px"/>
-            <mj-text align="left" padding="0px" font-family="PolySans, Helvetica, Arial"/>
-            <mj-button font-family="PolySans, Helvetica, Arial"/>
-            <mj-class name="btn-plain" font-family="PolySans, Helvetica, Arial" background-color="transparent" inner-padding="0" padding="0"/>
+            <mj-section padding="2rem"/>
+            <mj-text align="left" padding="0" font-family="PolySans, Helvetica, Arial" font-size="1rem"/>
+            <mj-button font-family="PolySans, Helvetica, Arial" font-size="1rem"/>
+            <mj-class name="btn-plain" font-family="PolySans, Helvetica, Arial" background-color="transparent"
+                      inner-padding="0" padding="0"/>
             <mj-image padding="0px" align="left"/>
-            <mj-class name="h1" font-family="PolySans, Helvetica, Arial" font-weight="600" font-size="24px"
-                      line-height="34px" padding-bottom="4px"/>
-            <mj-class name="h2" font-family="PolySans, Helvetica, Arial" font-weight="600" font-size="20px"
-                      line-height="28px"/>
-            <mj-class name="p" font-family="PolySans, Helvetica, Arial" font-weight="400" font-size="16px"
-                      line-height="21px"/>
         </mj-attributes>
         <mj-style>
+
+            html {
+                font-size: 8px;
+            }
+
+            @media screen and (min-width: 412px) {
+                html {
+                    font-size: 12px;
+                }
+            }
+
+            @media screen and (min-width: 600px) {
+                html {
+                    font-size: 16px;
+                }
+            }
+
             table, table tr, table td {
                 border: 0 solid transparent;
             }
 
             .uppercase, .uppercase * {
-                text-transform: uppercase!important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.04em;
             }
 
-            .typography p {
+            .logo {
+                min-height: 3rem;
+                width: auto;
+                background-position: top right;
+                background-repeat: no-repeat;
+                background-size: 3rem auto;
+            }
+
+            h1, h2, h3, h4 {
+                font-weight: 600;
+                font-size: 1rem;
                 margin: 0;
                 padding: 0;
             }
 
-            .typography h1, .typography h2, .typography h3, .typography h4 {
-                font-weight: 600;
+            h1 {
+                font-weight: 400;
             }
 
-            .typography h1 {
-                margin: 0;
-                padding: 1.5em 0 .5em;
-            }
-
-            .typography h3:not(:first-child) {
-                margin: 0;
-                padding: 3em 0 2em;
-            }
-
-            .typography h4:not(:first-child) {
-                margin: 0;
-                padding: 2em 0 1em;
-            }
-
-            .typography a, .typography a:hover, .typography a:active, .typography a:visited, .typography a:focus {
+            a, a:hover, a:active, a:visited, a:focus {
                 color: inherit;
                 text-decoration: underline;
             }
@@ -62,24 +71,75 @@
             ul, ol {
                 padding: 0 4ch;
                 margin: 0;
+                list-style: disc;
             }
 
-            ul.flat {
-                padding: 0;
+            p {
+                font-weight: 400;
                 margin: 0;
-                list-style: none !important;
+                padding: 0;
             }
 
-            ol > li:not(:last-of-type) {
-                padding-bottom: 16px;
+            figure, figcaption {
+                font-weight: 400;
+                margin: 0;
+                padding: 0;
             }
 
+            .btn {
+                background-color: #F0AC00!important;
+                border-radius: 999px;
+                color: #000!important;
+                display: block;
+                font-weight: 600;
+                line-height: 1rem;
+                margin-top: 1rem;
+                padding: 1rem;
+                text-align: center;
+                text-decoration: none!important;
+            }
+
+            .tbl-images table:not([cellpadding="0"]),
+            .tbl-images table[cellpadding="8"] {
+                border-collapse: separate;
+                table-layout: fixed;
+                width: 100%;
+            }
+
+            .tbl-images .tbl-images__td {
+                width: 8.33333333%;
+            }
+
+            .typography h2 {
+                font-size: 1.75rem;
+                line-height: 1.3;
+                padding-bottom: .25rem;
+            }
+
+            .typography p,
+            .typography li {
+                font-size: 1.125rem;
+                line-height: 1.3;
+            }
+
+            ol > li:not(:last-of-type),
             ul > li:not(:last-of-type) {
-                padding-bottom: 16px;
+                padding-bottom: .75rem;
             }
+
+            * + ul,
+            * + ol,
+            * + p {
+                padding-top: 1rem;
+            }
+
+            h1 + p {
+                padding-top: 0rem;
+            }
+
         </mj-style>
     </mj-head>
-    <mj-body background-color="red" width="640px">
+    <mj-body background-color="<?= $bgcolor ?? '#fff' ?>" width="640px">
 
         <mj-raw><?php foreach($blocks as $block): ?></mj-raw>
 
@@ -92,11 +152,11 @@
         <mj-raw><?php endif; ?></mj-raw>
 
         <mj-raw><?php if($block->type() === 'nl-images'): ?></mj-raw>
-        <mj-include path="./nl-images.mjml" />
+        <mj-include path="./nl-images.mjml"/>
         <mj-raw><?php endif; ?></mj-raw>
 
         <mj-raw><?php if($block->type() === 'nl-line'): ?></mj-raw>
-        <mj-include path="./nl-line.mjml" />
+        <mj-include path="./nl-line.mjml"/>
         <mj-raw><?php endif; ?></mj-raw>
 
         <mj-raw><?php if($block->type() === 'nl-footer'): ?></mj-raw>

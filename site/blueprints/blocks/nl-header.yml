@@ -9,13 +9,13 @@ fields:
   logo:
     type: files
     multiple: false
-    uploads: pulse-newsletter-images
+    uploads: newsletter-images
     max: 1
     help: 32px height, transparent PNG
   bgimg:
     type: files
     multiple: false
-    uploads: pulse-newsletter-images
+    uploads: newsletter-images
     max: 1
     help: square
   textcolor:

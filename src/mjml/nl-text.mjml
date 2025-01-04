@@ -1,7 +1,31 @@
 <mj-raw>
     <!-- [nl-text] -->
 </mj-raw>
-<mj-section><mj-column><mj-text>text</mj-text></mj-column></mj-section>
+
+<mj-raw><?php if($block->images_position()->value() === 'before') { ?></mj-raw>
+    <mj-section background-color="<?= $block->bgcolor() ?>" css-class="tbl-images" padding="1.5rem" padding-bottom="0">
+    <mj-include path="./nl-tbl-images.mjml"/>
+    </mj-section>
+<mj-raw><?php } ?></mj-raw>
+
+<mj-section background-color="<?= $block->bgcolor() ?>" css-class="tbl-images"
+            padding-top="<?php e($block->images_position()->value() === 'before', '1.5rem', '2rem') ?>"
+            padding-bottom="<?php e($block->images_position()->value() !== 'before', '1.5rem', '2rem') ?>"
+
+>
+<mj-column>
+    <mj-text color="<?= $block->textcolor() ?>" css-class="typography">
+        <?= $block->text()->kirbytext() ?>
+    </mj-text>
+</mj-column>
+</mj-section>
+
+<mj-raw><?php if($block->images_position()->value() !== 'before') { ?></mj-raw>
+<mj-section background-color="<?= $block->bgcolor() ?>" css-class="tbl-images" padding="1.5rem" padding-top="0">
+    <mj-include path="./nl-tbl-images.mjml"/>
+</mj-section>
+<mj-raw><?php } ?></mj-raw>
+
 <mj-raw>
     <!-- [/nl-text] -->
 </mj-raw>

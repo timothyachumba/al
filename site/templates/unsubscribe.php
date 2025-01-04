@@ -2,9 +2,9 @@
 $email = strip_tags(get('email', ''));
 $token = get('token');
 
-if (!empty($email) && !empty($token) && csrf($token) && site()->unsubscribe($email)): ?>
+if (!empty($email) && !empty($token) && csrf($token)): ?>
 
-    Unsubscribed
+    <?= site()->unsubscribe($email) ? 'Unsubscribed' : 'Error' ?>
 
 <?php else: ?>
 

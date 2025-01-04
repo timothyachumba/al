@@ -57,6 +57,12 @@
       .mj-outlook-group-fix { width:100% !important; }
     </style>
     <![endif]-->
+  <!--[if !mso]><!-->
+  <link href="https://akukolabs.com/dist/assets/newsletter.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://akukolabs.com/dist/assets/newsletter.css);
+  </style>
+  <!--<![endif]-->
   <style type="text/css">
     @media only screen and (min-width:480px) {
       .mj-column-per-100 {
@@ -84,6 +90,22 @@
 
   </style>
   <style type="text/css">
+    html {
+      font-size: 8px;
+    }
+
+    @media screen and (min-width: 412px) {
+      html {
+        font-size: 12px;
+      }
+    }
+
+    @media screen and (min-width: 600px) {
+      html {
+        font-size: 16px;
+      }
+    }
+
     table,
     table tr,
     table td {
@@ -93,40 +115,36 @@
     .uppercase,
     .uppercase * {
       text-transform: uppercase !important;
+      letter-spacing: 0.04em;
     }
 
-    .typography p {
+    .logo {
+      min-height: 3rem;
+      width: auto;
+      background-position: top right;
+      background-repeat: no-repeat;
+      background-size: 3rem auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 600;
+      font-size: 1rem;
       margin: 0;
       padding: 0;
     }
 
-    .typography h1,
-    .typography h2,
-    .typography h3,
-    .typography h4 {
-      font-weight: 600;
+    h1 {
+      font-weight: 400;
     }
 
-    .typography h1 {
-      margin: 0;
-      padding: 1.5em 0 .5em;
-    }
-
-    .typography h3:not(:first-child) {
-      margin: 0;
-      padding: 3em 0 2em;
-    }
-
-    .typography h4:not(:first-child) {
-      margin: 0;
-      padding: 2em 0 1em;
-    }
-
-    .typography a,
-    .typography a:hover,
-    .typography a:active,
-    .typography a:visited,
-    .typography a:focus {
+    a,
+    a:hover,
+    a:active,
+    a:visited,
+    a:focus {
       color: inherit;
       text-decoration: underline;
     }
@@ -135,20 +153,71 @@
     ol {
       padding: 0 4ch;
       margin: 0;
+      list-style: disc;
     }
 
-    ul.flat {
-      padding: 0;
+    p {
+      font-weight: 400;
       margin: 0;
-      list-style: none !important;
+      padding: 0;
     }
 
-    ol>li:not(:last-of-type) {
-      padding-bottom: 16px;
+    figure,
+    figcaption {
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
     }
 
+    .btn {
+      background-color: #F0AC00 !important;
+      border-radius: 999px;
+      color: #000 !important;
+      display: block;
+      font-weight: 600;
+      line-height: 1rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      text-align: center;
+      text-decoration: none !important;
+    }
+
+    .tbl-images table:not([cellpadding="0"]),
+    .tbl-images table[cellpadding="8"] {
+      border-collapse: separate;
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .tbl-images .tbl-images__td {
+      width: 8.33333333%;
+    }
+
+    .typography h2 {
+      font-size: 1.75rem;
+      line-height: 1.3;
+      padding-bottom: .25rem;
+    }
+
+    .typography p,
+    .typography li {
+      font-size: 1.125rem;
+      line-height: 1.3;
+    }
+
+    ol>li:not(:last-of-type),
     ul>li:not(:last-of-type) {
-      padding-bottom: 16px;
+      padding-bottom: .75rem;
+    }
+
+    *+ul,
+    *+ol,
+    *+p {
+      padding-top: 1rem;
+    }
+
+    h1+p {
+      padding-top: 0rem;
     }
 
   </style>
@@ -160,16 +229,16 @@
   <!--<![endif]-->
 </head>
 
-<body style="word-spacing:normal;background-color:red;">
+<body style="word-spacing:normal;background-color:<?= $bgcolor ?? '#fff' ?>;">
   <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;"><?= $preview ?></div>
-  <div style="background-color:red;" lang="und" dir="auto"> <?php foreach($blocks as $block): ?><?php if($block->type() === 'nl-header'): ?><!-- [nl-header] -->
+  <div style="background-color:<?= $bgcolor ?? '#fff' ?>;" lang="und" dir="auto"> <?php foreach($blocks as $block): ?><?php if($block->type() === 'nl-header'): ?><!-- [nl-header] -->
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:640px;" width="640" ><tr><td style="line-height:0;font-size:0;mso-line-height-rule:exactly;"><v:image style="border:0;height:640px;mso-position-horizontal:center;position:absolute;top:0;width:640px;z-index:-3;" src="<?= $block->bgimg()->toFile()?->thumb(['width' => 640*2, 'height' => 640*2, 'crop' => true, 'format' => 'jpeg'])->url() ?>" xmlns:v="urn:schemas-microsoft-com:vml" /><![endif]-->
     <div style="margin:0 auto;max-width:640px;">
       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
         <tbody>
           <tr style="vertical-align:top;">
             <td style="width:0.01%;padding-bottom:100%;mso-padding-bottom-alt:0;" />
-            <td background="<?= $block->bgimg()->toFile()?->thumb(['width' => 640*2, 'height' => 640*2, 'crop' => true, 'format' => 'jpeg'])->url() ?>" style="background:<?= $block->bgcolor() ?> url('<?= $block->bgimg()->toFile()?->thumb(['width' => 640*2, 'height' => 640*2, 'crop' => true, 'format' => 'jpeg'])->url() ?>') no-repeat center center / cover;background-position:center center;background-repeat:no-repeat;padding:100px 0px;vertical-align:top;">
+            <td background="<?= $block->bgimg()->toFile()?->thumb(['width' => 640*2, 'height' => 640*2, 'crop' => true, 'format' => 'jpeg'])->url() ?>" style="background:<?= $block->bgcolor() ?> url('<?= $block->bgimg()->toFile()?->thumb(['width' => 640*2, 'height' => 640*2, 'crop' => true, 'format' => 'jpeg'])->url() ?>') no-repeat center center / cover;background-position:center center;background-repeat:no-repeat;padding:2rem;vertical-align:top;">
               <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" style="width:640px;" width="640" ><tr><td style=""><![endif]-->
               <div class="mj-hero-content" style="margin:0px auto;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;margin:0px;">
@@ -178,6 +247,13 @@
                       <td style="">
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;margin:0px;">
                           <tbody>
+                            <tr>
+                              <td align="left" class="uppercase" style="font-size:0px;padding:0;word-break:break-word;">
+                                <div style="font-family:PolySans, Helvetica, Arial;font-size:1rem;font-weight:600;line-height:1.3;text-align:left;color:<?= $block->textcolor() ?>;">
+                                  <div class="logo" style="background-image: url('<?= $block->logo()->toFile()?->url() ?>')"> <?= $block->text()->kirbytext() ?> </div>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </td>
@@ -193,20 +269,43 @@
       </table>
     </div>
     <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- [/nl-header] --><?php endif; ?><?php if($block->type() === 'nl-text'): ?><!-- [nl-text] -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:640px;" width="640" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div style="margin:0px auto;max-width:640px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+    <!-- [/nl-header] --><?php endif; ?><?php if($block->type() === 'nl-text'): ?><!-- [nl-text] --><?php if($block->images_position()->value() === 'before') { ?> <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="tbl-images-outlook" role="presentation" style="width:640px;" width="640" bgcolor="<?= $block->bgcolor() ?>" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="tbl-images" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;margin:0px auto;max-width:640px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:608px;" ><![endif]-->
+            <td style="direction:ltr;font-size:0px;padding:1.5rem;padding-bottom:0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td align="left" class="" style="" ><![endif]-->
+              <table cellpadding="8" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;"> <?php $files = $block->images()->toFiles(); $r=0; $c=1; foreach($files as $img) {
+    $w = $img->colspan()->toInt();
+    $isLast = $c === $files->count();
+    $caption = $img->caption()->value();
+    if ($r === 0 || $r + $w > 12) { ?><tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
+                    <figure>
+                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                    </figure>
+                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        $c++; } ?> </table>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]--> <?php } ?> <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="tbl-images-outlook" role="presentation" style="width:640px;" width="640" bgcolor="<?= $block->bgcolor() ?>" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="tbl-images" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;margin:0px auto;max-width:640px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:2rem;padding-bottom:<?php e($block->images_position()->value() !== 'before', '1.5rem', '2rem') ?>;padding-top:<?php e($block->images_position()->value() === 'before', '1.5rem', '2rem') ?>;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:636px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
-                      <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
-                        <div style="font-family:PolySans, Helvetica, Arial;font-size:13px;line-height:1;text-align:left;color:#000000;">text</div>
+                      <td align="left" class="typography" style="font-size:0px;padding:0;word-break:break-word;">
+                        <div style="font-family:PolySans, Helvetica, Arial;font-size:1rem;line-height:1;text-align:left;color:<?= $block->textcolor() ?>;"><?= $block->text()->kirbytext() ?></div>
                       </td>
                     </tr>
                   </tbody>
@@ -218,26 +317,49 @@
         </tbody>
       </table>
     </div>
-    <!--[if mso | IE]></td></tr></table><![endif]-->
-    <!-- [/nl-text] --><?php endif; ?><?php if($block->type() === 'nl-images'): ?><!-- [nl-images] -->
-    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:640px;" width="640" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-    <div style="margin:0px auto;max-width:640px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+    <!--[if mso | IE]></td></tr></table><![endif]--> <?php if($block->images_position()->value() !== 'before') { ?> <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="tbl-images-outlook" role="presentation" style="width:640px;" width="640" bgcolor="<?= $block->bgcolor() ?>" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="tbl-images" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;margin:0px auto;max-width:640px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:608px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                  <tbody>
-                    <tr>
-                      <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
-                        <div style="font-family:PolySans, Helvetica, Arial;font-size:13px;line-height:1;text-align:left;color:#000000;">images</div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <td style="direction:ltr;font-size:0px;padding:1.5rem;padding-top:0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td align="left" class="" style="" ><![endif]-->
+              <table cellpadding="8" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;"> <?php $files = $block->images()->toFiles(); $r=0; $c=1; foreach($files as $img) {
+    $w = $img->colspan()->toInt();
+    $isLast = $c === $files->count();
+    $caption = $img->caption()->value();
+    if ($r === 0 || $r + $w > 12) { ?><tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
+                    <figure>
+                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                    </figure>
+                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        $c++; } ?> </table>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]--> <?php } ?><!-- [/nl-text] --><?php endif; ?><?php if($block->type() === 'nl-images'): ?><!-- [nl-images] -->
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="tbl-images-outlook" role="presentation" style="width:640px;" width="640" bgcolor="<?= $block->bgcolor() ?>" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="tbl-images" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;margin:0px auto;max-width:640px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:1.5rem;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td align="left" class="" style="" ><![endif]-->
+              <table cellpadding="8" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;"> <?php $files = $block->images()->toFiles(); $r=0; $c=1; foreach($files as $img) {
+    $w = $img->colspan()->toInt();
+    $isLast = $c === $files->count();
+    $caption = $img->caption()->value();
+    if ($r === 0 || $r + $w > 12) { ?><tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
+                    <figure>
+                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                    </figure>
+                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        $c++; } ?> </table>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>
           </tr>
@@ -280,10 +402,10 @@
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:608px;" ><![endif]-->
+            <td style="direction:ltr;font-size:0px;padding:1rem 2rem;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:636px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><![endif]--> <?php $s=0; foreach($socials as $social): ?> <!--[if mso | IE]><td style="vertical-align:top;width:152px;" ><![endif]-->
+                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><![endif]--> <?php $s=0; foreach($socials as $social): ?> <!--[if mso | IE]><td style="vertical-align:top;width:159px;" ><![endif]-->
                 <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tbody>
@@ -299,7 +421,7 @@
                             <tbody>
                               <tr>
                                 <td align="center" bgcolor="transparent" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:0;background:transparent;" valign="middle">
-                                  <a href="<?= $social->url() ?>" style="display:inline-block;background:transparent;color:<?= $block->textcolor() ?>;font-family:PolySans, Helvetica, Arial;font-size:8px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:0;mso-padding-alt:0px;border-radius:3px;" target="_blank"> <?= $social->title() ?> </a>
+                                  <a href="<?= $social->url() ?>" style="display:inline-block;background:transparent;color:<?= $block->textcolor() ?>;font-family:PolySans, Helvetica, Arial;font-size:1rem;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:0;mso-padding-alt:0px;border-radius:3px;" target="_blank"> <?= $social->title() ?> </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -322,14 +444,19 @@
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:<?= $block->bgcolor() ?>;background-color:<?= $block->bgcolor() ?>;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:16px;text-align:center;">
-              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="typography-outlook" style="vertical-align:top;width:608px;" ><![endif]-->
-              <div class="mj-column-per-100 mj-outlook-group-fix typography" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+            <td style="direction:ltr;font-size:0px;padding:1rem 2rem;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:636px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tbody>
                     <tr>
-                      <td align="center" style="font-size:0px;padding:0px;word-break:break-word;">
-                        <div style="font-family:PolySans, Helvetica, Arial;font-size:7px;line-height:1;text-align:center;color:<?= $block->textcolor() ?>;">Don't want to receive these updates anymore? <a href="<?= $unsubscribeLink ?>">Unsubscribe</a></div>
+                      <td align="center" style="font-size:0px;padding:0;padding-bottom:1rem;word-break:break-word;">
+                        <div style="font-family:PolySans, Helvetica, Arial;font-size:.8rem;line-height:1;text-align:center;color:<?= $block->textcolor() ?>;">Don't want to receive these updates anymore? <a href="<?= $unsubscribeLink ?>">Unsubscribe</a></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="font-size:0px;padding:0;padding-bottom:1rem;word-break:break-word;">
+                        <div style="font-family:PolySans, Helvetica, Arial;font-size:.5rem;line-height:1;text-align:center;color:<?= $block->textcolor() ?>;"><?= $contact ?></div>
                       </td>
                     </tr>
                   </tbody>

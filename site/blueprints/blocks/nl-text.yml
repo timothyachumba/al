@@ -5,7 +5,7 @@ preview: fields
 fields:
   images:
     type: files
-    uploads: pulse-newsletter-images
+    uploads: newsletter-images
     info: "{{ file.dimensions }}"
   images_position:
     label: Position of Images
@@ -13,8 +13,8 @@ fields:
     default: before
     columns: 2
     options:
-      - before Text
-      - after Text
+      before: before Text
+      after: after Text
   text:
     type: textarea
   textcolor:

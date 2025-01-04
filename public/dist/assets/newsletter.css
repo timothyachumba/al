@@ -14,19 +14,8 @@
     font-display: fallback;
 }
 
-.btn {
-    border-radius: 999px;
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    line-height: 16px;
-    margin-top: 16px;
-    padding: 16px;
-    text-transform: uppercase;
-    width: 100%;
-}
-
+/* ADD BUTTON VARIANTS HERE */
 .btn-F0AC00 {
-    background-color: #F0AC00;
-    color: #000;
+    background-color: #F0AC00!important;
+    color: #000!important;
 }

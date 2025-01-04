@@ -5,13 +5,16 @@ tabs:
   content:
     icon: edit
     fields:
+      bgcolor:
+        type: color
+        default: '#fff'
       blocks:
         label: Content
         type: blocks
         fieldsets:
           - nl-header
-          - nl-images
           - nl-text
+          - nl-images
           - nl-line
           - nl-footer
 

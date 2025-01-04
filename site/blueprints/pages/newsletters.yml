@@ -18,6 +18,11 @@ tabs:
       left:
         width: 2/3
         sections:
+          content:
+            type: fields
+            fields:
+              contact:
+                type: text
           newsletters:
             type: pages
             template: newsletter

@@ -21,7 +21,8 @@
     "prefix:css": "postcss --use autoprefixer -b 'last 5 versions' public/dist/assets/styles.css -o public/dist/assets/styles.css",
     "compress:css": "sass public/dist/assets/styles.css public/dist/assets/styles.min.css --style compressed",
     "watch": "npm-run-all --parallel watch:sass watch:js serve",
-    "build": "npm-run-all compile:sass prefix:css compress:css"
+    "build": "npm-run-all compile:sass prefix:css compress:css",
+    "mjml": "mjml src/mjml/newsletter.mjml -o site/snippets/newsletter.html.php --config.validationLevel skip"
   },
   "dependencies": {
     "dynamic-marquee": "^2.6.3",

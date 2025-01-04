@@ -5,7 +5,7 @@ preview: fields
 fields:
   images:
     type: files
-    uploads: pulse-newsletter-images
+    uploads: newsletter-images
     info: "{{ file.dimensions }}"
   bgcolor:
     type: color

@@ -91,6 +91,8 @@ Kirby::plugin('akukolabs/newsletter', [
                         'blocks' => $this->blocks()->toBlocks(),
                         'unsubscribeLink' => site()->unsubscribeLink(),
                         'socials' => site()->socials()->toStructure(),
+                        'bgcolor' => $this->bgcolor()->value(),
+                        'contact' => $this->parent()->contact()->ktr(),
                     ], true),
                 ],
                 // 'transport' => kirby()->system()->isLocal() ? null : postmark()->transport(),

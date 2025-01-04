@@ -1,7 +1,9 @@
 <mj-raw>
     <!-- [nl-images] -->
 </mj-raw>
-<mj-section><mj-column><mj-text>images</mj-text></mj-column></mj-section>
+<mj-section background-color="<?= $block->bgcolor() ?>" css-class="tbl-images" padding="1.5rem">
+    <mj-include path="./nl-tbl-images.mjml"/>
+</mj-section>
 <mj-raw>
     <!-- [/nl-images] -->
 </mj-raw>
