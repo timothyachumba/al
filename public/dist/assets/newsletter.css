@@ -1,16 +1,16 @@
 @font-face {
-    font-family: "PolySans";
+    font-family: 'PolySans';
     font-weight: 400;
     font-style: normal;
-    src: url("/dist/assets/fonts/ps-regular.woff2") format("woff2");
+    src: url(https://akukolabs.com/dist/assets/fonts/ps-regular.woff2) format('woff2');
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "PolySans";
+    font-family: 'PolySans';
     font-weight: 600;
     font-style: normal;
-    src: url("/dist/assets/fonts/ps-bold.woff2") format("woff2");
+    src: url(https://akukolabs.com/dist/assets/fonts/ps-bold.woff2) format('woff2');
     font-display: fallback;
 }
 
