@@ -9,5 +9,5 @@ fields:
     info: "{{ file.dimensions }}"
   bgcolor:
     type: color
-    default: '#fff'
+    default: '#EBE8E3'
     width: 1/2
