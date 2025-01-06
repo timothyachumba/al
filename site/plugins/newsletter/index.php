@@ -9,7 +9,7 @@ Kirby::plugin('akukolabs/newsletter', [
     'options' => [
         'cache' => true, // used for flagging published newsletters
         'sender' => [
-            'email' => 'info@akukolabs.com',
+            'email' => 'timothy@akukolabs.com',
             'name' => 'Akuko Labs',
         ],
         'magic-email-address' => 'newsletters@mg.buttondown.email',

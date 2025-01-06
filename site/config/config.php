@@ -4,10 +4,11 @@ return [
     'debug' => false,
 
     'akukolabs.newsletter.sender' => [
-        'email' => 'info@akukolabs.com', // TODO: @timothy set email matching the one in Buttondown
+        'email' => 'timothy@akukolabs.com', // TODO: @timothy set email matching the one in Buttondown
         'name' => 'Akuko Labs'
     ],
     'akukolabs.newsletter.buttondown.apiKey' => 'f9af7813-e430-4da6-b85c-2bb3d160dabd',
+    'akukolabs.newsletter.magic-email-address' => '',
 
     'thumbs' => [
         'presets' => [

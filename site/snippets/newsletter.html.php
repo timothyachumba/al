@@ -91,7 +91,7 @@
   </style>
   <style type="text/css">
     html {
-      font-size: 8px;
+      font-size: 12px;
     }
 
     @media screen and (min-width: 412px) {
