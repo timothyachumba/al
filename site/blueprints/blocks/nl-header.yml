@@ -1,0 +1,28 @@
+name: Header
+# icon: text-top
+wysiwyg: true
+preview: fields
+fields:
+  text:
+    type: textarea
+    help: use H1 for heading
+  logo:
+    type: files
+    multiple: false
+    uploads: newsletter-images
+    max: 1
+    help: 32px height, transparent PNG
+  bgimg:
+    type: files
+    multiple: false
+    uploads: newsletter-images
+    max: 1
+    help: square
+  textcolor:
+    type: color
+    default: '#000'
+    width: 1/2
+  bgcolor:
+    type: color
+    default: '#fff'
+    width: 1/2

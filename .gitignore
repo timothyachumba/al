@@ -46,6 +46,7 @@ node_modules
 /storage/cache/*
 !/storage/cache/.gitkeep
 /site/plugins/*
+!/site/plugins/newsletter
 
 # k4 pr missing
 /storage/retour.json

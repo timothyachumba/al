@@ -1,0 +1,22 @@
+<mj-raw>
+    <!-- [nl-header] -->
+</mj-raw>
+<mj-hero mode="fluid-height"
+         background-width="640px"
+         background-height="640px"
+         background-url="<?= $block->bgimg()->toFile()?->thumb(['width' => 640*2, 'height' => 640*2, 'crop' => true, 'format' => 'jpeg'])->url() ?>"
+         padding="2rem"
+         background-color="<?= $block->bgcolor() ?>">
+    <mj-text css-class="uppercase"
+             color="<?= $block->textcolor() ?>"
+             align="left"
+             line-height="1.3"
+             font-weight="600">
+        <div class="logo" style="background-image: url('<?= $block->logo()->toFile()?->url() ?>')">
+        <?= $block->text()->kirbytext() ?>
+        </div>
+    </mj-text>
+</mj-hero>
+<mj-raw>
+    <!-- [/nl-header] -->
+</mj-raw>

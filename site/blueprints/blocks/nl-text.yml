@@ -1,0 +1,27 @@
+name: Text
+icon: text
+wysiwyg: true
+preview: fields
+fields:
+  images:
+    type: files
+    uploads: newsletter-images
+    info: "{{ file.dimensions }}"
+  images_position:
+    label: Position of Images
+    type: radio
+    default: before
+    columns: 2
+    options:
+      before: before Text
+      after: after Text
+  text:
+    type: textarea
+  textcolor:
+    type: color
+    default: '#000'
+    width: 1/2
+  bgcolor:
+    type: color
+    default: '#fff'
+    width: 1/2

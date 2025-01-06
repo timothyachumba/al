@@ -1,0 +1,13 @@
+name: Line ------------------------------------------------------------------------------------------
+icon: divider
+wysiwyg: true
+preview: fields
+fields:
+  bordercolor:
+    type: color
+    default: '#D9D9D9'
+    width: 1/2
+  bgcolor:
+    type: color
+    default: '#fff'
+    width: 1/2
