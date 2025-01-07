@@ -10,7 +10,7 @@
         case 3: echo 'right'; break;
         default:  echo 'center';
     }
-?>" color="<?= $block->textcolor() ?>" mj-class="btn-plain" font-size=".8rem" css-class="uppercase" href="<?= $social->url() ?>"><?= $social->title() ?></mj-button></mj-column>
+?>" color="<?= $block->textcolor() ?>" mj-class="btn-plain" font-size=".8rem" css-class="uppercase" href="<?= $social->url() ?>"><?= $social->icon() ?></mj-button></mj-column>
     <mj-raw><?php $s++; endforeach; ?></mj-raw>
     </mj-group>
 </mj-section>
