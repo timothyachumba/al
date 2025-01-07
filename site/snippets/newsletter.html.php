@@ -356,7 +356,7 @@
     if ($r === 0 || $r + $w > 12) { ?><tr><?php }
         ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
                     <figure>
-                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="text-align:center;font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
                     </figure>
                   </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
         $c++; } ?> </table>
