@@ -58,9 +58,12 @@
     </style>
     <![endif]-->
   <!--[if !mso]><!-->
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
   <link href="https://akukolabs.com/dist/assets/newsletter.css" rel="stylesheet" type="text/css">
   <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
     @import url(https://akukolabs.com/dist/assets/newsletter.css);
+
   </style>
   <!--<![endif]-->
   <style type="text/css">
@@ -280,12 +283,11 @@
     $w = $img->colspan()->toInt();
     $isLast = $c === $files->count();
     $caption = $img->caption()->value();
+    $link = $img->link()->value();
     if ($r === 0 || $r + $w > 12) { ?><tr><?php }
-        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
-                    <figure>
-                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
-                    </figure>
-                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>"> <?php if (!empty($link)) { ?><a href="<?php url($link) ?>" target="_blank" rel="nofollow" style="text-decoration:none!important;"><?php } ?> <figure>
+                        <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                      </figure> <?php if (!empty($link)) { ?></a><?php } ?> </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
         $c++; } ?> </table>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>
@@ -328,12 +330,11 @@
     $w = $img->colspan()->toInt();
     $isLast = $c === $files->count();
     $caption = $img->caption()->value();
+    $link = $img->link()->value();
     if ($r === 0 || $r + $w > 12) { ?><tr><?php }
-        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
-                    <figure>
-                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
-                    </figure>
-                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>"> <?php if (!empty($link)) { ?><a href="<?php url($link) ?>" target="_blank" rel="nofollow" style="text-decoration:none!important;"><?php } ?> <figure>
+                        <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                      </figure> <?php if (!empty($link)) { ?></a><?php } ?> </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
         $c++; } ?> </table>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>
@@ -353,12 +354,11 @@
     $w = $img->colspan()->toInt();
     $isLast = $c === $files->count();
     $caption = $img->caption()->value();
+    $link = $img->link()->value();
     if ($r === 0 || $r + $w > 12) { ?><tr><?php }
-        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
-                    <figure>
-                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="text-align:center;font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
-                    </figure>
-                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>"> <?php if (!empty($link)) { ?><a href="<?php url($link) ?>" target="_blank" rel="nofollow" style="text-decoration:none!important;"><?php } ?> <figure>
+                        <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                      </figure> <?php if (!empty($link)) { ?></a><?php } ?> </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
         $c++; } ?> </table>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>

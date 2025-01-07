@@ -17,7 +17,7 @@
      height="2rem"
      src="<?php
       if ($file = $social->icon()->toFile()) {
-        if ($filePNG = $socials->parent()->files(str_replace($file->extension(),'.png', $file->filename())) {
+        if ($filsePNG = $socials->parent()->files(str_replace($file->extension(),'.png', $file->filename())) {
             echo $filePNG->url();
         }
       }
