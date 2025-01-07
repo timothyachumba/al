@@ -3,25 +3,20 @@
 </mj-raw>
 <mj-section background-color="<?= $block->bgcolor() ?>" padding="1rem 2rem">
     <mj-group>
-    <mj-raw><?php $s=0; foreach($socials as $social): ?></mj-raw>
-    <mj-column width="25%"><mj-button align="<?php
-    switch($s) {
-        case 0: echo 'left'; break;
-        case count($socials)-1: echo 'right'; break;
-        default:  echo 'center';
-    }
-?>"
+    <mj-raw><?php $s=0; foreach($socials as $social):
+    $file = $social->icon()->toFile();
+    if ($file) {
+        if ($filePNG = site()->file($file->name().'.png')) {
+            $file = $filePNG;
+        }
+    } ?></mj-raw>
+    <mj-column width="25%"><mj-image align="center"
      mj-class="btn-plain"
      css-class="uppercase"
      href="<?= $social->url() ?>"
-     height="2rem"
-     src="<?php
-      if ($file = $social->icon()->toFile()) {
-        if ($filePNG = $socials->parent()->files(str_replace($file->extension(),'.png', $file->filename())) {
-            echo $filePNG->url();
-        }
-      }
-      ?>" />
+     width="28"
+     height="28>"
+     src="<?= $file?->url() ?>" />
     </mj-column>
     <mj-raw><?php $s++; endforeach; ?></mj-raw>
     </mj-group>

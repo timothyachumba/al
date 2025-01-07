@@ -58,9 +58,12 @@
     </style>
     <![endif]-->
   <!--[if !mso]><!-->
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
   <link href="https://akukolabs.com/dist/assets/newsletter.css" rel="stylesheet" type="text/css">
   <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
     @import url(https://akukolabs.com/dist/assets/newsletter.css);
+
   </style>
   <!--<![endif]-->
   <style type="text/css">
@@ -86,6 +89,18 @@
     .moz-text-html .mj-column-per-25 {
       width: 25% !important;
       max-width: 25%;
+    }
+
+  </style>
+  <style type="text/css">
+    @media only screen and (max-width:479px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
     }
 
   </style>
@@ -280,12 +295,11 @@
     $w = $img->colspan()->toInt();
     $isLast = $c === $files->count();
     $caption = $img->caption()->value();
+    $link = $img->link()->value();
     if ($r === 0 || $r + $w > 12) { ?><tr><?php }
-        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
-                    <figure>
-                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
-                    </figure>
-                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>"> <?php if (!empty($link)) { ?><a href="<?php url($link) ?>" target="_blank" rel="nofollow" style="text-decoration:none!important;"><?php } ?> <figure>
+                        <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                      </figure> <?php if (!empty($link)) { ?></a><?php } ?> </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
         $c++; } ?> </table>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>
@@ -328,12 +342,11 @@
     $w = $img->colspan()->toInt();
     $isLast = $c === $files->count();
     $caption = $img->caption()->value();
+    $link = $img->link()->value();
     if ($r === 0 || $r + $w > 12) { ?><tr><?php }
-        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
-                    <figure>
-                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
-                    </figure>
-                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>"> <?php if (!empty($link)) { ?><a href="<?php url($link) ?>" target="_blank" rel="nofollow" style="text-decoration:none!important;"><?php } ?> <figure>
+                        <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                      </figure> <?php if (!empty($link)) { ?></a><?php } ?> </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
         $c++; } ?> </table>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>
@@ -353,12 +366,11 @@
     $w = $img->colspan()->toInt();
     $isLast = $c === $files->count();
     $caption = $img->caption()->value();
+    $link = $img->link()->value();
     if ($r === 0 || $r + $w > 12) { ?><tr><?php }
-        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
-                    <figure>
-                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
-                    </figure>
-                  </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
+        ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>"> <?php if (!empty($link)) { ?><a href="<?php url($link) ?>" target="_blank" rel="nofollow" style="text-decoration:none!important;"><?php } ?> <figure>
+                        <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                      </figure> <?php if (!empty($link)) { ?></a><?php } ?> </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
         $c++; } ?> </table>
               <!--[if mso | IE]></td></tr></table><![endif]-->
             </td>
@@ -405,23 +417,25 @@
             <td style="direction:ltr;font-size:0px;padding:1rem 2rem;text-align:center;">
               <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="width:636px;" ><![endif]-->
               <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
-                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><![endif]--> <?php $s=0; foreach($socials as $social): ?> <!--[if mso | IE]><td style="vertical-align:top;width:159px;" ><![endif]-->
+                <!--[if mso | IE]><table border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><![endif]--> <?php $s=0; foreach($socials as $social):
+    $file = $social->icon()->toFile();
+    if ($file) {
+        if ($filePNG = site()->file($file->name().'.png')) {
+            $file = $filePNG;
+        }
+    } ?> <!--[if mso | IE]><td style="vertical-align:top;width:159px;" ><![endif]-->
                 <div class="mj-column-per-25 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:25%;">
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tbody>
                       <tr>
-                        <td align="<?php
-    switch($s) {
-        case 0: echo 'left'; break;
-        case 3: echo 'right'; break;
-        default:  echo 'center';
-    }
-?>" class="uppercase" style="font-size:0px;padding:0;word-break:break-word;">
-                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
+                        <td align="center" class="uppercase" style="font-size:0px;padding:0;word-break:break-word;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                             <tbody>
                               <tr>
-                                <td align="center" bgcolor="transparent" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:0;background:transparent;" valign="middle">
-                                  <a href="<?= $social->url() ?>" style="display:inline-block;background:transparent;color:<?= $block->textcolor() ?>;font-family:PolySans, Helvetica, Arial;font-size:.8rem;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:0;mso-padding-alt:0px;border-radius:3px;" target="_blank"> <?= $social->title() ?> </a>
+                                <td style="width:28px;">
+                                  <a href="<?= $social->url() ?>" target="_blank">
+                                    <img alt="" src="<?= $file?->url() ?>" style="border:0;display:block;outline:none;text-decoration:none;height:28>;width:100%;font-size:13px;" width="28" height="28" />
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>
