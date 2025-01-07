@@ -331,7 +331,7 @@
     if ($r === 0 || $r + $w > 12) { ?><tr><?php }
         ?> <td class="tbl-images__td" colspan="<?= $w ?>" style="vertical-align:top;width:<?= 100*$w/12 ?>%;<?php e(empty($caption), 'line-height:0;font-size:0;') ?>">
                     <figure>
-                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:1rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
+                      <img style="width: 100%" src="<?= $img->thumb('nl-cols-'.$w)->url() ?>" alt="<?= $img->alt() ?>" /> <?php if(!empty($caption)) { ?> <figcaption style="font-size:.8rem;color:<?= $block->textcolor() ?>"><?= $img->caption()->html() ?></figcaption> <?php } ?>
                     </figure>
                   </td> <?php $r += $w; if ($r >= 12 || $isLast) { $r = 0; ?></tr><?php }
         $c++; } ?> </table>
@@ -421,7 +421,7 @@
                             <tbody>
                               <tr>
                                 <td align="center" bgcolor="transparent" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:0;background:transparent;" valign="middle">
-                                  <a href="<?= $social->url() ?>" style="display:inline-block;background:transparent;color:<?= $block->textcolor() ?>;font-family:PolySans, Helvetica, Arial;font-size:1rem;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:0;mso-padding-alt:0px;border-radius:3px;" target="_blank"> <?= $social->title() ?> </a>
+                                  <a href="<?= $social->url() ?>" style="display:inline-block;background:transparent;color:<?= $block->textcolor() ?>;font-family:PolySans, Helvetica, Arial;font-size:.8rem;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:0;mso-padding-alt:0px;border-radius:3px;" target="_blank"> <?= $social->title() ?> </a>
                                 </td>
                               </tr>
                             </tbody>
