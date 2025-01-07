@@ -11,6 +11,8 @@ fields:
   caption:
     label: Figure Caption
     type: text
+  link:
+    type: url
   colspan:
     label: Width in Columns
     type: radio
