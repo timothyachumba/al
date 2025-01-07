@@ -4,8 +4,7 @@
 <mj-section background-color="<?= $block->bgcolor() ?>" padding="1rem 2rem">
     <mj-group>
     <mj-raw><?php $s=0; foreach($socials as $social): ?></mj-raw>
-    <mj-column width="25%">
-        <mj-image align="<?php
+    <mj-column width="25%"><mj-button align="<?php
     switch($s) {
         case 0: echo 'left'; break;
         case 3: echo 'right'; break;
