@@ -7,7 +7,7 @@
     <mj-column width="25%"><mj-button align="<?php
     switch($s) {
         case 0: echo 'left'; break;
-        case 3: echo 'right'; break;
+        case count($socials)-1: echo 'right'; break;
         default:  echo 'center';
     }
 ?>"
