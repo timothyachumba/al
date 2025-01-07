@@ -12,7 +12,6 @@
         default:  echo 'center';
     }
 ?>"
-     color="<?= $block->textcolor() ?>"
      mj-class="btn-plain"
      css-class="uppercase"
      href="<?= $social->url() ?>"
