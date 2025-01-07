@@ -421,7 +421,7 @@
                             <tbody>
                               <tr>
                                 <td align="center" bgcolor="transparent" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:0;background:transparent;" valign="middle">
-                                  <a href="<?= $social->url() ?>" style="display:inline-block;background:transparent;color:<?= $block->textcolor() ?>;font-family:PolySans, Helvetica, Arial;font-size:.8rem;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:0;mso-padding-alt:0px;border-radius:3px;" target="_blank"> <?= $social->icon()->toFile() ?> </a>
+                                  <a href="<?= $social->url() ?>" style="display:inline-block;background:transparent;color:<?= $block->textcolor() ?>;font-family:PolySans, Helvetica, Arial;font-size:.8rem;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:0;mso-padding-alt:0px;border-radius:3px;" target="_blank"> <?= $social->title() ?> </a>
                                 </td>
                               </tr>
                             </tbody>
