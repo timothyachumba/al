@@ -58,10 +58,9 @@
     </style>
     <![endif]-->
   <!--[if !mso]><!-->
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
+
   <link href="https://akukolabs.com/dist/assets/newsletter.css" rel="stylesheet" type="text/css">
   <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
     @import url(https://akukolabs.com/dist/assets/newsletter.css);
 
   </style>

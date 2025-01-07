@@ -60,6 +60,14 @@ tabs:
                     type: files
                     layout: cards
                     limit: 1
+          assets:
+            label: Uploaded Files
+            type: files
+            template: false
+            layout: table
+            text: "{{ file.filename }}"
+            size: small
+            multiple: true
 
   seo: seo/site
 
