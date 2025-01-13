@@ -12,6 +12,4 @@ if ($action === 'confirm') {
   // Handle unsubscribed
 } else {
   go($page->children()->listed()->first()?->url() ?? 'home');
-  exit;
 }
-?>
