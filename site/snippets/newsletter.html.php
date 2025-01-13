@@ -106,6 +106,7 @@
   <style type="text/css">
     html {
       font-size: 12px;
+      padding: 24px 0;
     }
 
     @media screen and (min-width: 412px) {
