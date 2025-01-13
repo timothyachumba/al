@@ -1,0 +1,51 @@
+@use "../libs/mixins"
+@use "../libs/tokens"
+@use "../libs/type"
+@use "../snippets/global/navigation"
+
+body.newsletters
+  background-color: var(--textColor)
+
+  nav
+    display: none
+
+  .content-container
+    width: 100vw
+    height: 100vh
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .content
+      @include type.caption
+      text-align: center
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-direction: column
+      gap: mixins.rscale(8,16)
+      max-width: 640px
+      padding: 0 16px
+
+
+      h1
+        @include type.title
+        white-space: normal
+
+      p, a
+        @include type.caption
+        white-space: normal
+        text-align: justify
+        text-align: center
+
+      .button
+        margin: mixins.rscale(16,24) auto 0
+        background-color: var(--backgroundColor)
+        color: var(--textColor)
+      
+      .social
+        display: flex
+        list-style-type: none
+        gap: mixins.rscale(24,40)
+        margin: mixins.rscale(32,40) 0 0
+      

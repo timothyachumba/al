@@ -2219,4 +2219,61 @@ body.project .layout.aperture-priority .main-layout {
   }
 }
 
+body.newsletters {
+  background-color: var(--textColor);
+}
+body.newsletters nav {
+  display: none;
+}
+body.newsletters .content-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body.newsletters .content-container .content {
+  font-family: "PolySans", sans-serif;
+  font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: clamp(0.4444444444rem, 0.9523809524vw, 0.8888888889rem);
+  max-width: 640px;
+  padding: 0 16px;
+}
+body.newsletters .content-container .content h1 {
+  font-family: "PP Editorial New", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 32px;
+  white-space: normal;
+}
+body.newsletters .content-container .content p, body.newsletters .content-container .content a {
+  font-family: "PolySans", sans-serif;
+  font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: normal;
+  text-align: justify;
+  text-align: center;
+}
+body.newsletters .content-container .content .button {
+  margin: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem) auto 0;
+  background-color: var(--backgroundColor);
+  color: var(--textColor);
+}
+body.newsletters .content-container .content .social {
+  display: flex;
+  list-style-type: none;
+  gap: clamp(1.3333333333rem, 2.380952381vw, 2.2222222222rem);
+  margin: clamp(1.7777777778rem, 2.380952381vw, 2.2222222222rem) 0 0;
+}
+
 /*# sourceMappingURL=styles.css.map */

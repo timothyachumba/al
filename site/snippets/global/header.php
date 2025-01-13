@@ -19,8 +19,8 @@
   </script>
 </head>
 <?php
-$backgroundColor = $page->backgroundcolor()->isNotEmpty() ? $page->backgroundcolor() : '#000000';
-$textColor = $page->textcolor()->isNotEmpty() ? $page->textcolor() : '#ffffff';
+$backgroundColor = $page->backgroundcolor()->isNotEmpty() ? $page->backgroundcolor() : '#171717';
+$textColor = $page->textcolor()->isNotEmpty() ? $page->textcolor() : '#EBE8E3';
 ?>
 <body class="<?= $template ?>" data-bgcolor="<?= $backgroundColor ?>" data-textcolor="<?= $textColor ?>">
 <div id="customCursor">
