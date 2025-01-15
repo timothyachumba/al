@@ -53,6 +53,7 @@ Kirby::plugin('akukolabs/newsletter', [
                 foreach ($campaigns as $campaign) {
                     if ($campaign->name === $this->title()->value()) {
                         $found = $campaign;
+                        break 2;
                     }
                 }
             } while ($campaigns = $campaigns->next());
@@ -66,7 +67,7 @@ Kirby::plugin('akukolabs/newsletter', [
                 ]);
             }
 
-            $found->subject = $emailData['subject']; // TODO: make sure this works
+            $found->subject = $emailData['subject'];
             $found->html = $emailData['body']['html'];
             $found->save();
 

@@ -359,8 +359,6 @@ function initCursorContrastDetection() {
         : userDarkColor;
     }
 
-    console.log('Special case:', isSpecialCase);
-
     // // Apply cursor color directly (or via classes if desired)
     // cursor.style.backgroundColor = cursorColor;
 
@@ -395,16 +393,6 @@ function initCursorContrastDetection() {
 
     // Debug logging
     const contrastRatio = computeContrast(chosenColor, cursorColor);
-    console.log(
-      `Sampled BG Color: ${chosenColor}`,
-      `| Cursor Color: ${cursorColor}`,
-      `| From <img>: ${fromImageTag}`,
-      `| From BG Image: ${fromBackgroundImage}`,
-      `| Image Sampling Success: ${imageSamplingSuccess}`,
-      `| Contrast Ratio: ${contrastRatio ? contrastRatio.toFixed(2) : 'N/A'}`,
-      '| Special Case:', isSpecialCase,
-      '| Cursor Color (P3):', cursorColorP3
-    );
   });
 }
 
