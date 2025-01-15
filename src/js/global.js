@@ -395,16 +395,6 @@ function initCursorContrastDetection() {
 
     // Debug logging
     const contrastRatio = computeContrast(chosenColor, cursorColor);
-    console.log(
-      `Sampled BG Color: ${chosenColor}`,
-      `| Cursor Color: ${cursorColor}`,
-      `| From <img>: ${fromImageTag}`,
-      `| From BG Image: ${fromBackgroundImage}`,
-      `| Image Sampling Success: ${imageSamplingSuccess}`,
-      `| Contrast Ratio: ${contrastRatio ? contrastRatio.toFixed(2) : 'N/A'}`,
-      '| Special Case:', isSpecialCase,
-      '| Cursor Color (P3):', cursorColorP3
-    );
   });
 }
 
