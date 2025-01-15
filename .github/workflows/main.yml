@@ -86,7 +86,6 @@ jobs:
             **/.DS_Store
             **/package.json
             **/package-lock.json
-            **/composer.json
             **/composer.lock
             **/esbuild.config.js
             **/*.sass
