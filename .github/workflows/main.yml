@@ -1,19 +1,75 @@
 name: FTP Deploy
 
 on:
+  workflow_call:
   push:
     branches:
       - main
+
 jobs:
-  ftp-deploy:
+  tests:
     runs-on: ubuntu-latest
+    env:
+      extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+    strategy:
+      matrix:
+        php: [8.2]
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Setup cache environment
+        id: extcache
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.extensions }}
+          key: extensions-${{ hashFiles('composer.lock') }}
+
+      - name: Cache extensions
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.extcache.outputs.dir }}
+          key: ${{ steps.extcache.outputs.key }}
+          restore-keys: ${{ steps.extcache.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.extensions }}
+          tools: composer:v2
+          coverage: none
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install composer Dependencies
+        run: |
+          composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Cache node dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-${{ hashFiles('package-lock.json') }}
+
+      - name: Install npm Dependencies and build assets
+        run: |
+          npm install
+          npm run build
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -21,16 +77,16 @@ jobs:
           server-dir: 'akukolabs/'
           local-dir: './'
           exclude: |
-            - **/.git*'
-            - **/node_modules/**
-            - **/src/**
-            - **/storage/**
-            - **/.env
-            - **/README.md
-            - **/.DS_Store
-            - **/package.json
-            - **/package-lock.json
-            - **/composer.json
-            - **/composer.lock
-            - **/esbuild.config.js
-            - **/*.sass
+            **/.git*
+            **/node_modules/**
+            **/src/**
+            **/storage/**
+            **/.env
+            **/README.md
+            **/.DS_Store
+            **/package.json
+            **/package-lock.json
+            **/composer.json
+            **/composer.lock
+            **/esbuild.config.js
+            **/*.sass
