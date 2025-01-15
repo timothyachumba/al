@@ -359,8 +359,6 @@ function initCursorContrastDetection() {
         : userDarkColor;
     }
 
-    console.log('Special case:', isSpecialCase);
-
     // // Apply cursor color directly (or via classes if desired)
     // cursor.style.backgroundColor = cursorColor;
 
