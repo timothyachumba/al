@@ -18,17 +18,15 @@ class SubscribeAction extends Action
     public function run(): void
     {
         try {
+            $tags = [(string) $this->submission()->valueFor('project')];
+            $tags = array_filter($tags, fn ($tag) => ! empty($tag));
+
             $mailcoach = new Mailcoach(env('MAILCOACH_API_KEY'), env("MAILCOACH_API_ENDPOINT"));
             $subscriber = $mailcoach->createSubscriber(env('MAILCOACH_LIST_AKUKOLABS'), [
                 'email' => (string) $this->submission()->valueFor('email'),
+                'tags' => $tags,
             ]);
-            /* TODO: get tags to work
-            $tags = [
-                (string) $this->submission()->valueFor('project'),
-            ];
-            $tags = array_filter($tags, fn($i) => !empty($i));
-            $subscriber->addTags($tags);
-            */
+
         } catch (Throwable $e) {
             $this->cancel($e->getMessage());
         }
