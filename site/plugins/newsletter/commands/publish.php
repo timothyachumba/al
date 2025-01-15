@@ -21,41 +21,23 @@ return [
         ],
     ] + Janitor::ARGS,
     'command' => static function (CLI $cli): void {
-        $page = page($cli->arg('page'));
         $to = $cli->arg('to');
-        if (empty($to)) {
-            $to = option('akukolabs.newsletter.magic-email-address');
-        }
+        $page = page($cli->arg('page'));
+        $cli->out('Sending email to <'.$to.'> ...');
+
         $success = false;
-
-        // only send once per email/listid
-        $key = md5('newsletter-published-'.$to.'-'.$page->uuid()->id());
-        $hasBeenSent = kirby()->cache('akukolabs.newsletter')->get($key);
-        if ($hasBeenSent) {
-            $message = "$hasBeenSent <$to>";
-        } else {
-            // from, subject, body[text,html], transport
-            $emailData = $page->toEmailData();
-
-            $cli->out('Publishing Newsletter to <'.$to.'> ...');
-
-            try {
-                $message = $to;
-                $success = $cli->kirby()->email(
-                    array_merge($emailData, [
-                        'to' => $to,
-                        'from' => new User(option('akukolabs.newsletter.sender')),
-                    ]),
-                )->isSent();
-                if ($success) {
-                    kirby()->cache('akukolabs.newsletter')->set($key, date('c'));
-                }
-            } catch (Exception $exception) {
-                $message = $exception->getMessage();
+        try {
+            $campaign = $page->campaign();
+            if ($campaign && $campaign->sentAt === null && $campaign->send()) {
+                $success = true;
+            } else {
+                $message = 'Could not send. Either not found or already sent.';
             }
-
-            $success ? $cli->success('Successfully sent published Newsletter.') : $cli->error($message);
+        } catch (Exception $exception) {
+            $message = $exception->getMessage();
         }
+
+        $success ? $cli->success('Successfully sent published Newsletter.') : $cli->error($message);
 
         janitor()->data($cli->arg('command'), [
             'status' => $success ? 200 : 500,

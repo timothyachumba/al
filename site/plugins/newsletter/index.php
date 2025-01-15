@@ -1,81 +1,22 @@
 <?php
 
-use Kirby\Cms\Response;
-use Kirby\Http\Remote;
 use Kirby\Toolkit\Str;
-use Kirby\Toolkit\V;
+use Spatie\MailcoachSdk\Mailcoach;
+use tobimori\DreamForm\DreamForm;
+
+@include_once __DIR__ . '/dreamform/SubscribeAction.php';
+DreamForm::register(SubscribeAction::class);
 
 Kirby::plugin('akukolabs/newsletter', [
     'options' => [
-        'cache' => true, // used for flagging published newsletters
         'sender' => [
             'email' => 'timothy@akukolabs.com',
             'name' => 'Akuko Labs',
         ],
-        'magic-email-address' => 'newsletters@mg.buttondown.email',
-        'buttondown' => ['api-key' => null],
     ],
-    'routes' => [
-        [
-            'pattern' => 'newsletter/unsubscribe',
-            'method' => 'GET|POST',
-            'action' => function () {
-                return site()->visit(new \Kirby\Cms\Page([
-                    'template' => 'unsubscribe',
-                    'slug' => 'unsubscribe',
-                    'parent' => page('newsletter'),
-                ]));
-            }
-        ],
-        [
-            'pattern' => 'newsletter/unsubscribe/(:any)',
-            'method' => 'DELETE',
-            'action' => function ($email) {
-                $email = strip_tags(urldecode($email));
-
-                return Response::json([], site()->unsubscribe($email) ? 200 : 400);
-            }
-        ],
-        [
-            'pattern' => 'newsletter/unsubscribe/(:any)/(:any)',
-            'action' => function ($email, $token) {
-                $email = strip_tags(urldecode($email));
-                $token = strip_tags($token);
-
-                if (sha1($email.__DIR__) === $token) {
-                    if (site()->unsubscribe($email)) {
-                        die('Unsubscribed');
-                        // go(page('home')->url().'?newsletter=unsubscribed');
-                    }
-                }
-
-                go('home');
-            }
-        ],
-    ],
-    'siteMethods' => [
-        'unsubscribeLink' => function(?string $email = null) {
-            if (empty($email)) {
-                return site()->url() . '/newsletter/unsubscribe';
-            }
-
-            return site()->url() . '/newsletter/unsubscribe/' . urlencode($email) . '/' . sha1($email.__DIR__);
-        },
-        'unsubscribe' => function($email): bool {
-            $BUTTONDOWN_API_KEY = option('akukolabs.newsletter.buttondown.api-key');
-            if (empty($BUTTONDOWN_API_KEY) || !V::email($email)) {
-                return false;
-            }
-
-            $response = Remote::delete("https://api.buttondown.com/v1/subscribers/$email", [
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Authorization' => "Token $BUTTONDOWN_API_KEY"
-                ],
-            ]);
-
-            return $response->code() === 200;
-        },
+    'commands' => [
+        'newsletter:test' => require __DIR__ . '/commands/test.php',
+        'newsletter:publish' => require __DIR__ . '/commands/publish.php',
     ],
     'pageMethods' => [
         'toEmailData' => function() {
@@ -89,7 +30,7 @@ Kirby::plugin('akukolabs/newsletter', [
                         ],
                         'title' => $this->title()->html()->value(),
                         'blocks' => $this->blocks()->toBlocks(),
-                        'unsubscribeLink' => site()->unsubscribeLink(),
+                        'unsubscribeLink' => '{{ unsubscribeUrl }}',
                         'socials' => site()->socials()->toStructure(),
                         'bgcolor' => $this->bgcolor()->value(),
                         'contact' => $this->parent()->contact()->ktr(),
@@ -98,9 +39,38 @@ Kirby::plugin('akukolabs/newsletter', [
                 // 'transport' => kirby()->system()->isLocal() ? null : postmark()->transport(),
             ];
         },
-    ],
-    'commands' => [
-        'newsletter:test' => require __DIR__ . '/commands/test.php',
-        'newsletter:publish' => require __DIR__ . '/commands/publish.php',
+        'campaign' => function(?array $emailData = null): \Spatie\MailcoachSdk\Resources\Campaign {
+            if (empty($emailData)) {
+                $emailData = $this->toEmailData();
+            }
+
+            $mailcoach = new Mailcoach(env('MAILCOACH_API_KEY'), env("MAILCOACH_API_ENDPOINT"));
+            $campaigns = $mailcoach->campaigns();
+            $found = null;
+
+            do {
+                /** @var \Spatie\MailcoachSdk\Resources\Campaign $campaign */
+                foreach ($campaigns as $campaign) {
+                    if ($campaign->name === $this->title()->value()) {
+                        $found = $campaign;
+                    }
+                }
+            } while ($campaigns = $campaigns->next());
+
+            if (!$found) {
+                // https://www.mailcoach.app/api-documentation/endpoints/campaigns/#content-update-a-campaign
+                $found = $mailcoach->createCampaign([
+                    'name' => $this->title()->value(),
+                    'subject' => $emailData['subject'],
+                    'email_list_uuid' => env('MAILCOACH_LIST_AKUKOLABS'),
+                ]);
+            }
+
+            $found->subject = $emailData['subject']; // TODO: make sure this works
+            $found->html = $emailData['body']['html'];
+            $found->save();
+
+            return $found;
+        }
     ],
 ]);

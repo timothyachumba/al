@@ -27,7 +27,9 @@
     "bnomei/kirby3-janitor": "^4.4",
     "getkirby/cli": "^1.5",
     "getkirby/cms": "^4.0.0-beta.2",
+    "guzzlehttp/guzzle": "^7.9",
     "moritzebeling/kirby-favicon": "^1.0",
+    "spatie/mailcoach-sdk-php": "^1.8",
     "tobimori/kirby-dreamform": "^1.4.1",
     "tobimori/kirby-seo": "^0.4.0"
   },

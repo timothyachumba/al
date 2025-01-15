@@ -10,6 +10,7 @@ use Bnomei\Janitor;
 use Kirby\CLI\CLI;
 use Kirby\Cms\User;
 use Kirby\Toolkit\A;
+use Spatie\MailcoachSdk\Mailcoach;
 
 return [
     'description' => 'Newsletter Test',
@@ -22,25 +23,15 @@ return [
     ] + Janitor::ARGS,
     'command' => static function (CLI $cli): void {
         $to = $cli->arg('to');
-
-        // from, subject, body[text,html], transport
-        $emailData = page($cli->arg('page'))->toEmailData();
-
+        $page = page($cli->arg('page'));
         $cli->out('Sending email to <'.$to.'> ...');
-
-        if ($subject = A::get($emailData, 'subject')) {
-            $emailData['subject'] = '[TEST] '.$subject;
-        }
 
         $success = false;
         try {
             $message = $to;
-            $success = $cli->kirby()->email(
-                array_merge($emailData, [
-                    'to' => $to,
-                    'from' => new User(option('akukolabs.newsletter.sender')),
-                ]),
-            )->isSent();
+            if ($page->campaign()?->sendTest($to)) {
+                $success = true;
+            }
         } catch (Exception $exception) {
             $message = $exception->getMessage();
         }
