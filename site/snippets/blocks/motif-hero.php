@@ -2,6 +2,8 @@
   // Access block fields using $block->fieldname()->value()
   $tagline = $block->tagline()->value();
   $images = $block->images()->toStructure(); // Assuming a structured field for images
+  $timing = $block->timing()->value();
+  $launched = $block->launched()->value();
 ?>
 
 <div class="project-hero motif-hero">
@@ -9,7 +11,18 @@
     <p class="project-hero__header__tag">
       <?= $tagline ?>
     </p>
-    <?php snippet('global/subscribe') ?>
+    <?php if (!$launched): ?>
+      <?php snippet('dreamform/form', [
+        'form' => $page->form()->toPage(),
+        'attr' => [
+          'row' => ['class' => 'row'],
+          'column' => ['class' => 'column'],
+          'field' => ['class' => 'field'],
+        ]
+      ]); ?>
+    <?php else: ?>
+      <button id="scrollButton" class="project-hero__header__timing"><?= $timing ?></button>
+    <?php endif; ?>
   </div>
   <div class="project-hero__image">
     <div class="motif-grid">

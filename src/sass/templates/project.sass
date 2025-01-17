@@ -214,7 +214,8 @@ body.project
     &.balance,
     &.slab65,
     &.odd-shapes,
-    &.motif
+    &.motif,
+    &.motif65
       color: var(--backgroundColor)
       color: var(--backgroundColorP3)
 
@@ -290,6 +291,45 @@ body.project
 
         @include mixins.sm
           min-height: auto
+
+    &.motif65
+      color: var(--textColor)
+      color: var(--textColorP3)
+
+      
+      &.the-designer
+        background: var(--backgroundColor) !important
+        background: var(--backgroundColorP3) !important
+
+        .portrait
+          background-color: var(--textColorP3)
+          background-color: var(--textColorP3)
+
+        .divider
+          background: var(--textColorP3)
+          background: var(--textColorP3)
+
+        a
+          color: var(--textColorP3)
+
+
+        form
+          border: 1px solid var(--textColor) !important
+          border: 1px solid var(--textColor) !important
+
+          input
+            color: var(--textColor) !important
+            color: var(--textColor) !important
+
+            &::placeholder
+              color: var(--textColor) !important
+              color: var(--textColor) !important
+
+          button
+            background: var(--textColor) !important
+            background: var(--textColor) !important
+            color: var(--backgroundColor) !important
+            color: var(--backgroundColorP3) !important
 
       
           
