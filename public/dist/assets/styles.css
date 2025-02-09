@@ -2478,6 +2478,7 @@ body.project .layout.aperture-priority .main-layout {
 body.project .layout.motif65 {
   color: var(--textColor);
   color: var(--textColorP3);
+  font-family: "ABC Diatype Rounded Plus Variable", sans-serif !important;
 }
 body.project .layout.motif65.the-designer {
   background: var(--backgroundColor) !important;
