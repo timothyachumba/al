@@ -6,6 +6,13 @@
   font-display: fallback;
 }
 @font-face {
+  font-family: "PolySans";
+  font-weight: 600;
+  font-style: normal;
+  src: url("../assets/fonts/ps-regular.woff2") format("woff2");
+  font-display: fallback;
+}
+@font-face {
   font-family: "PP Editorial New";
   font-weight: 300;
   font-style: italic;
@@ -173,12 +180,12 @@ button:active {
 .button.small,
 button.small {
   font-weight: 600;
+  padding: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem) clamp(1.1111111111rem, 1.9047619048vw, 1.7777777778rem);
   font-family: "PolySans", sans-serif;
   font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
   line-height: 1.35;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem) clamp(1.1111111111rem, 1.9047619048vw, 1.7777777778rem);
 }
 @media (min-width: 768px) {
   .button.small,
@@ -190,13 +197,13 @@ button.small {
 button.large {
   height: clamp(3.1111111111rem, 2.8571428571vw, 2.6666666667rem);
   padding: 0 24px;
+  font-size: clamp(0.8888888889rem, 1.0714285714vw, 1rem);
+  font-weight: 600;
   font-family: "PolySans", sans-serif;
   font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
   line-height: 1.35;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: clamp(0.8888888889rem, 1.0714285714vw, 1rem);
-  font-weight: 600;
 }
 
 #customCursor {
