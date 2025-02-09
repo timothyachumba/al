@@ -19,6 +19,9 @@ fields:
   isImageBackground:
     label: Background Image
     type: toggle
+  backgroundColor:
+    label: Background Color
+    type: color
   contentPosition:
     label: Content Position
     type: select
@@ -48,4 +51,12 @@ fields:
     width: 1/2
     when:
       effect: "data-scroll data-scroll-id='uniqueID'"
-  
+  buttonEnabled:
+    label: Enable Button
+    type: toggle
+  buttonlabel:
+    label: Button Label
+    type: text
+    width: 1/2
+    when:
+      buttonEnabled: true

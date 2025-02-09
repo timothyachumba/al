@@ -62,7 +62,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
   font-size: 100%;
   vertical-align: baseline;
 }
@@ -152,19 +151,45 @@ button {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
+.button.full-width,
+button.full-width {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .button:active,
 button:active {
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
 }
 .button.small,
 button.small {
-  height: clamp(2.2222222222rem, 1.9047619048vw, 1.7777777778rem);
-  padding: 0 16px;
+  font-weight: 600;
   font-family: "PolySans", sans-serif;
   font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
   line-height: 1.35;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  padding: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem) clamp(1.1111111111rem, 1.9047619048vw, 1.7777777778rem);
+}
+@media (min-width: 768px) {
+  .button.small,
+  button.small {
+    padding: clamp(0.4444444444rem, 0.7142857143vw, 0.6666666667rem) clamp(0.8888888889rem, 1.1904761905vw, 1.1111111111rem);
+  }
+}
+.button.large,
+button.large {
+  height: clamp(3.1111111111rem, 2.8571428571vw, 2.6666666667rem);
+  padding: 0 24px;
+  font-family: "PolySans", sans-serif;
+  font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: clamp(0.8888888889rem, 1.0714285714vw, 1rem);
+  font-weight: 600;
 }
 
 #customCursor {
@@ -1117,6 +1142,139 @@ body.home .the-designer .links a {
   color: var(--textColor);
 }
 
+.purchase-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9;
+  background-color: #ECE2CD;
+  color: #000000;
+  will-change: transform;
+  transform: translateX(100%);
+  transition: transform 1.2s cubic-bezier(0.87, 0, 0.13, 1);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.3333333333rem, 2.380952381vw, 2.2222222222rem);
+  z-index: 10;
+}
+@media (min-width: 768px) {
+  .purchase-drawer {
+    width: 430px;
+  }
+}
+.purchase-drawer.open {
+  transform: translateX(0);
+}
+.purchase-drawer__close {
+  position: absolute;
+  top: clamp(1.3333333333rem, 2.380952381vw, 2.2222222222rem);
+  right: clamp(1.3333333333rem, 2.380952381vw, 2.2222222222rem);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.purchase-drawer__close svg {
+  width: 24px;
+  height: 24px;
+}
+.purchase-drawer__close svg path {
+  fill: #000000 !important;
+}
+.purchase-drawer__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.3333333333rem, 2.380952381vw, 2.2222222222rem);
+  overflow-y: auto;
+  flex: 1;
+}
+.purchase-drawer__content .purchase-drawer__header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4444444444rem, 0.9523809524vw, 0.8888888889rem);
+}
+.purchase-drawer__content .purchase-drawer__header.vendors {
+  flex: 1;
+}
+.purchase-drawer__content .purchase-drawer__header h2 {
+  font-family: "PolySans", sans-serif;
+  font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.purchase-drawer__content .waitlist-form {
+  display: flex;
+  flex-direction: column;
+}
+.purchase-drawer__content .waitlist-form form {
+  border: 1px solid #000000 !important;
+}
+.purchase-drawer__content .waitlist-form form input {
+  color: #000000 !important;
+}
+.purchase-drawer__content .waitlist-form form input::placeholder {
+  color: #000000 !important;
+}
+.purchase-drawer__content .waitlist-form form button {
+  background: #000000 !important;
+  color: #000000 !important;
+}
+.purchase-drawer .vendorlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+.purchase-drawer .vendorlist__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.2222222222rem, 0.4761904762vw, 0.4444444444rem) 0;
+}
+.purchase-drawer .vendorlist__item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+.purchase-drawer .vendorlist__item a:hover .vendorlist__arrow {
+  padding-left: 8px;
+}
+.purchase-drawer .vendorlist__item a .vendorlist__name {
+  font-weight: 600;
+  flex: 1;
+}
+.purchase-drawer .vendorlist__item a .vendorlist__region {
+  font-family: "PolySans", sans-serif;
+  font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.purchase-drawer .vendorlist__item a .vendorlist__arrow svg {
+  width: 16px;
+  height: 16px;
+}
+.purchase-drawer .vendorlist__item a .vendorlist__arrow svg path {
+  fill: #000000 !important;
+}
+.purchase-drawer .links {
+  display: flex;
+  gap: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem);
+  justify-content: space-between;
+  list-style-type: none;
+}
+.purchase-drawer .links a {
+  text-decoration: none;
+  color: #000000 !important;
+}
+.purchase-drawer .links a:hover {
+  text-decoration: underline;
+}
+
 @keyframes cycle-background {
   0%, 20% {
     background-image: var(--image-url-1);
@@ -1654,7 +1812,6 @@ body.home .the-designer .links a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease-in-out;
   backface-visibility: hidden;
 }
 .project-hero.motif-hero .project-hero__image .motif-grid__item .image-container .image-wrapper .image-2d {
@@ -1665,10 +1822,10 @@ body.home .the-designer .links a {
   opacity: 0;
   z-index: 2;
 }
-.project-hero.motif-hero .project-hero__image .motif-grid__item:hover .image-2d {
+.project-hero.motif-hero .project-hero__image .motif-grid__item:hover .image-container .image-wrapper .image-2d {
   opacity: 0;
 }
-.project-hero.motif-hero .project-hero__image .motif-grid__item:hover .image-3d {
+.project-hero.motif-hero .project-hero__image .motif-grid__item:hover .image-container .image-wrapper .image-3d {
   opacity: 1;
 }
 
@@ -1880,11 +2037,17 @@ body.home .the-designer .links a {
   display: flex;
   justify-content: flex-end;
 }
+.main-layout.content-top .content {
+  order: 1;
+}
+.main-layout.content-top .image {
+  order: 2;
+}
 .main-layout .content {
   display: flex;
   flex-direction: column;
   gap: clamp(0.4444444444rem, 0.9523809524vw, 0.8888888889rem);
-  background-color: inherit;
+  background-color: transparent;
 }
 @media (min-width: 768px) {
   .main-layout .content {
@@ -1915,6 +2078,28 @@ body.home .the-designer .links a {
     max-width: 50%;
   }
 }
+.main-layout.with-button .content .content-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4444444444rem, 0.9523809524vw, 0.8888888889rem);
+}
+.main-layout.with-button .content button {
+  flex-grow: 0;
+  align-self: flex-start;
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .main-layout.with-button .content button {
+    width: auto;
+  }
+}
+
+.m-stacked .main-layout.background-image .image {
+  position: relative;
+}
 
 @keyframes name-slide {
   0% {
@@ -1935,10 +2120,23 @@ body.project {
 body.project .layout {
   display: flex;
   flex-direction: column;
+  text-wrap: wrap;
 }
 @media (min-width: 768px) {
   body.project .layout {
     flex-direction: row;
+  }
+}
+body.project .layout.padding {
+  padding: clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem);
+  gap: clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem);
+}
+body.project .layout.m-square .main-layout {
+  min-height: 100vw;
+}
+@media (min-width: 768px) {
+  body.project .layout.m-square .main-layout {
+    height: 100vh;
   }
 }
 body.project .layout.bg-background {
@@ -1979,22 +2177,71 @@ body.project .layout.t-foreground .ticker-wrapper {
 body.project .layout.t-neutral {
   color: #000000;
 }
+body.project .layout.stacked .main-layout .content {
+  flex-direction: column;
+  gap: clamp(0.4444444444rem, 0.9523809524vw, 0.8888888889rem);
+}
+body.project .layout.stacked .main-layout .content h2 {
+  font-style: normal;
+  font-weight: 600;
+}
+body.project .layout.stacked .main-layout .content .text {
+  max-width: 100%;
+}
 body.project .layout .column {
+  display: flex;
   flex-direction: column;
   width: 100%;
+  gap: clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem);
+}
+@media (min-width: 768px) {
+  body.project .layout .column {
+    width: calc(var(--span) / 12 * 100%);
+  }
+}
+body.project .layout .column .item:has(> figure) {
+  flex: 1;
+  overflow: hidden;
+}
+body.project .layout .column .item:has(> .spacer) {
+  flex: 1;
 }
 body.project .layout .column figure {
   font-size: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+body.project .layout .column figure.m-square img {
+  height: 100vw;
+}
+@media (min-width: 768px) {
+  body.project .layout .column figure.m-square img {
+    height: 100%;
+  }
+}
+body.project .layout .column figure.portrait img {
+  height: 120vw;
+}
+@media (min-width: 768px) {
+  body.project .layout .column figure.portrait img {
+    height: 100%;
+  }
 }
 body.project .layout .column img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-@media (min-width: 768px) {
-  body.project .layout .column img {
-    height: 100vh;
-  }
+body.project .layout .column .text-block h2 {
+  margin-bottom: clamp(0.6666666667rem, 1.4285714286vw, 1.3333333333rem);
+}
+body.project .layout .column .text-block em {
+  font-style: normal;
+  font-size: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem);
+}
+body.project .layout .column .spacer {
+  flex: 1;
 }
 body.project .layout.kitting .main-layout {
   min-height: auto;
@@ -2140,8 +2387,8 @@ body.project .layout.the-designer .links a:hover {
   text-decoration: underline;
 }
 body.project .layout.aperture-priority, body.project .layout.gestalt, body.project .layout.balance, body.project .layout.slab65, body.project .layout.odd-shapes, body.project .layout.motif, body.project .layout.motif65 {
-  color: var(--backgroundColor);
-  color: var(--backgroundColorP3);
+  color: var(--textColor);
+  color: var(--textColorP3);
 }
 body.project .layout.aperture-priority .portrait, body.project .layout.gestalt .portrait, body.project .layout.balance .portrait, body.project .layout.slab65 .portrait, body.project .layout.odd-shapes .portrait, body.project .layout.motif .portrait, body.project .layout.motif65 .portrait {
   background-color: var(--backgroundColor);
@@ -2156,12 +2403,12 @@ body.project .layout.aperture-priority.the-designer form, body.project .layout.g
   border: 1px solid var(--backgroundColorP3) !important;
 }
 body.project .layout.aperture-priority.the-designer form input, body.project .layout.gestalt.the-designer form input, body.project .layout.balance.the-designer form input, body.project .layout.slab65.the-designer form input, body.project .layout.odd-shapes.the-designer form input, body.project .layout.motif.the-designer form input, body.project .layout.motif65.the-designer form input {
-  color: var(--backgroundColor) !important;
-  color: var(--backgroundColorP3) !important;
+  color: var(--textColor) !important;
+  color: var(--textColorP3) !important;
 }
 body.project .layout.aperture-priority.the-designer form input::placeholder, body.project .layout.gestalt.the-designer form input::placeholder, body.project .layout.balance.the-designer form input::placeholder, body.project .layout.slab65.the-designer form input::placeholder, body.project .layout.odd-shapes.the-designer form input::placeholder, body.project .layout.motif.the-designer form input::placeholder, body.project .layout.motif65.the-designer form input::placeholder {
-  color: var(--backgroundColor) !important;
-  color: var(--backgroundColorP3) !important;
+  color: var(--textColor) !important;
+  color: var(--textColorP3) !important;
 }
 body.project .layout.aperture-priority.the-designer form button, body.project .layout.gestalt.the-designer form button, body.project .layout.balance.the-designer form button, body.project .layout.slab65.the-designer form button, body.project .layout.odd-shapes.the-designer form button, body.project .layout.motif.the-designer form button, body.project .layout.motif65.the-designer form button {
   background: var(--backgroundColor) !important;
@@ -2170,8 +2417,8 @@ body.project .layout.aperture-priority.the-designer form button, body.project .l
   color: var(--textColorP3) !important;
 }
 body.project .layout.aperture-priority .links a, body.project .layout.gestalt .links a, body.project .layout.balance .links a, body.project .layout.slab65 .links a, body.project .layout.odd-shapes .links a, body.project .layout.motif .links a, body.project .layout.motif65 .links a {
-  color: var(--backgroundColor);
-  color: var(--backgroundColorP3);
+  color: var(--textColor);
+  color: var(--textColorP3);
 }
 body.project .layout.aperture-priority .motif-logo-container, body.project .layout.gestalt .motif-logo-container, body.project .layout.balance .motif-logo-container, body.project .layout.slab65 .motif-logo-container, body.project .layout.odd-shapes .motif-logo-container, body.project .layout.motif .motif-logo-container, body.project .layout.motif65 .motif-logo-container {
   display: flex;
@@ -2180,19 +2427,22 @@ body.project .layout.aperture-priority .motif-logo-container, body.project .layo
   background-color: #E4D7CB;
   background-color: color(display-p3 0.894118 0.843137 0.796078/1);
   height: 80vh;
-  overflow: hidden;
+  width: 100%;
 }
 @media (min-width: 768px) {
   body.project .layout.aperture-priority .motif-logo-container, body.project .layout.gestalt .motif-logo-container, body.project .layout.balance .motif-logo-container, body.project .layout.slab65 .motif-logo-container, body.project .layout.odd-shapes .motif-logo-container, body.project .layout.motif .motif-logo-container, body.project .layout.motif65 .motif-logo-container {
-    height: 100vh;
+    height: calc(100vh - clamp(1.7777777778rem, 3.8095238095vw, 3.5555555556rem));
   }
 }
 body.project .layout.aperture-priority .motif-logo-container svg, body.project .layout.gestalt .motif-logo-container svg, body.project .layout.balance .motif-logo-container svg, body.project .layout.slab65 .motif-logo-container svg, body.project .layout.odd-shapes .motif-logo-container svg, body.project .layout.motif .motif-logo-container svg, body.project .layout.motif65 .motif-logo-container svg {
   overflow: visible;
   height: 90%;
+  width: 90%;
 }
-body.project .layout.aperture-priority .main-layout, body.project .layout.gestalt .main-layout, body.project .layout.balance .main-layout, body.project .layout.slab65 .main-layout, body.project .layout.odd-shapes .main-layout, body.project .layout.motif .main-layout, body.project .layout.motif65 .main-layout {
-  min-height: 100vw;
+@media (min-width: 768px) {
+  body.project .layout.aperture-priority .motif-logo-container svg, body.project .layout.gestalt .motif-logo-container svg, body.project .layout.balance .motif-logo-container svg, body.project .layout.slab65 .motif-logo-container svg, body.project .layout.odd-shapes .motif-logo-container svg, body.project .layout.motif .motif-logo-container svg, body.project .layout.motif65 .motif-logo-container svg {
+    width: auto;
+  }
 }
 @media (min-width: 768px) {
   body.project .layout.aperture-priority .main-layout, body.project .layout.gestalt .main-layout, body.project .layout.balance .main-layout, body.project .layout.slab65 .main-layout, body.project .layout.odd-shapes .main-layout, body.project .layout.motif .main-layout, body.project .layout.motif65 .main-layout {
@@ -2254,6 +2504,54 @@ body.project .layout.motif65.the-designer form button {
   background: var(--textColor) !important;
   color: var(--backgroundColor) !important;
   color: var(--backgroundColorP3) !important;
+}
+body.project .layout.motif {
+  font-family: "ABC Diatype Rounded Plus Variable", sans-serif;
+}
+body.project .layout.motif p {
+  font-weight: 625;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: clamp(0.8888888889rem, 1.0714285714vw, 1rem);
+  font-family: "ABC Diatype Rounded Plus Variable", sans-serif;
+  text-align: left;
+}
+body.project .layout.motif h2 {
+  font-family: "PolySans", sans-serif;
+  font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: "ABC Diatype Rounded Plus Variable", sans-serif;
+  font-style: normal;
+  font-weight: 625;
+  font-size: clamp(0.8888888889rem, 1.0714285714vw, 1rem);
+}
+body.project .layout.motif.the-designer {
+  color: var(--backgroundColor);
+  color: var(--backgroundColorP3);
+}
+body.project .layout.motif.the-designer a {
+  color: var(--backgroundColor);
+  color: var(--backgroundColorP3);
+}
+body.project .layout.motif.the-designer form {
+  border: 1px solid var(--backgroundColor) !important;
+  border: 1px solid var(--backgroundColorP3) !important;
+}
+body.project .layout.motif.the-designer form input {
+  color: var(--backgroundColor) !important;
+  color: var(--backgroundColor) !important;
+}
+body.project .layout.motif.the-designer form input::placeholder {
+  color: var(--backgroundColor) !important;
+  color: var(--backgroundColor) !important;
+}
+body.project .layout.motif.the-designer form button {
+  background: var(--backgroundColor) !important;
+  background: var(--backgroundColorP3) !important;
+  color: var(--textColor) !important;
+  color: var(--textColorP3) !important;
 }
 
 body.newsletters {

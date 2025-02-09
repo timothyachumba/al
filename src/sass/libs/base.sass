@@ -28,7 +28,6 @@ time, mark, audio, video
   margin: 0
   padding: 0
   border: 0
-  font: inherit
   font-size: 100%
   vertical-align: baseline
 
@@ -124,13 +123,30 @@ button
   text-decoration: none
   -webkit-tap-highlight-color: transparent
 
+  &.full-width
+    width: 100%
+    text-align: center
+    display: flex
+    justify-content: center
+    align-items: center
+
   &:active
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.1)
 
   &.small
-    height: mixins.rscale(40,32)
-    padding: 0 16px
+    font-weight: 600
     @include type.caption
+    padding: mixins.rscale(16,24) mixins.rscale(20,32)
+
+    @include mixins.sm
+      padding: mixins.rscale(8,12) mixins.rscale(16,20)
+
+  &.large
+    height: mixins.rscale(56,48)
+    padding: 0 24px
+    @include type.caption
+    font-size: mixins.rscale(16,18)
+    font-weight: 600
 
 // =======================================
 // Custom Cursor

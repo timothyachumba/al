@@ -56,11 +56,17 @@
     display: flex
     justify-content: flex-end
 
+  &.content-top
+    .content
+      order: 1
+    .image
+      order: 2
+
   .content
     display: flex
     flex-direction: column
     gap: mixins.rscale(8,16)
-    background-color: inherit
+    background-color: transparent
 
     @include mixins.sm
       flex-direction: row
@@ -79,3 +85,25 @@
 
       @include mixins.sm
         max-width: 50%
+
+  &.with-button
+    .content
+      .content-stack
+        display: flex
+        flex-direction: column
+        gap: mixins.rscale(8,16)
+
+      button
+        flex-grow: 0
+        align-self: flex-start
+        white-space: nowrap
+        width: 100%
+        display: flex
+        justify-content: center
+
+        @include mixins.sm
+          width: auto
+
+.m-stacked
+  .main-layout.background-image .image
+    position: relative

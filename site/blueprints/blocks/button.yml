@@ -1,0 +1,13 @@
+title: Button
+wysiwyg: true
+preview: fields
+fields:
+   buttonlabel:
+    label: Button Label
+    type: text
+   fullwidth:
+    label: Full Width
+    type: toggle
+   buttonlink:
+      label: Button Link
+      type: url

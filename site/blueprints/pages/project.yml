@@ -23,6 +23,7 @@ tabs:
             fieldsets:
               - heading
               - text
+              - markdown
               - image
               - gestalt-hero
               - balance-hero
@@ -37,26 +38,54 @@ tabs:
               - main-layout
               - video
               - slideshow
+              - button
+              - spacer
             settings:
               fields:
                 class:
                   type: text
+                  label: Extra CSS Class (if needed)
+
                 backgroundcolor:
+                  label: Background Color
                   type: select
+                  width: 1/2
+                  default: "bg-background"
                   options:
                     "bg-background": Background
                     "bg-foreground": Foreground
                     "bg-neutral": Neutral
-                  default: bg-background
+                    "custom": Custom
+
+                backgroundcolor_custom:
+                  label: Custom Background Color
+                  type: color
                   width: 1/2
+                  allowCustom: true
+                  alpha: false
+                  # Only show this field if "backgroundcolor" is set to "custom"
+                  when:
+                    backgroundcolor: "custom"
+
                 textcolor:
+                  label: Text Color
                   type: select
+                  width: 1/2
+                  default: "t-foreground"
                   options:
                     "t-background": Background
                     "t-foreground": Foreground
                     "t-neutral": Neutral
-                  default: t-foreground
+                    "custom": Custom
+
+                textcolor_custom:
+                  label: Custom Text Color
+                  type: color
                   width: 1/2
+                  allowCustom: true
+                  alpha: false
+                  when:
+                    textcolor: "custom"
       right:
         width: 1/3
         sections:
@@ -73,6 +102,9 @@ tabs:
             type: textarea
             size: small
             help: "A short introduction to the project that lives on the homepage card"
+          availability:
+            label: Available
+            type: toggle
           backgroundColor:
             label: Background Colour
             type: color
@@ -122,6 +154,19 @@ tabs:
             query: page.images
             image:
               cover: true
+          vendorlist:
+            label: Vendor List
+            type: structure
+            fields:
+              name:
+                type: text
+                label: Name
+              region:
+                type: text
+                label: Region
+              url:
+                type: url
+                label: Link
           
 
           

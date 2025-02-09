@@ -3,10 +3,12 @@
 @use "../libs/tokens"
 @use "../snippets/global/navigation"
 @use "../snippets/global/subscribe"
+@use "../snippets/global/conversion"
 @use "../snippets/blocks/project-hero"
 @use "../snippets/blocks/ticker"
 @use "../snippets/blocks/vendor-list"
 @use "../snippets/blocks/main-layout"
+
 
 @mixin responsive-font-size($base-size, $vw-weight: 1vw, $vh-weight: 1vh)
   font-size: calc(#{$base-size} + #{$vw-weight} + #{$vh-weight})
@@ -28,9 +30,22 @@ body.project
   .layout
     display: flex
     flex-direction: column
+    text-wrap: wrap
 
     @include mixins.sm
       flex-direction: row
+
+    &.padding
+      padding: mixins.rscale(16,32)
+      gap: mixins.rscale(16,32)
+
+    &.m-square
+      .main-layout
+        min-height: 100vw
+
+        @include mixins.sm
+          height: 100vh
+
 
     &.bg-background
       background-color: var(--backgroundColor)
@@ -70,20 +85,69 @@ body.project
     &.t-neutral
       color: tokens.$black
 
+    &.stacked
+      .main-layout
+        .content
+          flex-direction: column
+          gap: mixins.rscale(8,16)
+          
+          h2
+            font-style: normal
+            font-weight: 600
+          .text
+            max-width: 100%
+
     .column
+      display: flex
       flex-direction: column
       width: 100%
+      gap: mixins.rscale(16,32)
+      
+      @include mixins.sm
+        width: calc((var(--span) / 12) * 100%)
+
+      .item
+        &:has(> figure)
+          flex: 1
+          overflow: hidden
+
+        &:has(> .spacer)
+          flex: 1
 
       figure
         font-size: 0
+        width: 100%
+        height: 100%
+        box-sizing: border-box
+
+        &.m-square img
+          height: 100vw
+
+          @include mixins.sm
+            height: 100%
+
+        &.portrait img
+          height: 120vw
+
+          @include mixins.sm
+            height: 100%
 
       img
         width: 100%
         height: 100%
         object-fit: cover
 
-        @include mixins.sm
-          height: 100vh
+      .text-block
+        h2
+          margin-bottom: mixins.rscale(12,24)
+
+        em
+          font-style: normal
+          font-size: mixins.rscale(16,24)
+
+      .spacer
+        flex: 1
+
 
     &.kitting
 
@@ -216,8 +280,8 @@ body.project
     &.odd-shapes,
     &.motif,
     &.motif65
-      color: var(--backgroundColor)
-      color: var(--backgroundColorP3)
+      color: var(--textColor)
+      color: var(--textColorP3)
 
       .portrait
         background-color: var(--backgroundColor)
@@ -234,12 +298,12 @@ body.project
           border: 1px solid var(--backgroundColorP3) !important
 
           input
-            color: var(--backgroundColor) !important
-            color: var(--backgroundColorP3) !important
+            color: var(--textColor) !important
+            color: var(--textColorP3) !important
 
             &::placeholder
-              color: var(--backgroundColor) !important
-              color: var(--backgroundColorP3) !important
+              color: var(--textColor) !important
+              color: var(--textColorP3) !important
 
           button
             background: var(--backgroundColor) !important
@@ -250,8 +314,8 @@ body.project
 
       .links
         a
-          color: var(--backgroundColor)
-          color: var(--backgroundColorP3)
+          color: var(--textColor)
+          color: var(--textColorP3)
 
       .motif-logo-container
         display: flex
@@ -260,18 +324,20 @@ body.project
         background-color: #E4D7CB
         background-color: color(display-p3 0.894118 0.843137 0.796078 / 1.000000)
         height: 80vh
-        overflow: hidden
+        width: 100%
 
         @include mixins.sm
-          height: 100vh
+          height: calc(100vh - mixins.rscale(32,64))
 
         svg
           overflow: visible
           height: 90%
+          width: 90%
+
+          @include mixins.sm
+            width: auto
 
       .main-layout
-        min-height: 100vw
-
         @include mixins.sm
           min-height: auto
 
@@ -331,5 +397,49 @@ body.project
             color: var(--backgroundColor) !important
             color: var(--backgroundColorP3) !important
 
+    &.motif
+      font-family: "ABC Diatype Rounded Plus Variable", sans-serif
+      p
+        font-weight: 625
+        text-transform: none
+        letter-spacing: normal
+        font-size: mixins.rscale(16,18)
+        font-family: "ABC Diatype Rounded Plus Variable", sans-serif
+        text-align: left
+
+      h2
+        @include type.caption
+        font-family: "ABC Diatype Rounded Plus Variable", sans-serif
+        font-style: normal
+        font-weight: 625
+        font-size: mixins.rscale(16,18)
+
+      &.the-designer
+        color: var(--backgroundColor)
+        color: var(--backgroundColorP3)
+
+        a
+          color: var(--backgroundColor)
+          color: var(--backgroundColorP3)
+
+        form
+          border: 1px solid var(--backgroundColor) !important
+          border: 1px solid var(--backgroundColorP3) !important
+
+          input
+            color: var(--backgroundColor) !important
+            color: var(--backgroundColor) !important
+
+            &::placeholder
+              color: var(--backgroundColor) !important
+              color: var(--backgroundColor) !important
+
+          button
+            background: var(--backgroundColor) !important
+            background: var(--backgroundColorP3) !important
+            color: var(--textColor) !important
+            color: var(--textColorP3) !important
+
+      
       
           

@@ -29,5 +29,6 @@ $textColor = $page->textcolor()->isNotEmpty() ? $page->textcolor() : '#EBE8E3';
   </div>
 </div>
 <?php snippet('global/navigation') ?>
+<?php snippet('global/conversion') ?>
 <div data-scroll-container>
   

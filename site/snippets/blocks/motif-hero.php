@@ -11,7 +11,7 @@
     <p class="project-hero__header__tag">
       <?= $tagline ?>
     </p>
-    <?php if (!$launched): ?>
+    <?php if (!$page->availability()->bool()): ?>
       <?php snippet('dreamform/form', [
         'form' => $page->form()->toPage(),
         'attr' => [
@@ -21,7 +21,7 @@
         ]
       ]); ?>
     <?php else: ?>
-      <button id="scrollButton" class="project-hero__header__timing"><?= $timing ?></button>
+      <button class="project-hero__header__timing purchase-trigger"><?= $timing ?></button>
     <?php endif; ?>
   </div>
   <div class="project-hero__image">

@@ -86,21 +86,25 @@
   let dragOffsetX = 0;
   let dragOffsetY = 0;
 
-  // Mouse event handlers
-  const onMouseDown = (e, letterKey) => {
+  // Mouse and touch event handlers
+  const onDragStart = (e, letterKey) => {
     e.preventDefault();
     activeLetter = letterKey;
     const letter = letters[letterKey];
     letter.isDragging = true;
-    dragOffsetX = e.clientX - letter.x;
-    dragOffsetY = e.clientY - letter.y;
+    const clientX = e.clientX || e.touches[0].clientX;
+    const clientY = e.clientY || e.touches[0].clientY;
+    dragOffsetX = clientX - letter.x;
+    dragOffsetY = clientY - letter.y;
   };
 
-  const onMouseMove = (e) => {
+  const onDragMove = (e) => {
     if (activeLetter) {
       const draggedLetter = letters[activeLetter];
-      draggedLetter.x = e.clientX - dragOffsetX;
-      draggedLetter.y = e.clientY - dragOffsetY;
+      const clientX = e.clientX || e.touches[0].clientX;
+      const clientY = e.clientY || e.touches[0].clientY;
+      draggedLetter.x = clientX - dragOffsetX;
+      draggedLetter.y = clientY - dragOffsetY;
 
       applyTransform(draggedLetter);
 
@@ -120,7 +124,7 @@
     }
   };
 
-  const onMouseUp = () => {
+  const onDragEnd = () => {
     if (activeLetter) {
       letters[activeLetter].isDragging = false;
       activeLetter = null;
@@ -130,11 +134,14 @@
   // Attach event listeners
   paths.forEach((path) => {
     const letterKey = path.classList[0];
-    path.addEventListener('mousedown', (e) => onMouseDown(e, letterKey));
+    path.addEventListener('mousedown', (e) => onDragStart(e, letterKey));
+    path.addEventListener('touchstart', (e) => onDragStart(e, letterKey));
   });
 
-  document.addEventListener('mousemove', onMouseMove);
-  document.addEventListener('mouseup', onMouseUp);
+  document.addEventListener('mousemove', onDragMove);
+  document.addEventListener('touchmove', onDragMove);
+  document.addEventListener('mouseup', onDragEnd);
+  document.addEventListener('touchend', onDragEnd);
 
   // Animation loop
   const animate = () => {

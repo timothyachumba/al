@@ -13,6 +13,36 @@ function debounce(func, wait = 150) {
   };
 }
 
+  document.addEventListener('DOMContentLoaded', function() {
+    const purchaseTriggers = document.querySelectorAll('.purchase-trigger');
+    const purchaseDrawer = document.getElementById('purchaseDrawer');
+    const purchaseClose = purchaseDrawer ? purchaseDrawer.querySelector('.purchase-drawer__close') : null;
+
+    function openPurchaseDrawer(e) {
+      e.preventDefault();
+      if (purchaseDrawer) {
+        purchaseDrawer.classList.add('open');
+        console.log('Open purchase drawer');
+      }
+    }
+
+    function closePurchaseDrawer(e) {
+      e.preventDefault();
+      if (purchaseDrawer) {
+        purchaseDrawer.classList.remove('open');
+        console.log('Close purchase drawer');
+      }
+    }
+
+    purchaseTriggers.forEach(trigger => {
+      trigger.addEventListener('click', openPurchaseDrawer);
+    });
+
+    if (purchaseClose) {
+      purchaseClose.addEventListener('click', closePurchaseDrawer);
+    }
+  });
+
 // Load event: Checks if images are loaded and fades in the document
 function initializeOnLoad() {
   const images = document.images;
@@ -489,6 +519,8 @@ document.addEventListener('DOMContentLoaded', () => {
       checkContentSize();
     }));
   }
+
+
 
   initializeStylesAndColors();
   setupNavigationToggle();

@@ -1,0 +1,132 @@
+@use "../../libs/mixins"
+@use "../../libs/tokens"
+@use "../../libs/type"
+
+// Variables – adjust these as needed
+$transition-duration: 0.3s
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1)
+$background-color: #fff
+$border-color: #eaeaea
+$primary-color: #0078d4
+$text-muted: #666
+
+.purchase-drawer
+  position: fixed
+  top: 0
+  right: 0
+  height: 100vh
+  width: 100vw
+  z-index: 9
+  background-color: #ECE2CD
+  color: tokens.$black
+  will-change: transform
+  transform: translateX(100%)
+  transition: transform 1.2s tokens.$bouncy
+  display: flex
+  flex-direction: column
+  padding: mixins.rscale(24,40)
+  z-index: 10
+
+  @include mixins.sm
+    width: 430px
+
+  &.open
+    transform: translateX(0)
+
+  &__close
+    position: absolute
+    top: mixins.rscale(24,40)
+    right: mixins.rscale(24,40)
+    background: none
+    border: none
+    cursor: pointer
+    svg
+      width: 24px
+      height: 24px
+
+      path
+        fill: tokens.$black !important  
+
+  &__content
+    display: flex
+    flex-direction: column
+    gap: mixins.rscale(24,40)
+    overflow-y: auto
+    flex: 1
+
+    .purchase-drawer__header
+      display: flex
+      flex-direction: column
+      gap: mixins.rscale(8,16)
+
+      &.vendors
+        flex: 1
+
+      h2
+        @include type.caption
+        
+    .waitlist-form
+      display: flex
+      flex-direction: column
+
+      form
+        border: 1px solid tokens.$black!important
+
+        input
+          color: tokens.$black!important
+
+          &::placeholder
+            color: tokens.$black!important
+
+        button
+          background: tokens.$black!important
+          color: tokens.$black !important
+
+  .vendorlist
+    list-style: none
+    padding: 0
+    margin: 0
+    flex: 1
+
+    &__item
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding: mixins.rscale(4,8) 0
+
+      a
+        display: flex
+        align-items: center
+        width: 100%
+        text-decoration: none
+        color: inherit
+
+        &:hover
+          .vendorlist__arrow
+            padding-left: 8px
+
+        .vendorlist__name
+          font-weight: 600
+          flex: 1
+
+        .vendorlist__region
+          @include type.caption
+
+        .vendorlist__arrow
+          svg
+            width: 16px
+            height: 16px
+            path
+              fill: tokens.$black !important  
+  .links
+    display: flex
+    gap: mixins.rscale(16,24)
+    justify-content: space-between
+    list-style-type: none
+
+    a
+      text-decoration: none
+      color: tokens.$black !important
+
+      &:hover
+        text-decoration: underline
