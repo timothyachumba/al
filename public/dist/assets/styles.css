@@ -34,6 +34,13 @@
   font-display: fallback;
   font-display: fallback;
 }
+@font-face {
+  font-family: "ABC Diatype Rounded Plus Variable";
+  font-weight: 100 1000;
+  font-style: normal;
+  src: url("../assets/fonts/abc.woff2") format("woff2");
+  font-display: fallback;
+}
 body {
   font-family: "PolySans", sans-serif;
 }
