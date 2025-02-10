@@ -185,7 +185,7 @@
     }
 
     .btn {
-      background-color: #F0AC00 !important;
+      background-color: #020202 !important;
       border-radius: 999px;
       color: #000 !important;
       display: block;
@@ -195,6 +195,16 @@
       padding: 1rem;
       text-align: center;
       text-decoration: none !important;
+    }
+
+    .btn.yellow {
+      background-color: #F0AC00 !important;
+      color: #000 !important;
+    }
+
+    .btn.pink {
+      background-color: #F27398 !important;
+      color: #000 !important;
     }
 
     .tbl-images table:not([cellpadding="0"]),
