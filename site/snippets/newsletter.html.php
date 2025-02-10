@@ -187,7 +187,7 @@
     .btn {
       background-color: #020202 !important;
       border-radius: 999px;
-      color: #000 !important;
+      color: #EBE8E3 !important;
       display: block;
       font-weight: 600;
       line-height: 1rem;
