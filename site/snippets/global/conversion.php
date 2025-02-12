@@ -38,12 +38,12 @@
     <?php else: ?>
       <!-- Available Version: Show vendor list -->
       <header class="purchase-drawer__header">
-        <h2>Purchase Now</h2>
+        <h2>How to Buy</h2>
         <p><?= $page->title() ?> is available through a Group Buy, meaning it's produced in a limited run based on pre-orders. To make the process seamless, I've partnered with trusted regional stores worldwide, allowing you to order from a store in your region for better shipping rates and convenience.</p>
         <p>Once the Group Buy closes, production begins, and orders will be fulfilled based on the estimated timeline.</p>
       </header>
       <header class="purchase-drawer__header vendors">
-        <h2>Regional Vendors</h2>
+        <h2>Where to Buy</h2>
         <section class="purchase-drawer__vendors">
         <ul class="vendorlist">
           <?php foreach ($vendorList as $vendor): ?>
