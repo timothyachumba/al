@@ -42,10 +42,10 @@
           // Determine inline styles (only if custom)
           $inlineStyle = '';
           if ($bgColor === 'custom' && $customBg) {
-              $inlineStyle .= "background: {$customBg}; background: {$bgColorP3}; ";
+              $inlineStyle .= "--bg-color: {$customBg}; --bg-color-p3: {$bgColorP3}; background: var(--bg-color); background: var(--bg-color-p3); ";
           }
           if ($textColor === 'custom' && $customText) {
-              $inlineStyle .= "color: {$customText}; color: {$textColorP3}; ";
+              $inlineStyle .= "--text-color: {$customText}; --text-color-p3: {$textColorP3}; color: var(--text-color); color: var(--text-color-p3); ";
           }
 
           $GLOBALS['layoutBgColor'] = $customBg ? $customBg : $bgColor; // Store the background color globally

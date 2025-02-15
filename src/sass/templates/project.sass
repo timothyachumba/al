@@ -9,6 +9,10 @@
 @use "../snippets/blocks/vendor-list"
 @use "../snippets/blocks/main-layout"
 
+@function p3($hex)
+  @return color(display-p3, (red($hex) / 255), (green($hex) / 255), (blue($hex) / 255))
+
+
 
 @mixin responsive-font-size($base-size, $vw-weight: 1vw, $vh-weight: 1vh)
   font-size: calc(#{$base-size} + #{$vw-weight} + #{$vh-weight})
@@ -363,6 +367,35 @@ body.project
       color: var(--textColorP3)
       font-family: type.$abc !important
 
+      img
+        border-radius: mixins.rscale(16,32)
+        overflow: hidden
+
+      .button
+        background-color: var(--text-color) !important
+
+      &.motif65-intro
+        .column
+          min-height: 80vh
+
+
+        .text-block
+          p
+            font-size: mixins.rscale(18,40)
+            font-weight: 625
+
+        .button
+          font-size: mixins.rscale(20,32)
+          font-weight: 625
+          font-family: type.$abc !important
+          font-style: normal
+          text-transform: none
+          letter-spacing: normal
+          height: auto
+          padding: mixins.rscale(16,24) mixins.rscale(32,48)
+          background-color: #DD3D2E !important
+          background-color: p3(#DD3D2E) !important
+
       
       &.the-designer
         background: var(--backgroundColor) !important
@@ -398,7 +431,8 @@ body.project
             color: var(--backgroundColor) !important
             color: var(--backgroundColorP3) !important
 
-    &.motif
+    &.motif,
+    &.motif65
       font-family: type.$abc
       p
         font-weight: 625
@@ -414,7 +448,7 @@ body.project
         font-style: normal
         font-weight: 625
         font-size: mixins.rscale(16,18)
-
+    &.motif
       &.the-designer
         color: var(--backgroundColor)
         color: var(--backgroundColorP3)

@@ -21,7 +21,7 @@
         ]
       ]); ?>
     <?php else: ?>
-      <button id="scrollButton" class="project-hero__header__timing"><?= $timing ?></button>
+      <button class="project-hero__header__timing purchase-trigger"><?= $timing ?></button>
     <?php endif; ?>
   </div>
   <div class="project-hero__image">

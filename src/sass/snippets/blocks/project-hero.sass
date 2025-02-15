@@ -91,6 +91,9 @@
     position: relative
     padding: 0 mixins.rscale(16,32) mixins.rscale(16,32) mixins.rscale(16,32)
 
+    img
+      border-radius: 0 !important
+
     @include mixins.sm
       flex: 1
 
@@ -168,9 +171,7 @@
       text-decoration: none
 
       @include mixins.sm
-        margin-bottom: 0
-
-        
+        margin-bottom: 0    
 
       svg
         margin-top: mixins.rscale(8,16)
@@ -485,3 +486,5 @@
 
               .image-3d
                 opacity: 1
+
+  &.motif-65-hero

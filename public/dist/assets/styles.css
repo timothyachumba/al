@@ -395,6 +395,9 @@ body {
   .scroll-view .carousel .block.square {
     width: 100vh;
   }
+  .scroll-view .carousel .block.tall {
+    width: 60vh;
+  }
 }
 
 nav {
@@ -1396,6 +1399,9 @@ body.home .the-designer .links a {
   position: relative;
   padding: 0 clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem) clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem) clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem);
 }
+.project-hero .project-hero__image img {
+  border-radius: 0 !important;
+}
 @media (min-width: 768px) {
   .project-hero .project-hero__image {
     flex: 1;
@@ -1842,7 +1848,6 @@ body.home .the-designer .links a {
 .project-hero.motif-hero .project-hero__image .motif-grid__item:hover .image-container .image-wrapper .image-3d {
   opacity: 1;
 }
-
 .ticker-wrapper {
   z-index: 100;
   width: 100%;
@@ -2019,6 +2024,9 @@ body.home .the-designer .links a {
   right: 0;
   bottom: 0;
   z-index: 0;
+}
+.main-layout.background-image .image img {
+  border-radius: 0 !important;
 }
 .main-layout.background-image .content {
   position: relative;
@@ -2487,6 +2495,32 @@ body.project .layout.motif65 {
   color: var(--textColorP3);
   font-family: "ABC Diatype Rounded Plus Variable", sans-serif !important;
 }
+body.project .layout.motif65 img {
+  border-radius: clamp(0.8888888889rem, 1.9047619048vw, 1.7777777778rem);
+  overflow: hidden;
+}
+body.project .layout.motif65 .button {
+  background-color: var(--text-color) !important;
+}
+body.project .layout.motif65.motif65-intro .column {
+  min-height: 80vh;
+}
+body.project .layout.motif65.motif65-intro .text-block p {
+  font-size: clamp(1rem, 2.380952381vw, 2.2222222222rem);
+  font-weight: 625;
+}
+body.project .layout.motif65.motif65-intro .button {
+  font-size: clamp(1.1111111111rem, 1.9047619048vw, 1.7777777778rem);
+  font-weight: 625;
+  font-family: "ABC Diatype Rounded Plus Variable", sans-serif !important;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  height: auto;
+  padding: clamp(0.8888888889rem, 1.4285714286vw, 1.3333333333rem) clamp(1.7777777778rem, 2.8571428571vw, 2.6666666667rem);
+  background-color: #DD3D2E !important;
+  background-color: color(display-p3, 0.8666666667, 0.2392156863, 0.1803921569) !important;
+}
 body.project .layout.motif65.the-designer {
   background: var(--backgroundColor) !important;
   background: var(--backgroundColorP3) !important;
@@ -2520,10 +2554,10 @@ body.project .layout.motif65.the-designer form button {
   color: var(--backgroundColor) !important;
   color: var(--backgroundColorP3) !important;
 }
-body.project .layout.motif {
+body.project .layout.motif, body.project .layout.motif65 {
   font-family: "ABC Diatype Rounded Plus Variable", sans-serif;
 }
-body.project .layout.motif p {
+body.project .layout.motif p, body.project .layout.motif65 p {
   font-weight: 625;
   text-transform: none;
   letter-spacing: normal;
@@ -2531,7 +2565,7 @@ body.project .layout.motif p {
   font-family: "ABC Diatype Rounded Plus Variable", sans-serif;
   text-align: left;
 }
-body.project .layout.motif h2 {
+body.project .layout.motif h2, body.project .layout.motif65 h2 {
   font-family: "PolySans", sans-serif;
   font-size: clamp(0.7777777778rem, 0.8333333333vw, 0.7777777778rem);
   line-height: 1.35;
