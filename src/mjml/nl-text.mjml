@@ -2,7 +2,7 @@
     <!-- [nl-text] -->
 </mj-raw>
 
-<mj-raw><?php if($block->images_position()->value() === 'before') { ?></mj-raw>
+<mj-raw><?php if($block->images()->toFiles()->count() && $block->images_position()->value() === 'before') { ?></mj-raw>
     <mj-section background-color="<?= $block->bgcolor() ?>" css-class="tbl-images" padding="1.5rem" padding-bottom="0">
     <mj-include path="./nl-tbl-images.mjml"/>
     </mj-section>
@@ -20,7 +20,7 @@
 </mj-column>
 </mj-section>
 
-<mj-raw><?php if($block->images_position()->value() !== 'before') { ?></mj-raw>
+<mj-raw><?php if($block->images()->toFiles()->count() && $block->images_position()->value() !== 'before') { ?></mj-raw>
 <mj-section background-color="<?= $block->bgcolor() ?>" css-class="tbl-images" padding="1.5rem" padding-top="0">
     <mj-include path="./nl-tbl-images.mjml"/>
 </mj-section>
